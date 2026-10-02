@@ -1,0 +1,4 @@
+Collecting fastapi>=0.115 (from -r requirements.txt (line 1))
+  Using cached fastapi-0.142.2-py3-none-any.whl.metadata (27 kB)
+Collecting uvicorn>=0.30 (from uvicorn[standard]>=0.30->-r requirements.txt (line 2))
+  Using cached uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)

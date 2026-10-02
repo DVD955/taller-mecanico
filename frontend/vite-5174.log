@@ -1,0 +1,16 @@
+
+> taller-mecanico-frontend@1.0.0 dev
+> vite --host 127.0.0.1 --port 5174
+
+
+  VITE v8.3.2  ready in 983 ms
+
+  ➜  Local:   http://127.0.0.1:5174/
+  ➜  press h + enter to show help
+12:09:09 [vite] (client) hmr update /src/components/DashboardView.vue
+12:09:16 [vite] (client) hmr update /src/App.vue, /src/components/LoginForm.vue
+12:09:23 [vite] (client) hmr update /src/styles.css
+12:09:32 [vite] (client) hmr update /src/components/LoginForm.vue
+12:10:17 [vite] (client) hmr update /src/components/LoginForm.vue
+12:10:18 [vite] (client) dependency optimized: vuetify/components/VSelect
+12:10:18 [vite] (client) optimized dependencies changed. reloading

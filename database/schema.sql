@@ -1,0 +1,29 @@
+CREATE DATABASE IF NOT EXISTS taller_mecanico
+  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+USE taller_mecanico;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  full_name VARCHAR(120) NOT NULL,
+  role ENUM('ADMINISTRADOR', 'RECEPCIONISTA', 'MECANICO') NOT NULL,
+  status ENUM('ACTIVO', 'INACTIVO') NOT NULL DEFAULT 'ACTIVO',
+  recovery_code_hash VARCHAR(255) NULL,
+  active_session_id CHAR(36) NULL UNIQUE,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_users_username (username)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS user_sessions (
+  id CHAR(36) PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
+  started_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  expires_at DATETIME NOT NULL,
+  ended_at DATETIME NULL,
+  CONSTRAINT fk_sessions_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  INDEX idx_sessions_user (user_id),
+  INDEX idx_sessions_active (id, ended_at, expires_at)
+) ENGINE=InnoDB;
