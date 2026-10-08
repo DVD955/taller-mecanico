@@ -25,7 +25,7 @@ async function handleLogout(): Promise<void> {
   <v-app>
     <v-main>
       <div v-if="loadingSession" class="loading-screen"><v-progress-circular indeterminate color="secondary" /></div>
-      <DashboardView v-else-if="user" :user="user" @logout="handleLogout" />
+      <DashboardView v-else-if="user" :user="user" @logout="handleLogout" @updated="user = $event" />
       <LoginForm v-else @authenticated="user = $event" />
     </v-main>
   </v-app>

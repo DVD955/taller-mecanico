@@ -5,6 +5,7 @@ export interface User {
   id: number
   username: string
   full_name: string
+  email: string | null
   role: UserRole
   status: UserStatus
   active_session: boolean
@@ -17,7 +18,3 @@ export interface LoginResponse {
   user: User
 }
 
-export interface RegisterResponse {
-  user: User
-  recovery_code: string
-}

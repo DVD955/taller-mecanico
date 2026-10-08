@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
 from .models import UserRole, UserStatus
 
@@ -13,25 +13,29 @@ class LoginRequest(BaseModel):
 class RegisterRequest(BaseModel):
     username: str = Field(min_length=3, max_length=50, pattern=r"^[a-zA-Z0-9_.-]+$")
     full_name: str = Field(min_length=3, max_length=120)
+    email: EmailStr
     password: str = Field(min_length=8, max_length=128)
     role: UserRole
 
 
-class RegisterResponse(BaseModel):
-    user: "UserResponse"
-    recovery_code: str
+class ForgotPasswordRequest(BaseModel):
+    email: EmailStr
 
 
 class ResetPasswordRequest(BaseModel):
-    username: str = Field(min_length=3, max_length=50, pattern=r"^[a-zA-Z0-9_.-]+$")
-    recovery_code: str = Field(min_length=8, max_length=128)
+    token: str = Field(min_length=20, max_length=200)
     new_password: str = Field(min_length=8, max_length=128)
+
+
+class UpdateEmailRequest(BaseModel):
+    email: EmailStr
 
 
 class UserResponse(BaseModel):
     id: int
     username: str
     full_name: str
+    email: str | None
     role: UserRole
     status: UserStatus
     active_session: bool

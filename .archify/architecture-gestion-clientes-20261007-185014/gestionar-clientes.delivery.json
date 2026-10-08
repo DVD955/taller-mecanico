@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "93fa8b0a-a818-40c4-a9cc-5c55f9aaca6a",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\Taller Mecanico\\.archify\\architecture-gestion-clientes-20261007-185014\\candidate.json",
+  "output": "C:\\Taller Mecanico\\.archify\\architecture-gestion-clientes-20261007-185014\\gestionar-clientes.html",
+  "specification": {
+    "sha256": "c79359de28587211205353eff0c20609fd88d460befbc2dd261e47c88782396b",
+    "bytes": 35426
+  },
+  "artifact": {
+    "sha256": "ab64c36d77efe1c26bb8d58659c2c53a6a43e643197cad4a3fd40eef9cf1f641",
+    "bytes": 769832
+  }
+}

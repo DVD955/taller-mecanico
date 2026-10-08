@@ -1,4 +1,4 @@
-import type { LoginResponse, RegisterResponse, User, UserRole } from '@/types'
+import type { LoginResponse, User, UserRole } from '@/types'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
 const TOKEN_KEY = 'taller_access_token'
@@ -29,16 +29,24 @@ export async function login(username: string, password: string): Promise<LoginRe
   return data
 }
 
-export async function register(username: string, fullName: string, password: string, role: Exclude<UserRole, 'ADMINISTRADOR'>): Promise<RegisterResponse> {
-  return request<RegisterResponse>('/api/auth/register', {
-    method: 'POST', body: JSON.stringify({ username, full_name: fullName, password, role }),
+export async function register(username: string, fullName: string, email: string, password: string, role: Exclude<UserRole, 'ADMINISTRADOR'>): Promise<User> {
+  return request<User>('/api/auth/register', {
+    method: 'POST', headers: { Authorization: `Bearer ${getToken() ?? ''}` }, body: JSON.stringify({ username, full_name: fullName, email, password, role }),
   })
 }
 
-export async function resetPassword(username: string, recoveryCode: string, newPassword: string): Promise<void> {
+export async function requestPasswordReset(email: string): Promise<{ message: string }> {
+  return request<{ message: string }>('/api/auth/forgot-password', { method: 'POST', body: JSON.stringify({ email }) })
+}
+
+export async function resetPassword(token: string, newPassword: string): Promise<void> {
   await request<void>('/api/auth/reset-password', {
-    method: 'POST', body: JSON.stringify({ username, recovery_code: recoveryCode, new_password: newPassword }),
+    method: 'POST', body: JSON.stringify({ token, new_password: newPassword }),
   })
+}
+
+export async function updateEmail(email: string): Promise<User> {
+  return request<User>('/api/auth/email', { method: 'PUT', headers: { Authorization: `Bearer ${getToken() ?? ''}` }, body: JSON.stringify({ email }) })
 }
 
 export function getToken(): string | null { return sessionStorage.getItem(TOKEN_KEY) }

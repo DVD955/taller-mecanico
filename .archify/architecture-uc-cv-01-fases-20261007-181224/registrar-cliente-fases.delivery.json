@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "9f28ecfd-d74f-4b45-a2b6-181266a252d7",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\Taller Mecanico\\.archify\\architecture-uc-cv-01-fases-20261007-181224\\candidate.json",
+  "output": "C:\\Taller Mecanico\\.archify\\architecture-uc-cv-01-fases-20261007-181224\\registrar-cliente-fases.html",
+  "specification": {
+    "sha256": "564565d91e3bb2f468d0e8ebdda3a7553364094a3f9dcc6bfa710282070bcf83",
+    "bytes": 29208
+  },
+  "artifact": {
+    "sha256": "1684088987e978002ee647110032172e41f1aed5d9a160164fa6bd8a4ec8ffa3",
+    "bytes": 764487
+  }
+}

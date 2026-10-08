@@ -27,4 +27,56 @@ body { margin: 0; }
 .profile-card .v-card-text { display: flex; align-items: center; padding: 1.5rem; }
 .profile-icon { width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; margin-right: 1.1rem; color: #2F4F4F; background: #FAEBD7; }
 .profile-label { color: #587171; letter-spacing: .1em; font-size: .67rem; font-weight: 700; margin: 0 0 .25rem; }
+.customers-panel { margin-top: 3rem; padding: 1.75rem; border: 1px solid #2F4F4F26; border-radius: 18px; background: #FAEBD7; color: #2F4F4F; }
+.customers-heading { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-bottom: 1.5rem; }
+.customers-heading h2 { display: flex; align-items: center; gap: .6rem; font-size: 1.8rem; letter-spacing: -.03em; margin-bottom: .4rem; }
+.customers-heading p { margin-top: 0; line-height: 1.5; }
+.customer-count { display: inline-grid; place-items: center; min-width: 30px; padding: 4px 8px; font-size: .85rem; border-radius: 18px; background: #2F4F4F; color: #FAEBD7; }
+.customer-toolbar { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.5rem; }
+.customer-toolbar .v-input { min-width: 0; }
+.customer-table-wrap { overflow-x: auto; border: 1px solid #2F4F4F26; border-radius: 12px; }
+.customer-table { width: 100%; border-collapse: collapse; text-align: left; font-size: .85rem; }
+.customer-table th { padding: .9rem 1rem; background: #2F4F4F; color: #FAEBD7; font-weight: 600; }
+.customer-table td { padding: 1.2rem 1rem; vertical-align: middle; border-top: 1px solid #2F4F4F26; }
+.customer-table tbody tr:hover { background: #2F4F4F0A; }
+.customer-person { display: flex; align-items: center; gap: .8rem; min-width: 155px; }
+.customer-person strong, .customer-person h3 { font-size: 1rem; line-height: 1.4; overflow-wrap: anywhere; }
+.customer-avatar { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; background: #2F4F4F; color: #FAEBD7; font-weight: 700; font-size: .9rem; }
+.customer-person small, .customer-address small { display: block; margin-top: .3rem; font-size: .75rem; }
+.customer-contact { display: flex; flex-direction: column; gap: .5rem; }
+.customer-contact span { display: flex; align-items: baseline; gap: .35rem; overflow-wrap: anywhere; word-break: break-word; }
+.customer-contact .v-icon { flex-shrink: 0; }
+.customer-address { line-height: 1.5; min-width: 135px; overflow-wrap: anywhere; }
+.customer-actions { display: flex; gap: .15rem; }
+.customer-empty { text-align: center; padding: 3rem 1rem; border: 1px dashed #2F4F4F66; border-radius: 12px; }
+.customer-empty h3 { margin: 1rem 0 .5rem; }
+.customer-empty p { margin: .75rem 0 1.25rem; }
+.customer-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding-top: 1rem; font-size: .8rem; }
+.customer-mobile-list { display: none; }
+.customer-editor, .customer-dialog { background: #FAEBD7 !important; color: #2F4F4F !important; border-radius: 16px !important; }
+.customer-editor .v-card-text, .customer-dialog .v-card-text { padding: 1.75rem; }
+.customer-editor .v-btn, .customer-dialog .v-btn { max-width: 100%; height: auto; min-height: 40px; }
+.customer-editor .v-btn__content, .customer-dialog .v-btn__content { white-space: normal; line-height: 1.4; text-align: center; padding-block: 6px; }
+.customer-detail { display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: .65rem 1rem; font-size: .9rem; }
+.customer-detail dt { font-weight: 600; }
+.customer-detail dd { margin: 0; overflow-wrap: anywhere; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+@media (max-width: 760px) {
+  .dashboard-header { padding: .9rem 1rem; gap: .5rem; flex-wrap: wrap; }
+  .dashboard-logo { flex: 1 1 140px; }
+  .dashboard-header .v-btn { padding-inline: 8px; font-size: .78rem; letter-spacing: .02em; }
+  .dashboard-content { padding: 2rem 1rem; }
+  .customers-panel { padding: 1.1rem; margin-top: 2rem; }
+  .customers-heading { align-items: flex-start; flex-direction: column; gap: .75rem; }
+  .customer-toolbar { flex-wrap: wrap; }
+  .customer-toolbar .v-input { flex-basis: 100%; }
+  .customer-table-wrap { display: none; }
+  .customer-mobile-list { display: grid; gap: 1rem; }
+  .customer-mobile-card { padding: 1.1rem; border: 1px solid #2F4F4F33; border-radius: 12px; }
+  .customer-mobile-card .customer-contact { margin: 1rem 0; font-size: .85rem; }
+  .customer-mobile-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; margin-top: .75rem; border-top: 1px solid #2F4F4F26; padding-top: .5rem; }
+  .customer-detail { grid-template-columns: 1fr; gap: .25rem; }
+  .customer-detail dd { margin-bottom: .65rem; }
+  .customer-editor .v-card-text, .customer-dialog .v-card-text { padding: 1.25rem; }
+}
 @media (max-width: 760px) { .auth-layout { display: block; } .brand-panel { display: none; } .form-panel { min-height: 100vh; padding: 1.5rem; } .mobile-mark { display: block; } .profile-card .v-card-text { flex-wrap: wrap; gap: 1rem; } .profile-card .v-divider { display: none; } }

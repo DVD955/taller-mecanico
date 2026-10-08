@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Taller Mecanico\\.archify\\workflow-uc-cv-01-20261007-181224\\candidate.json",
+    "sha256": "c05a663e45a10532e870ac6e158f8ac157e5e2ffd31248f580f6f6dc0ad5f3e0",
+    "bytes": 31071
+  },
+  "artifact": {
+    "path": "C:\\Taller Mecanico\\.archify\\workflow-uc-cv-01-20261007-181224\\registrar-cliente.html"
+  },
+  "gates": {
+    "validate": "fail",
+    "deliver": "not-run",
+    "check": "not-run",
+    "browser-check": "not-run"
+  },
+  "failedStage": "validate",
+  "diagnostics": [
+    {
+      "code": "workflow/route-preset-conflict",
+      "severity": "error",
+      "message": "Workflow edge \"denegar\" cannot satisfy route preset \"return-left\" under readable-v2 constraints (minimum 8px endpoint stubs, 16px interior turns, and 28px direct clearance).",
+      "subject": {
+        "diagramType": "workflow",
+        "edge": "denegar",
+        "from": "autorizar",
+        "to": "denegado",
+        "route": "return-left"
+      },
+      "evidence": {
+        "attemptedCandidateFamily": "return-left",
+        "points": [
+          [
+            48,
+            246
+          ],
+          [
+            20,
+            246
+          ],
+          [
+            20,
+            498
+          ],
+          [
+            48,
+            498
+          ]
+        ],
+        "fromSide": "left",
+        "toSide": "left",
+        "requiredEndpointStubPx": 8,
+        "requiredInteriorSegmentPx": 16,
+        "requiredDirectClearancePx": 28
+      }
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Taller Mecanico\\.archify\\workflow-uc-cv-01-20261007-181224\\registrar-cliente.finalize.json",
+    "summaryReceipt": "C:\\Taller Mecanico\\.archify\\workflow-uc-cv-01-20261007-181224\\registrar-cliente.finalize-summary.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.0.1",
+    "availableVersion": "3.0.1",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-08T00:24:09.093Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 6161,
+  "nextAction": {
+    "action": "edit-in-place",
+    "candidate": "C:\\Taller Mecanico\\.archify\\workflow-uc-cv-01-20261007-181224\\candidate.json",
+    "constraint": "Preserve unaffected semantics and geometry; do not replace the whole candidate.",
+    "then": "finalize-once"
+  }
+}

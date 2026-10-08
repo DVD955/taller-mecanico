@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "command": "deliver",
+  "status": "pending",
+  "receiptId": "81f77766-d329-407f-a5fc-f69e6c60a89b",
+  "input": "C:\\Taller Mecanico\\.archify\\workflow-uc-cv-01-20261007-181224\\candidate.json",
+  "output": "C:\\Taller Mecanico\\.archify\\workflow-uc-cv-01-20261007-181224\\registrar-cliente.html"
+}

@@ -1,16 +1,36 @@
-INFO:     127.0.0.1:55472 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55507 - "POST /api/auth/register HTTP/1.1" 201 Created
-INFO:     127.0.0.1:55508 - "POST /api/auth/reset-password HTTP/1.1" 204 No Content
-INFO:     127.0.0.1:55509 - "POST /api/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55510 - "POST /api/auth/logout HTTP/1.1" 204 No Content
-INFO:     127.0.0.1:51127 - "POST /api/auth/register HTTP/1.1" 201 Created
-INFO:     127.0.0.1:49867 - "POST /api/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56795 - "POST /api/auth/logout HTTP/1.1" 204 No Content
-INFO:     127.0.0.1:57531 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57531 - "POST /api/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57531 - "OPTIONS /api/auth/logout HTTP/1.1" 200 OK
-INFO:     127.0.0.1:65451 - "POST /api/auth/logout HTTP/1.1" 204 No Content
-INFO:     127.0.0.1:53721 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53721 - "POST /api/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53721 - "OPTIONS /api/auth/logout HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62453 - "POST /api/auth/logout HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:59371 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65037 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65038 - "POST /api/auth/logout HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:61026 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61026 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57748 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57748 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63635 - "OPTIONS /api/auth/logout HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63635 - "POST /api/auth/logout HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:63635 - "POST /api/auth/logout HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:49670 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "OPTIONS /api/auth/logout HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54173 - "POST /api/auth/logout HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:62265 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62265 - "POST /api/auth/logout HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:61619 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61619 - "POST /api/auth/logout HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:55754 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55754 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55754 - "OPTIONS /api/auth/logout HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "POST /api/auth/logout HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:61349 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61349 - "POST /api/auth/logout HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:64512 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64512 - "POST /api/auth/register HTTP/1.1" 201 Created
+INFO:     127.0.0.1:58089 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64318 - "OPTIONS /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64318 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:58632 - "OPTIONS /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58632 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:56461 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:57985 - "OPTIONS /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57985 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54897 - "OPTIONS /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54897 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized

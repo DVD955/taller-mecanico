@@ -1,4 +1,4 @@
-# Taller Mecánico · Módulo de autenticación
+# Taller Mecánico · Autenticación y gestión de clientes
 
 SPA de inicio de sesión para una plataforma de gestión de taller mecánico. Implementa usuarios con rol, estado y una sola sesión activa por cuenta.
 
@@ -6,6 +6,13 @@ SPA de inicio de sesión para una plataforma de gestión de taller mecánico. Im
 
 - Frontend: Vue 3 + Vite + TypeScript estricto + Vuetify 3.
 - Backend: Python + FastAPI + SQLAlchemy + MySQL.
+- UC-CV-01/02/03 Registrar, actualizar y eliminar clientes: módulo C# / .NET 10 integrado con FastAPI y MySQL.
+
+## UC-CV-01 Registrar cliente
+
+Consulta [tabla de fases, patrones, reglas y ejecución](docs/UC-CV-01-RegistrarCliente.md). El alta de clientes está habilitada únicamente para administradores y recepcionistas e incluye confirmación, bloqueo de duplicados y auditoría transaccional. El módulo se encuentra en `customer-service`, la solución C# en `TallerMecanico.slnx` y el diagrama de fases Archify en `.archify/architecture-uc-cv-01-fases-20261007-181224`.
+
+El directorio permite buscar, consultar, actualizar y eliminar clientes únicamente con esos dos roles. La eliminación es lógica y conserva el historial. Consulta [UC-CV-02/03, API, pruebas y diagrama actualizado](docs/UC-CV-02-03-GestionClientes.md). Con la app iniciada, abre [la aplicación](http://127.0.0.1:5176/) o [el diagrama de Archify](http://127.0.0.1:5176/diagramas/gestionar-clientes.html).
 
 ## Puesta en marcha paso a paso
 
@@ -48,5 +55,11 @@ SPA de inicio de sesión para una plataforma de gestión de taller mecánico. Im
 - La fila de usuario se bloquea durante el login para impedir dos accesos simultáneos.
 - Si existe una sesión vigente se devuelve un mensaje claro y no se crea otra.
 - Cerrar sesión invalida el registro de sesión y el JWT deja de ser válido.
+- Solo el administrador puede crear cuentas de recepcionista o mecánico desde su panel. La API también exige su token.
+- La recuperación envía un enlace de 15 minutos al correo registrado; el token se almacena como hash y se invalida tras usarlo.
+
+## Configurar recuperación por Gmail
+
+En `backend/.env`, completa `SMTP_PASSWORD` con una contraseña de aplicación de la cuenta indicada en `SMTP_USER`. Las demás variables Gmail son `SMTP_HOST=smtp.gmail.com`, `SMTP_PORT=587`, `SMTP_FROM` y `SMTP_STARTTLS=true`. Reinicia FastAPI después de guardar. Sin esa clave el servidor devolverá 503 al solicitar recuperación, para no afirmar que se envió un correo que no salió. El correo de cada usuario se guarda al crearlo; el administrador existente puede guardar el suyo desde su panel.
 
 > Para producción usa HTTPS, un `SECRET_KEY` aleatorio largo, una URL MySQL con cuenta de mínimos privilegios y restringe `CORS_ORIGINS`.

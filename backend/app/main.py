@@ -1,4 +1,7 @@
-from datetime import datetime
+from datetime import datetime, timedelta
+import hashlib
+import secrets
+import smtplib
 from typing import Annotated
 
 import jwt
@@ -12,9 +15,10 @@ from .config import get_settings
 from .database import Base, engine, get_db
 from .dependencies import CurrentUser
 from .models import User, UserRole, UserSession, UserStatus
-from .schemas import LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, ResetPasswordRequest, UserResponse
+from .schemas import ForgotPasswordRequest, LoginRequest, LoginResponse, RegisterRequest, ResetPasswordRequest, UpdateEmailRequest, UserResponse
 from .security import create_access_token, decode_access_token, expiry_from_now, hash_password, verify_password
-import secrets
+from .mailer import send_recovery_email
+from .customers import router as customers_router
 
 settings = get_settings()
 app = FastAPI(title="Taller Mecánico API", version="1.0.0")
@@ -22,19 +26,24 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.allowed_origins,
     allow_credentials=False,
-    allow_methods=["GET", "POST"],
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["Authorization", "Content-Type"],
 )
 bearer = HTTPBearer(auto_error=False)
+app.include_router(customers_router)
 
 
 @app.on_event("startup")
 def create_tables() -> None:
     Base.metadata.create_all(bind=engine)
-    # Migración ligera para instalaciones creadas antes de la recuperación por código.
-    if "recovery_code_hash" not in {column["name"] for column in inspect(engine).get_columns("users")}:
-        with engine.begin() as connection:
+    columns = {column["name"] for column in inspect(engine).get_columns("users")}
+    with engine.begin() as connection:
+        if "recovery_code_hash" not in columns:
             connection.execute(text("ALTER TABLE users ADD COLUMN recovery_code_hash VARCHAR(255) NULL"))
+        if "email" not in columns:
+            connection.execute(text("ALTER TABLE users ADD COLUMN email VARCHAR(255) NULL UNIQUE"))
+        if "recovery_expires_at" not in columns:
+            connection.execute(text("ALTER TABLE users ADD COLUMN recovery_expires_at DATETIME NULL"))
 
 
 def user_response(user: User) -> UserResponse:
@@ -42,6 +51,7 @@ def user_response(user: User) -> UserResponse:
         id=user.id,
         username=user.username,
         full_name=user.full_name,
+        email=user.email,
         role=user.role,
         status=user.status,
         active_session=user.active_session_id is not None,
@@ -79,35 +89,50 @@ def login(data: LoginRequest, db: Annotated[Session, Depends(get_db)]) -> LoginR
     return LoginResponse(access_token=token, expires_at=expires_at, user=response_user)
 
 
-@app.post("/api/auth/register", response_model=RegisterResponse, status_code=status.HTTP_201_CREATED)
-def register(data: RegisterRequest, db: Annotated[Session, Depends(get_db)]) -> RegisterResponse:
+@app.post("/api/auth/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
+def register(data: RegisterRequest, db: Annotated[Session, Depends(get_db)]) -> UserResponse:
     if data.role == UserRole.ADMINISTRADOR:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="El rol administrador solo puede ser asignado por un administrador existente.")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="No se puede crear otro administrador desde este formulario.")
+    if db.execute(select(User.id).where((User.username == data.username) | (User.email == str(data.email).lower()))).first():
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El usuario o correo ya está registrado.")
+    user = User(username=data.username, full_name=data.full_name.strip(), email=str(data.email).lower(),
+                password_hash=hash_password(data.password), role=data.role, status=UserStatus.ACTIVO)
+    db.add(user)
+    try:
+        db.commit()
+    except Exception:
+        db.rollback()
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El usuario o correo ya está registrado.")
+    db.refresh(user)
+    return user_response(user)
 
-    recovery_code = secrets.token_urlsafe(12)
+
+@app.post("/api/auth/forgot-password", status_code=status.HTTP_202_ACCEPTED)
+def forgot_password(data: ForgotPasswordRequest, db: Annotated[Session, Depends(get_db)]) -> dict[str, str]:
+    message = {"message": "Si el correo está registrado, recibirás un enlace para restablecer tu contraseña."}
+    if not settings.smtp_host or not settings.smtp_from or not settings.smtp_password:
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="El envío de correo aún no está configurado.")
     with db.begin():
-        if db.execute(select(User).where(User.username == data.username).with_for_update()).scalar_one_or_none():
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Ese nombre de usuario ya está registrado.")
-        user = User(
-            username=data.username,
-            full_name=data.full_name.strip(),
-            password_hash=hash_password(data.password),
-            recovery_code_hash=hash_password(recovery_code),
-            role=data.role,
-            status=UserStatus.ACTIVO,
-        )
-        db.add(user)
-        db.flush()
-        response_user = user_response(user)
-    return RegisterResponse(user=response_user, recovery_code=recovery_code)
+        user = db.execute(select(User).where(User.email == str(data.email).lower()).with_for_update()).scalar_one_or_none()
+        if user is None or user.status != UserStatus.ACTIVO:
+            return message
+        token = secrets.token_urlsafe(32)
+        user.recovery_code_hash = hashlib.sha256(token.encode()).hexdigest()
+        user.recovery_expires_at = datetime.utcnow() + timedelta(minutes=15)
+        try:
+            send_recovery_email(user.email, token)
+        except (smtplib.SMTPException, OSError, RuntimeError):
+            raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="No se pudo enviar el correo. Inténtalo más tarde.")
+    return message
 
 
 @app.post("/api/auth/reset-password", status_code=status.HTTP_204_NO_CONTENT)
 def reset_password(data: ResetPasswordRequest, db: Annotated[Session, Depends(get_db)]) -> None:
     with db.begin():
-        user = db.execute(select(User).where(User.username == data.username).with_for_update()).scalar_one_or_none()
-        if user is None or not user.recovery_code_hash or not verify_password(data.recovery_code, user.recovery_code_hash):
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Usuario o código de recuperación incorrecto.")
+        digest = hashlib.sha256(data.token.encode()).hexdigest()
+        user = db.execute(select(User).where(User.recovery_code_hash == digest).with_for_update()).scalar_one_or_none()
+        if user is None or user.recovery_expires_at is None or user.recovery_expires_at <= datetime.utcnow():
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="El enlace de recuperación no es válido o ha expirado.")
         if user.status != UserStatus.ACTIVO:
             raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Tu usuario está inactivo. Contacta al administrador.")
         current_session = db.get(UserSession, user.active_session_id) if user.active_session_id else None
@@ -115,6 +140,19 @@ def reset_password(data: ResetPasswordRequest, db: Annotated[Session, Depends(ge
             current_session.ended_at = datetime.utcnow()
         user.active_session_id = None
         user.password_hash = hash_password(data.new_password)
+        user.recovery_code_hash = None
+        user.recovery_expires_at = None
+
+
+@app.put("/api/auth/email", response_model=UserResponse)
+def update_email(data: UpdateEmailRequest, user: CurrentUser, db: Annotated[Session, Depends(get_db)]) -> UserResponse:
+    email = str(data.email).lower()
+    if db.execute(select(User.id).where(User.email == email, User.id != user.id)).first():
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Ese correo ya está registrado.")
+    user.email = email
+    db.commit()
+    db.refresh(user)
+    return user_response(user)
 
 
 @app.get("/api/auth/me", response_model=UserResponse)
