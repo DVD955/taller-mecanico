@@ -2,6 +2,8 @@
 
 SPA de inicio de sesión para una plataforma de gestión de taller mecánico. Implementa usuarios con rol, estado y una sola sesión activa por cuenta.
 
+Consulta el [estado actual y la tabla de funcionalidades disponibles y pendientes](docs/ESTADO-PROYECTO.md).
+
 ## Tecnologías
 
 - Frontend: Vue 3 + Vite + TypeScript estricto + Vuetify 3.
@@ -55,7 +57,7 @@ El directorio permite buscar, consultar, actualizar y eliminar clientes únicame
 - La fila de usuario se bloquea durante el login para impedir dos accesos simultáneos.
 - Si existe una sesión vigente se devuelve un mensaje claro y no se crea otra.
 - Cerrar sesión invalida el registro de sesión y el JWT deja de ser válido.
-- Solo el administrador puede crear cuentas de recepcionista o mecánico desde su panel. La API también exige su token.
+- El administrador puede crear cuentas de recepcionista o mecánico desde su panel. También existe registro público desde el login para esos roles; no se permiten altas de administrador. Separar roles públicos y de personal está pendiente antes de publicar.
 - La recuperación envía un enlace de 15 minutos al correo registrado; el token se almacena como hash y se invalida tras usarlo.
 
 ## Configurar recuperación por Gmail
