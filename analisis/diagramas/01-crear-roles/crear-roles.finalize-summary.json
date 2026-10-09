@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Taller Mecanico\\analisis\\diagramas\\01-crear-roles\\candidate.json",
+    "sha256": "e2586f4dcbb00d22f30375647bc46379d36efefd499324e085da696a5ef8e151",
+    "bytes": 3420
+  },
+  "artifact": {
+    "path": "C:\\Taller Mecanico\\analisis\\diagramas\\01-crear-roles\\crear-roles.html",
+    "sha256": "4cde2ee9444a04a854ed3ce778837536cdcea8170ffa8171b0df1f5a4a012f8e",
+    "bytes": 760015
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Taller Mecanico\\analisis\\diagramas\\01-crear-roles\\crear-roles.finalize.json",
+    "summaryReceipt": "C:\\Taller Mecanico\\analisis\\diagramas\\01-crear-roles\\crear-roles.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Taller Mecanico\\analisis\\diagramas\\01-crear-roles\\crear-roles.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.0.1",
+    "availableVersion": "3.0.1",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-08T00:24:09.093Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 10590,
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "routesOverSuggestedBends": 1
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [],
+      "detours": [
+        {
+          "relationship": {
+            "from": "autorizar",
+            "to": "denegar",
+            "label": "Sin permiso",
+            "collectionIndex": 3,
+            "artifactIndex": 4
+          },
+          "bends": 3,
+          "stretch": 1.18
+        }
+      ],
+      "truncated": false
+    },
+    "hints": [
+      "autorizar → denegar needs 3 bends: move node autorizar or denegar so they share a row or column with matching centers, or sit diagonally with a clear corner."
+    ],
+    "repair": "Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit."
+  }
+}

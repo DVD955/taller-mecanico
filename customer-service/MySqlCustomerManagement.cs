@@ -4,13 +4,16 @@ namespace Taller.Customers;
 
 public sealed partial class MySqlCustomerStore
 {
+    // Traducción para el contrato HTTP existente; nunca se persiste este texto.
+    internal static string StatusFromCatalog(int statusId) => statusId == 1 ? "ACTIVO" : "INACTIVO";
+
     private static Customer ReadCustomer(MySqlDataReader reader) => new(
         reader.GetInt64("id"), reader.GetString("full_name"),
         new Address(reader.GetString("street"), reader.GetString("number"), reader.GetString("neighborhood"), reader.GetString("municipality"), reader.GetString("state")),
         new Contacts(reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString("email"),
             reader.IsDBNull(reader.GetOrdinal("mobile")) ? null : reader.GetString("mobile"),
             reader.IsDBNull(reader.GetOrdinal("alternative")) ? null : reader.GetString("alternative")),
-        reader.GetString("status"), reader.GetString("identity_fingerprint"), reader.GetInt32("version"));
+        StatusFromCatalog(reader.GetInt32("status_id")), reader.GetString("identity_fingerprint"), reader.GetInt32("version"));
 
     public async Task<CustomerPage> List(int page, int pageSize, string search, CancellationToken ct)
     {
@@ -19,16 +22,17 @@ public sealed partial class MySqlCustomerStore
         // Count y página comparten una instantánea para que la paginación sea coherente.
         await using var transaction = await connection.BeginTransactionAsync(System.Data.IsolationLevel.RepeatableRead, ct);
         const string filter = """
-            WHERE deleted_at IS NULL AND (@empty=1 OR full_name LIKE @search ESCAPE '!'
-            OR email LIKE @search ESCAPE '!' OR mobile LIKE @search ESCAPE '!'
-            OR alternative LIKE @search ESCAPE '!' OR municipality LIKE @search ESCAPE '!')
+            WHERE c.bin_status<>3 AND (@empty=1 OR c.full_name LIKE @search ESCAPE '!'
+            OR c.email LIKE @search ESCAPE '!' OR c.mobile LIKE @search ESCAPE '!'
+            OR c.alternative LIKE @search ESCAPE '!' OR c.municipality LIKE @search ESCAPE '!')
             """;
         var pattern = "%" + search.Replace("!", "!!").Replace("%", "!%").Replace("_", "!_") + "%";
-        await using var countCommand = new MySqlCommand("SELECT COUNT(*) FROM customers " + filter, connection, transaction);
+        const string source = " FROM customers c INNER JOIN status s ON s.id=c.bin_status ";
+        await using var countCommand = new MySqlCommand("SELECT COUNT(*)" + source + filter, connection, transaction);
         countCommand.Parameters.AddWithValue("@empty", search.Length == 0);
         countCommand.Parameters.AddWithValue("@search", pattern);
         var total = Convert.ToInt64(await countCommand.ExecuteScalarAsync(ct));
-        await using var command = new MySqlCommand("SELECT * FROM customers " + filter + " ORDER BY id DESC LIMIT @limit OFFSET @offset", connection, transaction);
+        await using var command = new MySqlCommand("SELECT c.*, s.id AS status_id" + source + filter + " ORDER BY c.id DESC LIMIT @limit OFFSET @offset", connection, transaction);
         command.Parameters.AddWithValue("@empty", search.Length == 0);
         command.Parameters.AddWithValue("@search", pattern);
         command.Parameters.AddWithValue("@limit", pageSize);
@@ -44,7 +48,7 @@ public sealed partial class MySqlCustomerStore
     {
         await using var connection = new MySqlConnection(connectionString);
         await connection.OpenAsync(ct);
-        await using var command = new MySqlCommand("SELECT * FROM customers WHERE id=@id AND deleted_at IS NULL", connection);
+        await using var command = new MySqlCommand("SELECT c.*, s.id AS status_id FROM customers c INNER JOIN status s ON s.id=c.bin_status WHERE c.id=@id AND c.bin_status<>3", connection);
         command.Parameters.AddWithValue("@id", id);
         await using var reader = await command.ExecuteReaderAsync(ct);
         return await reader.ReadAsync(ct) ? ReadCustomer(reader) : null;
@@ -52,7 +56,7 @@ public sealed partial class MySqlCustomerStore
 
     private static async Task<Customer> LockCurrent(MySqlConnection connection, MySqlTransaction transaction, long id, int version, CancellationToken ct)
     {
-        await using var command = new MySqlCommand("SELECT * FROM customers WHERE id=@id AND deleted_at IS NULL FOR UPDATE", connection, transaction);
+        await using var command = new MySqlCommand("SELECT c.*, s.id AS status_id FROM customers c INNER JOIN status s ON s.id=c.bin_status WHERE c.id=@id AND c.bin_status<>3 FOR UPDATE", connection, transaction);
         command.Parameters.AddWithValue("@id", id);
         await using var reader = await command.ExecuteReaderAsync(ct);
         if (!await reader.ReadAsync(ct)) throw new UseCaseException(404, "El cliente no existe o ya fue eliminado del listado.");
@@ -136,7 +140,7 @@ public sealed partial class MySqlCustomerStore
         {
             var current = await LockCurrent(connection, transaction, id, version, ct);
             var now = DateTimeOffset.UtcNow;
-            await using var command = new MySqlCommand("UPDATE customers SET status='INACTIVO',deleted_at=@now,version=version+1 WHERE id=@id", connection, transaction);
+            await using var command = new MySqlCommand("UPDATE customers SET bin_status=3,deleted_at=@now,version=version+1 WHERE id=@id", connection, transaction);
             command.Parameters.AddWithValue("@id", id);
             command.Parameters.AddWithValue("@now", now.UtcDateTime);
             await command.ExecuteNonQueryAsync(ct);

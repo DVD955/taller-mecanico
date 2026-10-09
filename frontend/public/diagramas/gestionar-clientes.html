@@ -5058,8 +5058,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         </g>
 
         <!-- Components -->
-        <g id="node-autorizacion" data-node-id="autorizacion" data-node-label="1. Sesión y autorización" tabindex="0" role="button" aria-label="Enfocar 1. Sesión y autorización, Admin / recepcionista activos, Componente de arquitectura" aria-pressed="false" data-node-kind="security" data-node-sublabel="Admin / recepcionista activos" data-node-tag="Cliente y otros roles: 403" data-node-context="Componente de arquitectura">
-          <title>1. Sesión y autorización · Admin / recepcionista activos · Componente de arquitectura · Cliente y otros roles: 403</title>
+        <g id="node-autorizacion" data-node-id="autorizacion" data-node-label="1. Sesión y autorización" tabindex="0" role="button" aria-label="Enfocar 1. Sesión y autorización, Admin / recepcionista activos, Componente de arquitectura" aria-pressed="false" data-node-kind="security" data-node-sublabel="Admin / recepcionista activos" data-node-tag="Rol no autorizado: 403" data-node-context="Componente de arquitectura">
+          <title>1. Sesión y autorización · Admin / recepcionista activos · Componente de arquitectura · Rol no autorizado: 403</title>
           <rect x="40" y="100" width="250" height="90" rx="6" class="c-mask"/>
           <rect x="40" y="100" width="250" height="90" rx="6" class="c-security" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(46 106) scale(0.6875)">
@@ -5068,7 +5068,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           </g>
           <text data-node-label="" data-detail-anchor="" x="165" y="143" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">1. Sesión y autorización</text>
         <text data-detail="context" x="165" y="159" class="t-muted" font-size="9" text-anchor="middle">Admin / recepcionista activos</text>
-        <text data-detail="fine" x="165" y="182" class="t-security" font-size="7" text-anchor="middle">Cliente y otros roles: 403</text>
+        <text data-detail="fine" x="165" y="182" class="t-security" font-size="7" text-anchor="middle">Rol no autorizado: 403</text>
         </g>
 
         <g id="node-directorio" data-node-id="directorio" data-node-label="2. Directorio de clientes" tabindex="0" role="button" aria-label="Enfocar 2. Directorio de clientes, Buscar, paginar y ver detalle, Componente de arquitectura" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="Buscar, paginar y ver detalle" data-node-tag="Tabla o tarjetas responsivas" data-node-context="Componente de arquitectura">
@@ -5432,7 +5432,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <ul>
           <li>Especificación funcional de los tres casos de uso; amplía las siete fases del alta.</li>
           <li>Solo ADMINISTRADOR y RECEPCIONISTA con cuenta activa y sesión vigente.</li>
-          <li>CLIENTE y cualquier otro rol no permitido: 403. Sin sesión: 401.</li>
+          <li>Cualquier rol fuera de la lista permitida: 403. Sin sesión: 401.</li>
+          <li>Los clientes del taller son registros; el rol CLIENTE todavía no está implementado.</li>
           <li>Nombre completo; calle, número, colonia, municipio y estado; correo, celular o alternativo.</li>
           <li>El directorio ofrece búsqueda, paginación y detalle; tabla en escritorio y tarjetas en móvil.</li>
         </ul>

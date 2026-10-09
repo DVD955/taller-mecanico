@@ -76,9 +76,9 @@ onMounted(() => { void load() })
 </script>
 
 <template>
-  <section class="customers-panel" aria-labelledby="customers-title">
-    <div class="customers-heading">
-      <div><p class="eyebrow">DIRECTORIO DEL TALLER</p><h2 id="customers-title">Clientes <span class="customer-count">{{ total }}</span></h2><p>Consulta sus datos y mantén su información al día.</p></div>
+  <section class="customers-panel module-panel clients-management-panel" aria-labelledby="customers-title">
+    <div class="customers-heading module-heading">
+      <div class="module-title"><span class="module-symbol"><v-icon icon="mdi-account-group-outline" size="28" /></span><div><p class="eyebrow">DIRECTORIO DEL TALLER</p><h2 id="customers-title">Clientes <span class="customer-count">{{ total }}</span></h2><p>Consulta sus datos y mantén su información al día.</p></div></div>
       <v-btn color="secondary" prepend-icon="mdi-account-plus-outline" @click="create">Nuevo cliente</v-btn>
     </div>
     <v-alert v-if="notice" color="secondary" variant="tonal" closable class="mb-4" aria-live="polite" @click:close="notice = ''">{{ notice }}</v-alert>

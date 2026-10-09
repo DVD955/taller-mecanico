@@ -17,7 +17,7 @@ from sqlalchemy import select, text
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "backend"))
 
 from app.database import SessionLocal, engine
-from app.models import User, UserRole, UserSession, UserStatus
+from app.models import User, UserRole, UserSession
 from app.security import create_access_token, hash_password
 
 
@@ -37,6 +37,7 @@ def run():
     marker = uuid.uuid4().hex
     user_ids = []
     users = {}
+    role_states = {}
     count = 0
 
     def check(condition, message):
@@ -54,10 +55,11 @@ def run():
         with SessionLocal() as db:
             for role in UserRole:
                 user = User(username="uc_test_" + role.value[:3] + marker[:8], full_name="Prueba UC", role=role,
-                            status=UserStatus.ACTIVO, password_hash=hash_password(secrets.token_urlsafe(32)))
+                            bin_status=1, password_hash=hash_password(secrets.token_urlsafe(32)))
                 db.add(user)
                 db.flush()
                 user_ids.append(user.id)
+                role_states[role.value] = user.assigned_role.bin_status
                 expires = datetime.now(timezone.utc).replace(tzinfo=None) + timedelta(minutes=10)
                 session = UserSession(user_id=user.id, expires_at=expires)
                 db.add(session)
@@ -67,6 +69,11 @@ def run():
             db.commit()
         admin_id, admin_token = users["ADMINISTRADOR"]
         receptionist_id, receptionist_token = users["RECEPCIONISTA"]
+        if role_states["RECEPCIONISTA"] != 1:
+            check(call("/api/customers/preview", customer, receptionist_token)[0] == 401,
+                  "HTTP: recepcionista suspendido no accede; se conserva su estado real")
+            receptionist_id, receptionist_token = admin_id, admin_token
+        operator_name = "recepcionista" if role_states["RECEPCIONISTA"] == 1 else "administrador temporal"
         check(call("/api/customers/preview", customer)[0] == 401, "HTTP: sin sesión recibe 401")
         check(call("/api/customers/preview", customer, users["MECANICO"][1])[0] == 403, "HTTP: mecánico recibe 403")
         invalid = {**customer, "contacts": {"email": "no-valido", "mobile": None, "alternative": None}}
@@ -76,7 +83,7 @@ def run():
         status, preview_admin = call("/api/customers/preview", customer, admin_token)
         check(status == 200 and preview_admin["previewToken"] is not None, "HTTP: administrador puede revisar")
         status, preview = call("/api/customers/preview", customer, receptionist_token)
-        check(status == 200 and preview["customer"]["fullName"] == "Cliente Integracion", "HTTP: recepcionista y normalización integrados")
+        check(status == 200 and preview["customer"]["fullName"] == "Cliente Integracion", f"HTTP: {operator_name} y normalización integrados")
         confirmation = {"customer": customer, "previewToken": preview["previewToken"], "confirmed": False}
         check(call("/api/customers", confirmation, receptionist_token)[0] == 422, "HTTP: confirmación obligatoria")
         changed = {**customer, "fullName": "Nombre Modificado"}
@@ -95,6 +102,10 @@ def run():
             total = connection.execute(text("SELECT COUNT(*) FROM customers WHERE email=:email"), {"email": customer["contacts"]["email"]}).scalar_one()
             check(total == 1, "MySQL: solo hay un registro tras reintentar")
         customer_id = saved["customer"]["id"]
+        with engine.connect() as connection:
+            normalized = connection.execute(text("SELECT c.bin_status,s.valor FROM customers c INNER JOIN status s ON s.id=c.bin_status WHERE c.id=:id"), {"id": customer_id}).one()
+            check(normalized.bin_status == 1 and normalized.valor == "activo",
+                  "MySQL: cliente guarda solo bin_status y obtiene su estatus del catálogo con INNER JOIN")
         path = f"/api/customers/{customer_id}"
         mechanic_token = users["MECANICO"][1]
         check(call("/api/customers", token=mechanic_token, method="GET")[0] == 403, "HTTP: mecánico no consulta el directorio")
@@ -105,20 +116,20 @@ def run():
               "C#: acceso directo tampoco permite un rol no autorizado")
         status, listing = call("/api/customers?search=" + marker, token=receptionist_token, method="GET")
         check(status == 200 and listing["total"] == 1 and listing["items"][0]["id"] == customer_id,
-              "HTTP: recepcionista consulta y busca clientes")
+              f"HTTP: {operator_name} consulta y busca clientes")
         check(call(path, token=admin_token, method="GET")[0] == 200, "HTTP: administrador consulta el detalle")
         check(call(path + "/preview", {"customer": customer, "version": 1}, admin_token)[1]["matches"] == [],
               "HTTP: editar no considera al mismo cliente como duplicado")
         edited = {**customer, "fullName": "Cliente Actualizado"}
         status, edit_preview = call(path + "/preview", {"customer": edited, "version": 1}, receptionist_token)
-        check(status == 200 and edit_preview["previewToken"] is not None, "HTTP: recepcionista revisa una edición")
+        check(status == 200 and edit_preview["previewToken"] is not None, f"HTTP: {operator_name} revisa una edición")
         edit_request = {"customer": edited, "version": 1, "previewToken": edit_preview["previewToken"], "confirmed": False}
         check(call(path, edit_request, receptionist_token, "PUT")[0] == 422, "HTTP: edición exige confirmación")
         check(call(path, {**edit_request, "confirmed": True, "customer": customer}, receptionist_token, "PUT")[0] == 422,
               "HTTP: edición rechaza datos distintos a la revisión")
         status, updated = call(path, {**edit_request, "confirmed": True}, receptionist_token, "PUT")
         check(status == 200 and updated["customer"]["version"] == 2 and updated["customer"]["fullName"] == "Cliente Actualizado"
-              and updated["auditEntry"]["actorId"] == receptionist_id, "HTTP: recepcionista actualiza y queda auditado")
+              and updated["auditEntry"]["actorId"] == receptionist_id, f"HTTP: {operator_name} actualiza y queda auditado")
         check(call(path, {**edit_request, "confirmed": True}, receptionist_token, "PUT")[0] == 409,
               "HTTP: edición con versión antigua no sobrescribe cambios")
         second = {**customer, "fullName": "Segundo Cliente", "address": {**customer["address"], "number": "2"},
@@ -140,7 +151,7 @@ def run():
               "HTTP: eliminación rechaza versión desactualizada")
         status, deleted = call(path, {"version": 3, "confirmed": True}, receptionist_token, "DELETE")
         check(status == 200 and deleted["customer"]["status"] == "INACTIVO" and deleted["auditEntry"]["actorId"] == receptionist_id,
-              "HTTP: recepcionista elimina y queda auditado")
+              f"HTTP: {operator_name} elimina y queda auditado")
         check(call(path, token=admin_token, method="GET")[0] == 404, "HTTP: cliente eliminado no se abre en el directorio")
         check(call(path, {"version": 4, "confirmed": True}, admin_token, "DELETE")[0] == 404,
               "HTTP: eliminar dos veces no crea otra auditoría")
@@ -150,9 +161,9 @@ def run():
         status, empty_listing = call("/api/customers?search=" + marker, token=admin_token, method="GET")
         check(status == 200 and empty_listing["total"] == 0, "HTTP: los clientes eliminados no aparecen en búsquedas")
         with engine.connect() as connection:
-            row = connection.execute(text("SELECT status,deleted_at,version FROM customers WHERE id=:id"), {"id": customer_id}).one()
+            row = connection.execute(text("SELECT c.bin_status,s.valor,c.deleted_at,c.version FROM customers c INNER JOIN status s ON s.id=c.bin_status WHERE c.id=:id"), {"id": customer_id}).one()
             audits = connection.execute(text("SELECT action,actor_id FROM audit_entries WHERE customer_id=:id ORDER BY id"), {"id": customer_id}).all()
-            check(row.status == "INACTIVO" and row.deleted_at is not None and row.version == 4 and len(audits) == 4
+            check(row.bin_status == 3 and row.valor == "eliminado" and row.deleted_at is not None and row.version == 4 and len(audits) == 4
                   and audits[-1].action == "UC-CV-03 EliminarCliente", "MySQL: baja lógica conserva datos e historial completo")
         status, archived_duplicate = call("/api/customers/preview", customer, admin_token)
         check(status == 200 and archived_duplicate["previewToken"] is None,

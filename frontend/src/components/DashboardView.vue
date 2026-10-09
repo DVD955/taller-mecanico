@@ -1,37 +1,42 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { ApiError, register, updateEmail } from '@/services/auth'
-import type { User, UserRole } from '@/types'
+import { computed, nextTick, ref } from 'vue'
+import { ApiError, updateEmail } from '@/services/auth'
+import type { User } from '@/types'
 import CustomerManagement from '@/components/CustomerManagement.vue'
+import RoleManagement from '@/components/RoleManagement.vue'
+import RoleCreation from '@/components/RoleCreation.vue'
+import WorkshopManagement from '@/components/WorkshopManagement.vue'
 
 const props = defineProps<{ user: User }>()
 const emit = defineEmits<{ logout: []; updated: [user: User] }>()
-const form = ref<{ validate: () => Promise<{ valid: boolean }> } | null>(null)
-const username = ref('')
-const fullName = ref('')
-const email = ref('')
-const password = ref('')
-const role = ref<Exclude<UserRole, 'ADMINISTRADOR'>>('RECEPCIONISTA')
+const canManage = computed(() => ['ADMINISTRADOR', 'RECEPCIONISTA'].includes(props.user.role))
+type WorkspaceView = 'customers' | 'workshops' | 'create-role' | 'roles' | 'profile'
+const view = ref<WorkspaceView>(canManage.value ? 'customers' : 'profile')
+const modules = computed(() => {
+  const items: { value: WorkspaceView; title: string; icon: string }[] = []
+  if (canManage.value) items.push({ value: 'customers', title: 'Administración de clientes', icon: 'mdi-account-group-outline' }, { value: 'workshops', title: 'Administración de talleres', icon: 'mdi-garage-variant' })
+  if (props.user.role === 'ADMINISTRADOR') items.push({ value: 'create-role', title: 'Crear rol', icon: 'mdi-shield-plus-outline' }, { value: 'roles', title: 'Administrar roles', icon: 'mdi-shield-account-outline' })
+  items.push({ value: 'profile', title: 'Mi cuenta', icon: 'mdi-account-circle-outline' })
+  return items
+})
 const ownEmail = ref(props.user.email ?? '')
+const initials = computed(() => props.user.full_name.split(' ').filter(Boolean).slice(0, 2).map(part => part[0]).join('').toUpperCase())
 const busy = ref(false)
 const message = ref('')
 const errorMessage = ref('')
-const required = [(value: string) => !!value || 'Este campo es obligatorio.']
-const emailRules = [...required, (value: string) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value) || 'Correo no válido.']
-const passwordRules = [...required, (value: string) => value.length >= 8 || 'Mínimo 8 caracteres.']
+const emailRules = [(value: string) => !!value || 'Este campo es obligatorio.', (value: string) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value) || 'Correo no válido.']
 
-async function createAccount(): Promise<void> {
-  if (!(await form.value?.validate())?.valid) return
-  busy.value = true
-  message.value = ''
-  errorMessage.value = ''
-  try {
-    const created = await register(username.value.trim(), fullName.value.trim(), email.value.trim(), password.value, role.value)
-    message.value = `Cuenta ${created.username} creada como ${created.role}.`
-    username.value = ''; fullName.value = ''; email.value = ''; password.value = ''
-  } catch (error) {
-    errorMessage.value = error instanceof ApiError ? error.message : 'No se pudo crear la cuenta.'
-  } finally { busy.value = false }
+async function navigate(event: KeyboardEvent): Promise<void> {
+  if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
+  event.preventDefault()
+  const items = modules.value
+  const current = items.findIndex(item => item.value === view.value)
+  const index = event.key === 'Home' ? 0 : event.key === 'End' ? items.length - 1 : (current + (event.key === 'ArrowRight' ? 1 : -1) + items.length) % items.length
+  const target = items[index]
+  if (!target) return
+  view.value = target.value
+  await nextTick()
+  document.getElementById(`module-${target.value}`)?.focus()
 }
 
 async function saveEmail(): Promise<void> {
@@ -49,35 +54,25 @@ async function saveEmail(): Promise<void> {
 
 <template>
   <div class="dashboard">
-    <header class="dashboard-header"><div class="dashboard-logo"><v-icon icon="mdi-car-wrench" /> <strong>Taller Mecánico</strong></div><v-btn variant="text" color="secondary" prepend-icon="mdi-logout" @click="$emit('logout')">Cerrar sesión</v-btn></header>
+    <header class="dashboard-header"><div class="dashboard-header-inner"><div class="dashboard-logo"><span class="brand-monogram"><v-icon icon="mdi-car-wrench" size="24" /></span><div><strong>Taller Mecánico</strong><span>PLATAFORMA DE GESTIÓN</span></div></div><div class="dashboard-header-actions"><span class="header-session"><v-icon icon="mdi-shield-check-outline" size="16" /> Sesión protegida</span><v-btn variant="outlined" color="primary" prepend-icon="mdi-logout" @click="$emit('logout')">Cerrar sesión</v-btn></div></div></header>
     <main class="dashboard-content">
-      <p class="eyebrow text-secondary">SESIÓN ACTIVA</p><h1>Hola, {{ user.full_name }}</h1>
-      <p class="subtitle">Has iniciado sesión correctamente.</p>
-      <v-card class="profile-card" elevation="0"><v-card-text>
-        <div class="profile-icon"><v-icon icon="mdi-account-check-outline" size="34" /></div>
-        <div><p class="profile-label">USUARIO</p><strong>{{ user.username }}</strong></div><v-divider vertical class="mx-5" />
-        <div><p class="profile-label">ROL</p><strong>{{ user.role }}</strong></div><v-divider vertical class="mx-5" />
-        <div><p class="profile-label">ESTADO</p><v-chip color="success" size="small">{{ user.status }}</v-chip></div>
-      </v-card-text></v-card>
+      <div class="workspace-welcome"><div><p class="eyebrow">TU ESPACIO DE TRABAJO</p><h1>Hola, {{ user.full_name }}</h1><p>{{ canManage ? 'Gestiona la información de tu taller desde un solo lugar.' : 'Consulta tu cuenta y mantén tus datos actualizados.' }}</p></div><span class="session-indicator"><span aria-hidden="true"></span> Sesión activa</span></div>
+      <div class="workspace-identity"><span class="identity-avatar" aria-hidden="true">{{ initials }}</span><dl><div><dt>Usuario</dt><dd>{{ user.username }}</dd></div><div><dt>Rol</dt><dd>{{ user.role_name }}</dd></div><div><dt>Estado</dt><dd><v-chip color="secondary" variant="tonal" size="small">{{ user.status }}</v-chip></dd></div></dl></div>
       <v-alert v-if="message" type="success" variant="tonal" class="mt-6">{{ message }}</v-alert>
       <v-alert v-if="errorMessage" type="error" variant="tonal" class="mt-6">{{ errorMessage }}</v-alert>
-      <CustomerManagement v-if="user.role === 'ADMINISTRADOR' || user.role === 'RECEPCIONISTA'" />
-      <v-card class="profile-card" elevation="0"><v-card-text class="d-block">
-        <h2>Correo de recuperación</h2><p class="subtitle">Usaremos este correo para enviarte un enlace si olvidas tu contraseña.</p>
+      <v-alert v-if="user.role === 'INVITADO'" color="secondary" variant="tonal" class="mt-6">Tu cuenta es Invitado. El administrador puede asignarte un rol de personal.</v-alert>
+      <nav class="workspace-navigation" aria-label="Módulos del sistema"><div class="dashboard-tabs" role="tablist" aria-label="Seleccionar módulo"><v-btn v-for="item in modules" :id="`module-${item.value}`" :key="item.value" role="tab" class="workspace-tab" :class="{ 'workspace-tab-selected': view === item.value }" :aria-selected="view === item.value" aria-controls="workspace-content" :tabindex="view === item.value ? 0 : -1" variant="text" @click="view = item.value" @keydown="navigate"><v-icon :icon="item.icon" start /><span>{{ item.title }}</span></v-btn></div></nav>
+      <div id="workspace-content" role="tabpanel" :aria-labelledby="`module-${view}`">
+      <CustomerManagement v-if="canManage && view === 'customers'" />
+      <WorkshopManagement v-if="canManage && view === 'workshops'" />
+      <RoleCreation v-if="user.role === 'ADMINISTRADOR' && view === 'create-role'" @manage="view = 'roles'" />
+      <RoleManagement v-if="user.role === 'ADMINISTRADOR' && view === 'roles'" />
+      <v-card v-if="view === 'profile'" class="profile-card account-settings" elevation="0"><v-card-text class="d-block">
+        <p class="eyebrow">DATOS DE TU CUENTA</p><h2>Correo de recuperación</h2><p class="subtitle">Usaremos este correo para enviarte un enlace si olvidas tu contraseña.</p>
         <v-text-field v-model="ownEmail" label="Tu correo electrónico" type="email" autocomplete="email" :rules="emailRules" variant="outlined" color="secondary" />
         <v-btn color="secondary" :loading="busy" @click="saveEmail">Guardar correo</v-btn>
       </v-card-text></v-card>
-      <v-card v-if="user.role === 'ADMINISTRADOR'" class="profile-card" elevation="0"><v-card-text class="d-block">
-        <h2>Crear cuenta de personal</h2><p class="subtitle">Solo los administradores pueden dar de alta usuarios.</p>
-        <v-form ref="form" validate-on="submit" @submit.prevent="createAccount">
-          <v-text-field v-model="username" label="Usuario" :rules="required" variant="outlined" color="secondary" />
-          <v-text-field v-model="fullName" label="Nombre completo" :rules="required" variant="outlined" color="secondary" />
-          <v-text-field v-model="email" label="Correo electrónico" type="email" :rules="emailRules" variant="outlined" color="secondary" />
-          <v-select v-model="role" label="Rol" :items="[{ title: 'Recepcionista', value: 'RECEPCIONISTA' }, { title: 'Mecánico', value: 'MECANICO' }]" variant="outlined" color="secondary" />
-          <v-text-field v-model="password" label="Contraseña inicial" type="password" :rules="passwordRules" variant="outlined" color="secondary" />
-          <v-btn type="submit" color="secondary" :loading="busy">Crear cuenta</v-btn>
-        </v-form>
-      </v-card-text></v-card>
+      </div>
     </main>
   </div>
 </template>

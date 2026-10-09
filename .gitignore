@@ -10,3 +10,5 @@ obj/
 tools/archify/
 .dotnet-home/
 .nuget/
+tools/.media-models/
+database/backups/

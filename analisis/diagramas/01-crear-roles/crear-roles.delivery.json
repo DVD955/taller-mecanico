@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "fd16fa5a-ba50-4cfd-a090-2e216918d5b9",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "C:\\Taller Mecanico\\analisis\\diagramas\\01-crear-roles\\candidate.json",
+  "output": "C:\\Taller Mecanico\\analisis\\diagramas\\01-crear-roles\\crear-roles.html",
+  "specification": {
+    "sha256": "e2586f4dcbb00d22f30375647bc46379d36efefd499324e085da696a5ef8e151",
+    "bytes": 3420
+  },
+  "artifact": {
+    "sha256": "4cde2ee9444a04a854ed3ce778837536cdcea8170ffa8171b0df1f5a4a012f8e",
+    "bytes": 760015
+  }
+}

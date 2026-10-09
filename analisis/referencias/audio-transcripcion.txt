@@ -1,0 +1,619 @@
+[0.8–4.0] A mi disador, mi sensación de mas...
+[4.0–6.5] ¡Ay, ya todo, ya todo, le está ya, no!
+[6.5–11.2] Todo lo está ya, ahora también vamos a manejar cuatro, pero si no lo quieres más...
+[11.2–13.3] ¿A que le pongo a agregarlo?
+[13.3–17.0] No, eso es el negro, entonces esa pantalla no va a servir, ¿vale?
+[17.0–18.2] ¿Vale? ¿Vale, pues.
+[18.2–20.8] Por ejemplo, yo estuviera meter a ti, la instrucción.
+[20.8–22.4] Se va a buscar ya, ¿vale?
+[22.4–26.3] ¡Ey, no lo entiendo, eso no es el año, no es el año, no es el año, no es el año, no es el año.
+[26.3–27.3] ¡O a ese pre-condición!
+[27.3–33.2] Todo lo mismo, todo lo mismo, te lo puedes ver, no como les.
+[33.2–42.1] Pre-condición, pre-condición.
+[42.1–42.9] ¿El no es, eh?
+[42.9–44.5] A pre-inistador, no es, ¿vienes?
+[44.5–45.5] A pre-inistador, ¿vienes?
+[45.5–47.6] Y la que me permite todo lo puedes decir nada.
+[47.6–48.4] ¿Esta es también sí?
+[48.4–51.3] No es, el mismo, sí, lo he iniciado, puede.
+[51.3–52.5] ¿Perea?
+[52.5–53.8] ¿Pero qué?
+[53.8–54.8] ¿Pero qué?
+[54.8–56.7] ¿Nos que no?
+[56.7–57.7] ¿Nos que no?
+[57.7–58.7] ¿Vale, pues.
+[58.7–60.7] vamos a ver si te conceso
+[60.7–65.4] la administración de dos roles
+[65.4–70.3] entonces
+[70.3–73.3] quedo administración de dos roles
+[73.3–75.3] actualizar
+[75.3–78.9] o eliminarlo roles
+[78.9–79.9] ¿vale?
+[79.9–80.9] pero
+[82.9–84.9] la más esa parte de la administración
+[84.9–85.9] al que?
+[85.9–86.9] pero
+[86.9–87.9] aquí hay un tema
+[87.9–89.9] y imaginemos que
+[89.9–91.9] imaginemos que crece
+[91.9–93.9] el sistema
+[93.9–95.9] y se registró como
+[95.9–96.9] como el del taller
+[96.9–98.9] mecánico
+[98.9–100.9] y
+[100.9–101.9] por alguna razón
+[101.9–102.9] les da de eliminar
+[102.9–104.9] ah, bueno, lo corremos el día de
+[104.9–105.9] si vamos a ver
+[105.9–106.9] que hay
+[106.9–107.9] del límido del sistema
+[107.9–109.9] se el límido del sistema
+[109.9–111.9] todo su doctor de crisis
+[111.9–112.9] y como
+[112.9–113.9] los tres meses
+[113.9–114.9] entonces
+[114.9–115.9] tengo que volver a recoger
+[115.9–116.9] entonces
+[116.9–117.9] es bueno
+[117.9–118.9] ya no tengo forma de
+[118.9–119.9] recoger
+[119.9–121.9] vamos a hacer algo que se llama
+[121.9–123.9] solite
+[123.9–126.9] solite
+[126.9–128.9] solite
+[128.9–129.9] ¿vale?
+[129.9–130.9] entonces
+[130.9–131.9] es el solit
+[131.9–133.9] no borras
+[133.9–135.9] no borras
+[135.9–137.9] son los regas
+[137.9–139.9] son los regas
+[139.9–141.9] son los
+[141.9–142.9] agregas
+[142.9–143.9] un campo
+[143.9–147.2] y un campo
+[147.2–149.2] un campo
+[149.2–152.0] de estado
+[152.0–153.0] un campo
+[153.0–154.0] ¿vale?
+[154.0–155.0] este es el lico
+[155.0–158.1] aquí
+[158.1–159.1] ok
+[159.1–163.8] tienes que la diferencia
+[163.8–164.8] y ustedes domande decir
+[164.8–165.8] ustedes
+[165.8–166.8] no yo
+[166.8–168.8] cada equipa tomate el sitio
+[168.8–169.8] pero tenemos que explicar
+[169.8–170.8] nosotros también
+[170.8–172.8] primero que mismo
+[172.8–175.8] si
+[175.8–177.8] yo quiero
+[177.8–179.8] crear campo de estatus
+[179.8–180.8] en la tabla de usuarios
+[180.8–183.8] cuando yo guardé el usuario
+[183.8–184.8] críns
+[184.8–186.8] el estatus va a cambiar a activo
+[186.8–187.8] no
+[187.8–189.8] se va poner a activo
+[189.8–190.8] y si agregó
+[190.8–191.8] a
+[191.8–192.8] no sé
+[192.8–193.8] apaglito
+[193.8–194.8] activo
+[194.8–196.8] se agregó
+[196.8–197.8] aculio
+[197.8–198.8] activos
+[198.8–199.8] ahora activo
+[199.8–200.8] por cada usuario
+[200.8–201.8] que yo agregé
+[201.8–202.8] se va a escribir
+[202.8–203.8] activo
+[203.8–204.8] activo
+[204.8–205.8] activo
+[205.8–208.8] sí
+[208.8–210.8] y luego lo va a ser tus suspendenos
+[210.8–212.8] al imponación
+[212.8–215.8] y la va a ser
+[215.8–216.8] todo el que cambiara
+[216.8–217.8] de activo
+[217.8–218.8] al cementito
+[218.8–220.8] más que le díe hacer un espíritu
+[220.8–222.8] si tengo que ir a usuarios no pasa nada
+[222.8–224.8] realmente no importa
+[224.8–226.8] y tengo 20 usuarios
+[226.8–227.8] en el impacto
+[227.8–229.8] y veros y tengo
+[229.8–231.8] mil usuarios
+[231.8–232.8] por qué
+[232.8–234.8] que tengo que pagar
+[234.8–237.8] y no importa
+[237.8–240.8] pero no sólo importa
+[240.8–243.8] que pasa
+[243.8–245.8] si tengo
+[245.8–247.8] ahora la tabla de
+[247.8–248.8] facturación
+[248.8–250.8] y el facturación
+[250.8–252.8] también tengo que eliminar
+[252.8–253.8] las facturas
+[253.8–255.8] y para eliminar las tenientes
+[255.8–256.8] que escribir el campo
+[256.8–257.8] también
+[257.8–258.8] entonces ya tengo
+[258.8–260.8] en la tabla usuarios
+[260.8–261.8] el campo
+[261.8–262.8] y en la tabla
+[262.8–263.8] facturas
+[263.8–264.8] el campo
+[264.8–265.8] está tuz
+[265.8–267.8] en la tabla
+[267.8–268.8] y
+[268.8–270.8] vehículo
+[270.8–271.8] también puedo tener
+[271.8–272.8] en el estado
+[272.8–273.8] entonces ya tengo
+[273.8–274.8] tres
+[274.8–275.8] tres campos
+[275.8–276.8] iguales
+[276.8–278.8] en diferentes tablas
+[278.8–280.8] soy ya no es
+[280.8–281.8] bueno
+[281.8–282.8] se puede
+[282.8–284.8] en la forma fácil
+[284.8–286.8] pero no es la forma
+[286.8–288.8] como es la forma
+[288.8–290.8] pero es una tabla de
+[290.8–292.8] estatus
+[292.8–295.8] y en el propio idi
+[295.8–297.8] por ejemplo
+[297.8–299.8] la tabla de estatus
+[299.8–301.8] crearía así
+[301.8–303.8] en el propio idi
+[303.8–305.8] en el subalo
+[305.8–311.8] y aquí vas a insertar
+[311.8–313.8] hay de uno
+[313.8–315.8] activo
+[315.8–317.8] de la descripción
+[317.8–319.8] hay de dos
+[319.8–329.1] y
+[329.1–332.1] y ahora como
+[332.1–335.1] los programas de más tablas
+[335.1–336.1] bueno
+[336.1–338.1] yo tengo tres tablas
+[338.1–339.1] y vehículos
+[339.1–341.7] de coño
+[341.7–343.7] de su salio
+[343.7–344.7] pues ahora la relación
+[344.7–346.7] no es a tabla
+[346.7–348.7] y simplemente como
+[348.7–350.7] de ahí está
+[350.7–352.7] como que leyes
+[352.7–356.1] entonces cuando yo guardé un vehículo
+[356.1–358.1] no es que el vehículo
+[358.1–359.1] va
+[359.1–360.1] por lo hacer de estatus
+[360.1–362.1] de la rituno
+[362.1–363.1] vehículo
+[363.1–364.1] ¿Cuál es el estatus
+[364.1–365.1] de dos
+[365.1–367.1] que está cerrado
+[367.1–368.1] vehículo
+[368.1–369.1] o sea
+[369.1–370.1] no
+[370.1–371.1] serito
+[371.1–373.1] y ahora si voy en un suario
+[373.1–374.1] voy a tener
+[374.1–375.1] a Pedro
+[375.1–376.1] por lo de estatus
+[376.1–377.1] no
+[377.1–378.1] Jaime
+[378.1–380.1] está disuno
+[380.1–382.1] Moroni
+[382.1–386.0] no sé si me explico
+[386.0–388.0] ya no guardo
+[388.0–390.0] activo
+[390.0–391.0] activo
+[391.0–393.0] activo
+[393.0–394.0] activo
+[394.0–395.0] y eso es más fácil
+[395.0–397.0] de ser pagas
+[397.0–399.0] este diseño
+[399.0–401.0] de de toda la captura
+[401.0–402.0] que si yo digo
+[402.0–404.0] a 30 tome
+[404.0–407.0] los efectivos
+[407.0–410.0] ahí es donde se pagara
+[410.0–412.0] entonces espero
+[412.0–414.0] de la forma y de cara
+[414.0–416.0] pero de los teniendo
+[416.0–418.0] tu toma la decisión
+[418.0–419.0] ¿sale?
+[419.0–421.0] tu toma la decisión
+[421.0–422.0] tu
+[422.0–423.0] ¿vale?
+[423.0–424.0] eso lo vas a tener que poner
+[424.0–425.0] no
+[425.0–426.0] no lo puedes hacer
+[426.0–427.0] tu gohase
+[427.0–429.0] entonces
+[429.0–433.0] entonces
+[433.0–435.0] que se hace
+[435.0–437.0] en este modo
+[437.0–439.0] de administración de rol
+[439.0–441.0] no
+[441.0–454.4] no
+[454.4–456.4] no
+[456.4–458.4] activas
+[458.4–459.4] o de activas
+[459.4–461.4] el rol
+[461.4–462.4] o le cambia
+[462.4–463.4] el nombre
+[463.4–466.4] entonces para que te sirve ese proceso
+[466.4–471.7] para
+[471.7–479.4] que
+[479.4–480.4] para acrodizar
+[480.4–481.4] todo el rol
+[481.4–485.0] o
+[485.0–487.0] para
+[487.0–488.0] el lina
+[492.3–494.3] el rol
+[494.3–495.3] el lina
+[495.3–496.3] los superde el rol
+[496.3–497.3] recorda que no se elimina
+[497.3–499.3] porque si no elimina
+[499.3–502.3] vas a hacer un despapayan tu sistema
+[502.3–503.3] ¿no?
+[503.3–504.3] ¿sale?
+[504.3–505.3] ¿sale pues
+[505.3–507.3] si quien te patalla
+[507.3–510.9] ¿vale?
+[510.9–512.9] no no
+[512.9–515.9] es lo que tu tienes que hacer
+[515.9–516.9] en casa
+[516.9–518.9] para ir checked todos
+[518.9–519.9] como le acuerdo
+[519.9–530.4] si el lato de taller
+[530.4–532.4] me calico
+[532.4–534.4] ¿vale?
+[534.4–535.4] ahora sí
+[535.4–539.4] ¿puedes tomar
+[539.4–541.4] una captura del teléfono
+[541.4–543.4] para que todos me se impuentes
+[543.4–544.4] os campos
+[544.4–545.4] ¿es que?
+[545.4–547.4] el lato de taller me calico
+[547.4–550.4] hasta el taller me calico
+[550.4–552.4] ¿vale?
+[552.4–556.9] qué campos son
+[557.9–558.9] es un nombre
+[558.9–559.9] es loico
+[559.9–560.9] es nombre
+[560.9–561.9] con crezo
+[561.9–562.9] el taller me calico
+[562.9–564.9] luego le recese
+[564.9–565.9] el taller me calico
+[565.9–567.9] se puede duplicar
+[567.9–571.4] ¿sale?
+[571.4–572.4] ¿Qué más?
+[572.4–574.4] el imente contacto
+[574.4–576.4] ¿vale?
+[576.4–580.1] y me le contacto
+[580.1–581.1] calle
+[581.1–585.0] número de taller me calico
+[585.0–587.0] colónia
+[587.0–589.0] coligo costar
+[589.0–591.0] estado inmunicípio
+[591.0–592.0] ¿vale?
+[592.0–594.0] y una foto
+[594.0–596.0] desde el taller me calico
+[596.0–601.4] las fotos con índolejo de celular
+[601.4–603.4] el 4K
+[603.4–605.4] si pesa, creo algo
+[605.4–607.4] entonces
+[607.4–609.4] si nosotros subimos a nuestro servidor
+[609.4–611.4] el foto de alta calidad
+[611.4–613.4] no se milen
+[613.4–614.4] entonces
+[614.4–615.4] máximo
+[615.4–617.4] la foto 15 milo
+[617.4–618.4] ya máximo
+[618.4–620.4] ¿sale?
+[620.4–621.4] una foto normal
+[621.4–623.4] con cabra normal
+[623.4–625.4] si tanta calidad
+[625.4–627.4] 4, 7, máximo
+[627.4–629.4] 10 me goais
+[629.4–630.4] pero ya en la taca
+[630.4–632.4] si supera los 15 milo
+[632.4–634.4] ¿vale?
+[634.4–635.4] no hay las entonces
+[635.4–638.4] ¿qué tengo que hacer el casaje?
+[638.4–640.4] está en la pista y él
+[640.4–642.4] mi calico
+[642.4–643.4] con eso es la foto
+[643.4–644.4] pero
+[644.4–645.4] fiente
+[645.4–646.4] y
+[646.4–647.4] necesito
+[647.4–648.4] esa es la historia
+[648.4–649.4] y te lo voy a dejar
+[649.4–651.4] a con el culo
+[652.4–654.4] no puede haber coincidences
+[654.4–657.0] cada tiempo más oye
+[657.0–659.0] me da muchas flogeras
+[659.0–661.0] escribir toda mi dirección
+[661.0–662.0] ¿vale?
+[662.0–664.0] no sé, yo no me han vuelado
+[664.0–665.0] el colico
+[665.0–666.0] costante
+[666.0–668.0] 92, 430
+[668.0–669.0] entre
+[669.0–671.0] y veintiene que prellenar
+[671.0–673.0] todos los demás
+[673.0–674.0] con un principio
+[674.0–676.0] que más
+[676.0–677.0] colonia
+[677.0–678.0] caíéndolo
+[678.0–679.0] la calle
+[679.0–680.0] bueno la calle
+[680.0–682.0] no es un principio
+[682.0–684.0] del estado
+[684.0–685.0] y
+[685.0–687.0] la colonia
+[687.0–689.0] vale
+[689.0–690.0] el código
+[690.0–691.0] costante
+[691.0–692.0] también no le va a quedar
+[692.0–693.0] prellenado
+[693.0–694.0] pero como en la función
+[694.0–695.0] en la idea
+[695.0–696.0] el código
+[696.0–697.0] costante
+[697.0–698.0] y de 2,5
+[698.0–700.0] y en la total
+[700.0–701.0] más
+[701.0–702.0] pero
+[702.0–703.0] qué pasa
+[703.0–704.0] si el usuario
+[704.0–705.0] no se sabe el código
+[705.0–707.0] costante
+[707.0–708.0] no me no sé
+[708.0–709.0] yo vivo
+[709.0–711.0] es un defecto
+[711.0–712.0] que es la cabeza
+[712.0–714.0] ahora que tengo que seleccionar
+[714.0–715.0] el estado
+[715.0–717.0] de ojo el municipio
+[717.0–719.0] la colonia
+[719.0–720.0] no le da
+[720.0–722.0] ya cuando seleccioné la colonia
+[722.0–723.0] me carga el código
+[723.0–725.0] estamos de acuerdo
+[725.0–726.0] sale pues
+[726.0–727.0] ¿qué puedes hacer
+[727.0–729.0] para ese proceso?
+[729.0–730.0] hay va
+[730.0–731.0] una solución
+[731.0–733.0] es que consume un app
+[733.0–734.0] busca una
+[734.0–735.0] piquera
+[735.0–736.0] con llagar
+[736.0–737.0] eso
+[737.0–738.0] lo único malo
+[738.0–739.0] es que si la
+[740.0–741.0] bien
+[741.0–742.0] o si va
+[742.0–743.0] taxido
+[743.0–745.0] y si no funciona bien
+[745.0–747.9] si no es preto
+[747.9–748.9] no vamos a saber
+[748.9–749.9] porque no sabemos
+[749.9–751.9] si la piquera no no
+[751.9–752.9] y puede fallar el sistema
+[752.9–754.9] ya vimos que falla
+[754.9–756.9] pero como le va a notir
+[756.9–757.9] estamos de acuerdo
+[757.9–759.9] ya vimos que falla
+[759.9–760.9] pero no nos gore
+[760.9–761.9] una piquera
+[761.9–762.9] que están por ahí
+[762.9–763.9] al mismo
+[763.9–764.9] vamos a ver
+[764.9–765.9] donde lo se carga
+[765.9–767.9] y que es que se tra
+[767.9–769.9] si es un teléfono
+[769.9–771.9] si no que puedes hacer
+[771.9–772.9] fácil
+[772.9–773.9] construyen a tu
+[773.9–774.9] en basear
+[774.9–775.9] hasta un tabla
+[775.9–776.9] de estado
+[776.9–777.9] de municipios
+[777.9–778.9] poco
+[778.9–779.9] no puedes
+[779.9–780.9] a él
+[780.9–781.9] una escoda
+[781.9–782.9] tal
+[782.9–783.9] porque entonces
+[783.9–784.9] cuando agrada
+[784.9–785.9] consultarse
+[785.9–786.9] va a tardar
+[786.9–787.9] muchísimo
+[787.9–788.9] es apendeta
+[788.9–789.9] porque
+[789.9–790.9] porque son más de
+[790.9–791.9] 7000 municipios
+[791.9–792.9] de estado
+[792.9–793.9] de curración
+[793.9–794.9] una consulta
+[794.9–795.9] así en mi
+[795.9–797.9] vas a buscar
+[798.9–799.9] entonces
+[799.9–800.9] cómo se hace
+[800.9–802.9] una tabla
+[802.9–803.9] de estado
+[803.9–805.9] una tabla de municipios
+[805.9–806.9] una tabla de
+[806.9–807.9] coigos
+[807.9–808.9] postales con las colonias
+[808.9–809.9] todas
+[809.9–811.9] están relacionadas
+[811.9–812.9] le puedes
+[812.9–813.9] decir
+[813.9–815.9] que metas nada más
+[815.9–816.9] un poquito
+[816.9–817.9] de datos que no metas
+[817.9–818.9] todos
+[818.9–819.9] que metas 5
+[819.9–820.9] y con eso
+[820.9–821.9] son la prueba
+[821.9–822.9] porque son
+[822.9–824.9] muy chísimo
+[825.9–826.9] ¿qué se que arruidear
+[826.9–827.9] cargar todo
+[827.9–828.9] a las tablas de nombre
+[828.9–830.9] eso te le arruidear
+[830.9–831.9] ¿vale?
+[831.9–833.9] sentirle así
+[833.9–835.9] por la condición
+[835.9–839.3] es
+[839.3–840.3] la condición es
+[840.3–841.3] el alta
+[841.3–842.3] de taller
+[842.3–843.3] mecánicos
+[843.3–844.3] son un oce
+[844.3–849.0] el natilista
+[849.0–850.0] y la
+[850.0–852.0] secretaria
+[852.0–854.0] o recepta
+[854.0–861.7] está
+[861.7–862.7] ¿vale?
+[862.7–863.7] ahí
+[864.7–865.7] tenemos
+[865.7–867.7] un oce
+[867.7–869.7] de un oce
+[869.7–871.7] de un oce
+[871.7–872.7] y un oce
+[872.7–873.7] y uno
+[873.7–875.7] de un oce
+[875.7–876.7] y uno de un oce
+[876.7–877.7] y uno de un oce
+[877.7–878.7] ¿vale?
+[878.7–879.7] entonces
+[879.7–880.7] en salvinciador
+[880.7–881.7] secretario
+[881.7–882.7] de seleccionista
+[882.7–883.7] de un oce
+[883.7–885.7] de una condición
+[885.7–886.7] y no puede haber
+[886.7–890.6] que dejudicado
+[890.6–891.6] el oce
+[891.6–894.9] que le hagan un disco
+[894.9–903.6] es decir, no se puede guardar dos veces, no se puede guardar dos veces,
+[903.6–911.2] puede guardar dos veces el mismo taller.
+[911.2–915.2] Validar el de refrese con expresiones repunales, ¿cómo?
+[915.2–919.2] Validar, de no tener una expresión. Validar con expresión.
+[919.2–934.2] Validar el de refrese con expresiones repunales.
+[934.2–938.2] Es decir, que te ve el de refrese, es artito, ¿no?
+[938.2–942.2] Ay, vamos a tener un problema, porque va a ser muy confuso,
+[942.2–945.2] andar metiendo a valor de ser.
+[945.2–956.7] ¿Qué es el de refrese?
+[956.7–960.6] ¿Qué es el de refrese?
+[960.6–963.6] Es el de refrese, ¿qué es el de refrese?
+[963.6–965.6] Todo el taller.
+[965.6–968.6] Es el modo de crear taller.
+[968.6–971.6] ¿Cuándo te la me da a la señora?
+[971.6–972.6] ¿Mañar?
+[972.6–976.6] ¿Y ahora está permaneando de estar a esto?
+[976.6–978.6] ¿Cuál es?
+[978.6–981.6] No, no, no me recuerden de me dos cosas, mañana.
+[981.6–984.6] No, mañana que tenemos que hacer.
+[984.6–988.6] mañana tenemos que hacer el modo de refrese.
+[988.6–991.6] Dale, dar de alta el cliente.
+[991.6–995.6] Y tenemos que hacer, es el modo de alminito.
+[995.6–1004.7] Es decir, esto es lo mismo.
+[1004.7–1006.7] Es como para las 10, 60 euros.
+[1006.7–1010.7] Y, pero eso lo hacemos mañana, porque hay pre-convinceresos malo.
+[1010.7–1022.3] Entonces, tenemos que hacer a mi instalación del taller.
+[1022.3–1027.3] Entonces, tengo un modo de administración, un modo de...
+[1027.3–1032.3] Entonces, no se terman llena, porque en el momento hay pre-convinceresos.
+[1032.3–1039.9] Entonces, si lo sabo, yo ahorita, y no me ha gustado la pre-convincereso,
+[1039.9–1042.9] que hace que ya tienen que tener la nutra plus.
+[1042.9–1044.9] No, no, no, no.
+[1044.9–1045.9] No, no, no.
+[1045.9–1046.9] No, es desarrollador.
+[1046.9–1048.9] Yo te acercó al solito al principal.
+[1048.9–1049.9] ¿Sale?
+[1049.9–1050.9] ¿Y vos de 60?
+[1050.9–1051.9] Madé.
+[1051.9–1053.9] общем, que es 200.
+[1050.0–1052.0] y vamos a 60, ¿mante?
+[1052.0–1054.0] No, a mí a mi queda 60.
+[1054.0–1057.0] Sí, tratar de optimizar como más que se importa.
+[1057.0–1061.0] Que no me dan bien, es que no es que no es que no es que se importa.
+[1061.0–1064.0] Sí, sí, claro, yo creo que tenemos orden.
+[1064.0–1068.0] Ahora, estrictamente, que quedamos, algo que te le pido.
+[1068.0–1069.0] Sí, sí.
+[1069.0–1070.0] Sí, no me agregar nada.
+[1070.0–1073.0] Sí, nada, nada más.
+[1073.0–1074.0] Nada, nada más.
+[1074.0–1075.0] ¿No os aseguro?
+[1076.0–1080.7] Para hoy en la casa y crees un tabla.
+[1081.7–1083.7] Sí, crees, nada más.
+[1083.7–1084.7] Sí, sí, sí, sí.
+[1084.7–1087.7] Sí, sí, sí, sí.
+[1087.7–1088.7] Sí, sí, sí.
+[1088.7–1090.7] Entonces, ¿cuántas tapas van a crear aquí?
+[1090.7–1092.7] 3.
+[1092.7–1096.7] Pase, crea rolés.
+[1096.7–1099.9] 1.
+[1099.9–1100.9] 1.
+[1100.9–1101.9] 1.
+[1101.9–1102.9] 1.
+[1102.9–1105.7] Pase
+[1105.7–1109.7] Administrar
+[1109.7–1110.7] rolés
+[1110.7–1111.7] 1.
+[1111.7–1112.7] 2.
+[1112.7–1113.7] 2.
+[1113.7–1114.7] 2.
+[1114.7–1115.7] 2.
+[1115.7–1116.7] 2.
+[1116.7–1117.7] ¿Y por favor?
+[1117.7–1118.7] ¿Por qué creen que por ser parado?
+[1118.7–1119.7] 1.
+[1119.7–1120.7] 2.
+[1120.7–1121.7] 2.
+[1121.7–1122.7] 2.
+[1122.7–1123.7] 2.
+[1123.7–1124.7] 3.
+[1124.7–1126.7] 2.
+[1126.7–1127.7] 2.
+[1127.7–1128.7] 2.
+[1128.7–1129.7] 2.
+[1129.7–1130.7] 4.
+[1130.7–1131.7] 2.
+[1131.7–1132.7] 2.
+[1132.7–1133.7] 2.
+[1133.7–1134.7] 2.
+[1134.7–1135.7] 2.
+[1135.7–1136.7] 2.
+[1136.7–1137.7] 2.
+[1137.7–1138.7] 3.
+[1138.7–1140.7] 2.
+[1140.7–1142.7] 2.
+[1172.7–1183.8] de una carpeta, esa carpeta llama de Andalis y ahí, en esa carpeta que te pongan todo
+[1183.8–1190.9] y agramos, se lo va a desarrollar con tus proyectos. ¿Qué es? ¿Qué es?
+[1190.9–1197.5] ¿Qué es? ¿Qué es? ¿Qué es? ¿Qué es? ¿Qué tenemos que hacer para mañana?
+[1197.5–1201.3] ¿Qué es? ¿Con cuánto es los proyectos?
+[1201.3–1206.7] ¿Que llolo es? ¿Que no?
+[1206.7–1210.0] ¿Que sí. ¿Si, si.
+[1210.0–1210.6] ¿Qué es la raina?
+[1210.6–1214.9] ¿Vo hay una هola presa de Ricardo Neapleme... ¿Quién calla?
+[1214.9–1218.5] ¿Ves? ¿Aúdelo, ¿quién?
+[1291.8–1295.4] Venga, no, no, no.
+[1303.7–1305.8] ¿Qué mía vamos a colocar?
+[1311.8–1314.5] ¿Códice de un poco del serve? ¿Códice de la moral?
+[1314.5–1317.0] H 된 más rápido.
+[1317.7–1322.6] ¿No? ¿Códice de una casa?
+[1682.6–1684.6] ¡Muchá, muy bien!

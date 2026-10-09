@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": { "title": "Proceso 2 · Administrar roles", "locale": "es", "quality_profile": "showcase", "output": "analisis/diagramas/02-administrar-roles/administrar-roles.html", "translations": { "page.title": "{title} · Diagrama", "legend.title": "Leyenda", "legend.workflow.frontend": "Interfaz", "legend.workflow.backend": "Validación", "legend.workflow.security": "Permisos", "legend.workflow.database": "Persistencia", "diagram.description.workflow": "Actualización, asignación y baja lógica de roles." } },
+  "lanes": [{"id":"usuario","label":"Administrador e interfaz"},{"id":"control","label":"Reglas de administración"},{"id":"persistencia","label":"Registro y auditoría"},{"id":"excepciones","label":"Excepciones","variant":"exception"}],
+  "mainPath": ["sesion","seleccionar","operacion","validar","persistir","auditar","resultado"],
+  "nodes": [
+    {"id":"sesion","lane":"usuario","col":0,"type":"security","label":"Validar administrador","sublabel":"Cuenta y sesión activas","width":180},
+    {"id":"seleccionar","lane":"usuario","col":1,"type":"frontend","label":"Seleccionar rol","sublabel":"Catálogo y cuentas","width":180},
+    {"id":"operacion","lane":"usuario","col":2,"type":"frontend","label":"Elegir operación","sublabel":"Nombre, estatus o asignar","width":180},
+    {"id":"validar","lane":"control","col":2,"type":"security","label":"Validar operación","sublabel":"Versión y duplicados","width":180},
+    {"id":"persistir","lane":"persistencia","col":3,"type":"database","label":"Guardar cambios","sublabel":"SoftDeleted: estatus = 2","width":180},
+    {"id":"auditar","lane":"persistencia","col":4,"type":"database","label":"Auditar operación","sublabel":"Actor, entidad y hora","width":180},
+    {"id":"resultado","lane":"usuario","col":5,"type":"frontend","label":"Actualizar catálogo","sublabel":"Datos y permisos vigentes","width":180},
+    {"id":"prohibido","lane":"excepciones","col":0,"type":"security","label":"Acceso denegado","sublabel":"401 o 403","width":180},
+    {"id":"conflicto","lane":"excepciones","col":2,"type":"backend","label":"Revisar operación","sublabel":"Datos o versión inválidos","width":180}
+  ],
+  "edges": [
+    {"from":"sesion","to":"seleccionar","variant":"security"},{"from":"seleccionar","to":"operacion"},{"from":"operacion","to":"validar"},{"from":"validar","to":"persistir","label":"Válida","variant":"emphasis"},{"from":"persistir","to":"auditar"},{"from":"auditar","to":"resultado"},{"from":"sesion","to":"prohibido","role":"error","label":"Sin permiso","variant":"security"},{"from":"validar","to":"conflicto","role":"error","label":"Rechazar"}
+  ],
+  "cards": [{"dot":"rose","title":"SoftDeleted y estatus","items":["Eliminar cambia Activo (1) a Suspendido (2); no borra el rol ni sus asociaciones.","Tabla status: ID, valor y descripción. roles.bin_status es llave foránea; el catálogo se consulta con INNER JOIN.","Las cuentas con rol suspendido no pueden acceder. Administrador e Invitado permanecen protegidos."]},{"dot":"cyan","title":"Actualización y asignación","items":["Cambiar nombre, descripción o estatus requiere validar duplicados y versión vigente.","El administrador puede reactivar el mismo rol; no se crea otro registro.","Solo se asignan roles activos a cuentas; el código interno conserva su significado."]}]
+}

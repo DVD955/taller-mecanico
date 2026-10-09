@@ -8,17 +8,22 @@ import jwt
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from sqlalchemy import inspect, select, text
+from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from .config import get_settings
 from .database import Base, engine, get_db
 from .dependencies import CurrentUser
-from .models import User, UserRole, UserSession, UserStatus
+from .models import Role, User, UserRole, UserSession
+from .migrations import initialize_database
 from .schemas import ForgotPasswordRequest, LoginRequest, LoginResponse, RegisterRequest, ResetPasswordRequest, UpdateEmailRequest, UserResponse
 from .security import create_access_token, decode_access_token, expiry_from_now, hash_password, verify_password
 from .mailer import send_recovery_email
 from .customers import router as customers_router
+from .administration import router as administration_router
+from .postal import router as postal_router
+from .workshops import router as workshops_router
 
 settings = get_settings()
 app = FastAPI(title="Taller Mecánico API", version="1.0.0")
@@ -31,19 +36,14 @@ app.add_middleware(
 )
 bearer = HTTPBearer(auto_error=False)
 app.include_router(customers_router)
+app.include_router(administration_router)
+app.include_router(postal_router)
+app.include_router(workshops_router)
 
 
 @app.on_event("startup")
 def create_tables() -> None:
-    Base.metadata.create_all(bind=engine)
-    columns = {column["name"] for column in inspect(engine).get_columns("users")}
-    with engine.begin() as connection:
-        if "recovery_code_hash" not in columns:
-            connection.execute(text("ALTER TABLE users ADD COLUMN recovery_code_hash VARCHAR(255) NULL"))
-        if "email" not in columns:
-            connection.execute(text("ALTER TABLE users ADD COLUMN email VARCHAR(255) NULL UNIQUE"))
-        if "recovery_expires_at" not in columns:
-            connection.execute(text("ALTER TABLE users ADD COLUMN recovery_expires_at DATETIME NULL"))
+    initialize_database()
 
 
 def user_response(user: User) -> UserResponse:
@@ -53,7 +53,9 @@ def user_response(user: User) -> UserResponse:
         full_name=user.full_name,
         email=user.email,
         role=user.role,
-        status=user.status,
+        role_name=user.assigned_role.name,
+        status=user.state.value.upper(),
+        bin_status=user.bin_status,
         active_session=user.active_session_id is not None,
     )
 
@@ -70,8 +72,8 @@ def login(data: LoginRequest, db: Annotated[Session, Depends(get_db)]) -> LoginR
         user = db.execute(select(User).where(User.username == data.username).with_for_update()).scalar_one_or_none()
         if user is None or not verify_password(data.password, user.password_hash):
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Usuario o contraseña incorrectos.")
-        if user.status != UserStatus.ACTIVO:
-            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Tu usuario está inactivo. Contacta al administrador.")
+        if user.bin_status != 1 or user.assigned_role.bin_status != 1:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Tu usuario o rol está suspendido. Contacta al administrador.")
 
         if user.active_session_id:
             active = db.get(UserSession, user.active_session_id)
@@ -91,16 +93,20 @@ def login(data: LoginRequest, db: Annotated[Session, Depends(get_db)]) -> LoginR
 
 @app.post("/api/auth/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 def register(data: RegisterRequest, db: Annotated[Session, Depends(get_db)]) -> UserResponse:
-    if data.role == UserRole.ADMINISTRADOR:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="No se puede crear otro administrador desde este formulario.")
     if db.execute(select(User.id).where((User.username == data.username) | (User.email == str(data.email).lower()))).first():
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El usuario o correo ya está registrado.")
+    if len(data.full_name.strip()) < 3:
+        raise HTTPException(422, "El nombre completo debe tener al menos 3 caracteres.")
+    guest = db.execute(select(Role).where(Role.code == 'INVITADO').with_for_update()).scalar_one()
+    if guest.bin_status != 1:
+        raise HTTPException(503, "El registro de invitados no está disponible.")
     user = User(username=data.username, full_name=data.full_name.strip(), email=str(data.email).lower(),
-                password_hash=hash_password(data.password), role=data.role, status=UserStatus.ACTIVO)
+                password_hash=hash_password(data.password), role=UserRole.INVITADO.value,
+                bin_status=1)
     db.add(user)
     try:
         db.commit()
-    except Exception:
+    except IntegrityError:
         db.rollback()
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El usuario o correo ya está registrado.")
     db.refresh(user)
@@ -114,7 +120,7 @@ def forgot_password(data: ForgotPasswordRequest, db: Annotated[Session, Depends(
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="El envío de correo aún no está configurado.")
     with db.begin():
         user = db.execute(select(User).where(User.email == str(data.email).lower()).with_for_update()).scalar_one_or_none()
-        if user is None or user.status != UserStatus.ACTIVO:
+        if user is None or user.bin_status != 1:
             return message
         token = secrets.token_urlsafe(32)
         user.recovery_code_hash = hashlib.sha256(token.encode()).hexdigest()
@@ -133,7 +139,7 @@ def reset_password(data: ResetPasswordRequest, db: Annotated[Session, Depends(ge
         user = db.execute(select(User).where(User.recovery_code_hash == digest).with_for_update()).scalar_one_or_none()
         if user is None or user.recovery_expires_at is None or user.recovery_expires_at <= datetime.utcnow():
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="El enlace de recuperación no es válido o ha expirado.")
-        if user.status != UserStatus.ACTIVO:
+        if user.bin_status != 1:
             raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Tu usuario está inactivo. Contacta al administrador.")
         current_session = db.get(UserSession, user.active_session_id) if user.active_session_id else None
         if current_session and current_session.ended_at is None:

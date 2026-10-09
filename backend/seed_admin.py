@@ -5,12 +5,13 @@ import re
 from sqlalchemy import select
 
 from app.database import Base, SessionLocal, engine
-from app.models import User, UserRole, UserStatus
+from app.models import User, UserRole
 from app.security import hash_password
+from app.migrations import initialize_database
 
 
 def main() -> None:
-    Base.metadata.create_all(bind=engine)
+    initialize_database()
     username = input("Usuario administrador: ").strip()
     full_name = input("Nombre completo: ").strip()
     email = input("Correo electrónico de recuperación: ").strip().lower()
@@ -20,7 +21,7 @@ def main() -> None:
     with SessionLocal.begin() as db:
         if db.execute(select(User).where(User.username == username)).scalar_one_or_none():
             raise SystemExit("Ese usuario ya existe.")
-        db.add(User(username=username, full_name=full_name, email=email, password_hash=hash_password(password), role=UserRole.ADMINISTRADOR, status=UserStatus.ACTIVO))
+        db.add(User(username=username, full_name=full_name, email=email, password_hash=hash_password(password), role=UserRole.ADMINISTRADOR, bin_status=1))
     print("Administrador creado correctamente.")
 
 

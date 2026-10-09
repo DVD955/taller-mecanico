@@ -6,7 +6,7 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 
 from .database import get_db
-from .models import User, UserSession, UserStatus
+from .models import User, UserSession
 from .security import decode_access_token
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth/login")
@@ -25,7 +25,8 @@ def get_current_user(token: Annotated[str, Depends(oauth2_scheme)], db: DbSessio
     session = db.get(UserSession, session_id)
     if (
         user is None
-        or user.status != UserStatus.ACTIVO
+        or user.bin_status != 1
+        or user.assigned_role.bin_status != 1
         or user.active_session_id != session_id
         or session is None
         or session.ended_at is not None

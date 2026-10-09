@@ -1,5 +1,7 @@
 # Estado del proyecto Taller Mecánico
 
+> Inventario histórico del 7 de octubre. El registro público de personal descrito aquí fue sustituido por Invitado; roles y talleres ya tienen su módulo. Consulta [el análisis actualizado del 8 de octubre](../analisis/README.md) para el estado vigente y las nuevas verificaciones.
+
 Fecha de revisión: 7 de octubre de 2026. Inventario basado en el código actual y en consultas de diagnóstico de solo lectura. No se cambiaron usuarios, clientes, sesiones ni configuración SMTP para elaborar este documento.
 
 ## Guardado

@@ -1,0 +1,7 @@
+{
+  "source": "https://www.correosdemexico.gob.mx/sslservicios/consultacp/CodigoPostal_Exportar.aspx",
+  "source_sha256": "071fd9ecb5c3cd71788d12e51306dcea4d55775b30bd98c9b0607ddb725235dc",
+  "settlements": 158322,
+  "coverage": "Catálogo nacional SEPOMEX",
+  "header": "d_codigo|d_asenta|d_tipo_asenta|D_mnpio|d_estado|d_ciudad|d_CP|c_estado|c_oficina|c_CP|c_tipo_asenta|c_mnpio|id_asenta_cpcons|d_zona|c_cve_ciudad"
+}

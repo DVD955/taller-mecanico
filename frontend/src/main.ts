@@ -6,6 +6,14 @@ import App from './App.vue'
 import './styles.css'
 
 const vuetify = createVuetify({
+  defaults: {
+    VBtn: { elevation: 0, rounded: 'lg' },
+    VTextField: { rounded: 'lg' },
+    VTextarea: { rounded: 'lg' },
+    VSelect: { rounded: 'lg' },
+    VAutocomplete: { rounded: 'lg' },
+    VFileInput: { rounded: 'lg' },
+  },
   theme: {
     defaultTheme: 'tallerTheme',
     themes: {
@@ -14,8 +22,12 @@ const vuetify = createVuetify({
         colors: {
           primary: '#FAEBD7',
           secondary: '#2F4F4F',
-          surface: '#FFFDF9',
+          surface: '#FAEBD7',
           background: '#FAEBD7',
+          'on-surface': '#2F4F4F',
+          'on-background': '#2F4F4F',
+          'on-primary': '#2F4F4F',
+          'on-secondary': '#FAEBD7',
           error: '#B3261E',
           success: '#2E7D32',
         },

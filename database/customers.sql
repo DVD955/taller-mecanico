@@ -1,4 +1,13 @@
--- UC-CV-01. Migración aditiva: conserva usuarios y sesiones existentes.
+-- UC-CV-01. Estatus normalizado en el catálogo; conserva usuarios y sesiones.
+CREATE TABLE IF NOT EXISTS status (
+  id INT PRIMARY KEY,
+  valor VARCHAR(20) NOT NULL UNIQUE,
+  descripcion VARCHAR(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT IGNORE INTO status (id,valor,descripcion) VALUES
+  (1,'activo','Usuario o registro activo'),
+  (2,'suspendido','Usuario o registro suspendido; se conserva'),
+  (3,'eliminado','Registro dado de baja lógica; se conserva');
 CREATE TABLE IF NOT EXISTS customers (
   id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   full_name VARCHAR(120) NOT NULL,
@@ -10,12 +19,13 @@ CREATE TABLE IF NOT EXISTS customers (
   email VARCHAR(254) NULL,
   mobile VARCHAR(16) NULL,
   alternative VARCHAR(16) NULL,
-  status ENUM('ACTIVO','INACTIVO') NOT NULL DEFAULT 'ACTIVO',
+  bin_status INT NOT NULL DEFAULT 1,
   identity_fingerprint CHAR(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL UNIQUE,
   created_at DATETIME(6) NOT NULL,
   version INT NOT NULL DEFAULT 1,
   deleted_at DATETIME(6) NULL COMMENT 'UTC: baja lógica; conserva auditoría',
-  CONSTRAINT chk_customer_contact CHECK (email IS NOT NULL OR mobile IS NOT NULL OR alternative IS NOT NULL)
+  CONSTRAINT chk_customer_contact CHECK (email IS NOT NULL OR mobile IS NOT NULL OR alternative IS NOT NULL),
+  CONSTRAINT fk_customers_bin_status FOREIGN KEY (bin_status) REFERENCES status(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Teléfonos se comparten entre celular y alternativo: misma clave PHONE.

@@ -1,0 +1,30 @@
+{
+  "created_at": "20261009T082810144482Z",
+  "removed_columns": [
+    "users.status",
+    "customers.status"
+  ],
+  "backup": "C:\\Taller Mecanico\\database\\backups\\status-legacy-20261009T082810144482Z.json",
+  "records_and_states_preserved": true,
+  "original_tables_unchanged_after_tests": true,
+  "idempotent": true,
+  "tests_passed": {
+    "status_normalization_read_only": 12,
+    "accounts_roles_workshops_api": 68,
+    "customers_api": 40,
+    "customers_mysql": 10,
+    "customers_domain": 17,
+    "total": 147
+  },
+  "verified_tables": {
+    "users": 4,
+    "customers": 1,
+    "status": 3,
+    "roles": 5,
+    "user_sessions": 40,
+    "customer_contact_keys": 3,
+    "audit_entries": 3,
+    "administration_audit": 8,
+    "workshops": 2
+  }
+}

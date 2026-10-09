@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": { "title": "Proceso 3 · Alta de taller mecánico", "locale": "es", "quality_profile": "showcase", "output": "analisis/diagramas/03-alta-taller/alta-taller.html", "translations": { "page.title": "{title} · Diagrama", "legend.title": "Leyenda", "legend.workflow.frontend": "Interfaz", "legend.workflow.backend": "Validación", "legend.workflow.security": "Permisos", "legend.workflow.database": "Persistencia", "diagram.description.workflow": "Alta de taller con dirección postal, RFC e imagen." } },
+  "lanes": [{"id":"captura","label":"Administrador o recepcionista"},{"id":"domicilio","label":"Dirección y validación"},{"id":"base","label":"Persistencia y auditoría"},{"id":"excepcion","label":"Excepciones","variant":"exception"}],
+  "mainPath": ["permiso","abrir","direccion","validar","unico","guardar","auditar","respuesta"],
+  "nodes": [
+    {"id":"permiso","lane":"captura","col":0,"type":"security","label":"Validar permisos","sublabel":"Administrador / recepción","width":185},
+    {"id":"abrir","lane":"captura","col":1,"type":"frontend","label":"Abrir alta","sublabel":"Nombre, RFC y contacto","width":185},
+    {"id":"direccion","lane":"domicilio","col":1,"type":"database","label":"Resolver dirección","sublabel":"Catálogo SEPOMEX / MySQL","width":185},
+    {"id":"validar","lane":"domicilio","col":2,"type":"backend","label":"Normalizar y validar","sublabel":"RFC y foto ≤ 10 MB","width":185},
+    {"id":"unico","lane":"domicilio","col":3,"type":"security","label":"Verificar taller único","sublabel":"RFC y nombre / dirección","width":185},
+    {"id":"guardar","lane":"base","col":3,"type":"database","label":"Guardar taller","sublabel":"Imagen y bin_status = 1","width":185},
+    {"id":"auditar","lane":"base","col":4,"type":"database","label":"Auditar alta","sublabel":"Actor, taller y hora UTC","width":185},
+    {"id":"respuesta","lane":"captura","col":5,"type":"frontend","label":"Taller registrado","sublabel":"Mostrar en administración","width":185},
+    {"id":"denegado","lane":"excepcion","col":0,"type":"security","label":"Acceso denegado","sublabel":"Invitado sin permiso","width":185},
+    {"id":"invalidos","lane":"excepcion","col":2,"type":"backend","label":"Corregir captura","sublabel":"Datos, dirección o foto","width":185},
+    {"id":"duplicado","lane":"excepcion","col":3,"type":"backend","label":"Taller ya registrado","sublabel":"No crear un segundo","width":185}
+  ],
+  "edges": [
+    {"from":"permiso","to":"abrir","variant":"security"},{"from":"abrir","to":"direccion"},{"from":"direccion","to":"validar"},{"from":"validar","to":"unico"},{"from":"unico","to":"guardar","label":"Único","variant":"emphasis"},{"from":"guardar","to":"auditar"},{"from":"auditar","to":"respuesta"},{"from":"permiso","to":"denegado","role":"error","label":"Sin permiso","variant":"security"},{"from":"validar","to":"invalidos","role":"error","label":"Inválido"},{"from":"unico","to":"duplicado","role":"error","label":"Existe"}
+  ],
+  "cards": [{"dot":"cyan","title":"Dirección en ambos sentidos","items":["CP + Enter prellena estado, municipio y colonia, sin enviar el formulario.","Si hay varias colonias, se prellena una y se permite elegir la correcta.","Sin CP: estado → municipio → colonia / asentamiento → código postal automático.","Catálogo relacionado en MySQL; no se inventan direcciones."]},{"dot":"emerald","title":"Alta de taller","items":["Nombre, RFC, correo, calle, número, colonia, CP, estado, municipio y fotografía obligatorios.","JPG, PNG o WebP hasta 10 MB (10 000 000 bytes), comprobados en ambas capas.","RFC válido por expresión regular y fecha; RFC e identidad del taller únicos.","Solo administrador y recepcionista; taller y auditoría se guardan juntos."]}]
+}

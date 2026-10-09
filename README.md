@@ -1,8 +1,8 @@
 # Taller Mecánico · Autenticación y gestión de clientes
 
-SPA de inicio de sesión para una plataforma de gestión de taller mecánico. Implementa usuarios con rol, estado y una sola sesión activa por cuenta.
+SPA para una plataforma de gestión de taller mecánico. Implementa usuarios con rol, estado y una sola sesión activa por cuenta, administración de roles, clientes y talleres.
 
-Consulta el [estado actual y la tabla de funcionalidades disponibles y pendientes](docs/ESTADO-PROYECTO.md).
+Consulta el [análisis actualizado de cuentas, roles y talleres](analisis/README.md). El [inventario anterior de funcionalidades](docs/ESTADO-PROYECTO.md) corresponde al 7 de octubre.
 
 ## Tecnologías
 
@@ -18,9 +18,11 @@ El directorio permite buscar, consultar, actualizar y eliminar clientes únicame
 
 ## Puesta en marcha paso a paso
 
-1. Instala **Node.js LTS** (incluye npm), **Python 3.11+** y MySQL 8+.
+Si esta instalación ya existe, conserva los archivos `.env` y el administrador actual; no repitas su creación. Para ejecutarla abre las tres terminales indicadas abajo y usa los puertos fijos 8002, 8003 y 5176.
+
+1. Para una instalación nueva: instala **Node.js LTS** (incluye npm), **Python 3.11+**, MySQL 8+ y **.NET SDK 10** para el módulo de clientes.
 2. Crea la base de datos ejecutando `database/schema.sql` desde MySQL Workbench o consola.
-3. Copia `backend/.env.example` a `backend/.env` y actualiza `DATABASE_URL`, `SECRET_KEY` y los orígenes permitidos.
+3. Solo en una instalación nueva, copia `backend/.env.example` a `backend/.env` y `frontend/.env.example` a `frontend/.env`. Actualiza `DATABASE_URL` y `SECRET_KEY`; permite el origen `http://127.0.0.1:5176`. No sobrescribas una configuración existente.
 4. Desde `backend`, crea y activa un entorno virtual e instala dependencias:
 
    ```powershell
@@ -35,20 +37,30 @@ El directorio permite buscar, consultar, actualizar y eliminar clientes únicame
    python seed_admin.py
    ```
 
-6. En otra terminal, inicia la API:
+6. Terminal 1, desde `backend`: inicia la API. Las migraciones repetibles se aplican al arrancar:
 
    ```powershell
-   uvicorn app.main:app --reload --port 8000
+   .\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8002
    ```
 
-7. Desde `frontend`, instala los paquetes e inicia la SPA:
+7. Terminal 2, desde `customer-service`: inicia el módulo de clientes:
+
+   ```powershell
+   dotnet run
+   ```
+
+   Lee la configuración MySQL de `../backend/.env` y escucha en el puerto 8003.
+
+8. Si aún no está cargado el catálogo postal, desde la raíz ejecuta `backend\.venv\Scripts\python.exe tools\importar-catalogo-postal.py`. Si ya existe, el importador lo conserva. Este equipo ya tiene el catálogo nacional cargado.
+
+9. Terminal 3, desde `frontend`: instala los paquetes solo si hacen falta e inicia la SPA. Verifica `VITE_API_URL=http://127.0.0.1:8002` en su configuración:
 
    ```powershell
    npm install
-   npm run dev
+   npm run dev -- --host 127.0.0.1 --port 5176 --strictPort
    ```
 
-8. Abre la dirección indicada por Vite (normalmente `http://localhost:5173`).
+10. Abre `http://127.0.0.1:5176/`. Si un puerto ya está ocupado por este proyecto, reutiliza el servicio; no inicies otra copia. Con `--strictPort` no se cambia silenciosamente el puerto.
 
 ## Comportamiento de seguridad
 
@@ -57,7 +69,9 @@ El directorio permite buscar, consultar, actualizar y eliminar clientes únicame
 - La fila de usuario se bloquea durante el login para impedir dos accesos simultáneos.
 - Si existe una sesión vigente se devuelve un mensaje claro y no se crea otra.
 - Cerrar sesión invalida el registro de sesión y el JWT deja de ser válido.
-- El administrador puede crear cuentas de recepcionista o mecánico desde su panel. También existe registro público desde el login para esos roles; no se permiten altas de administrador. Separar roles públicos y de personal está pendiente antes de publicar.
+- El registro público desde el login crea únicamente cuentas Invitado y no recibe un rol. Solo el administrador crea, actualiza, da de baja o asigna roles y crea cuentas de personal. Clientes y talleres requieren administrador o recepcionista; una cuenta Invitado no tiene esos permisos.
+- La tabla `status` contiene ID, valor y descripción. `bin_status` referencia su ID: 1 activo, 2 suspendido. Eliminar un rol aplica SoftDeleted: pasa a 2 y se conserva para consulta o reactivación. Las cuentas con ese rol no pueden acceder mientras esté suspendido. El ID 3 permanece para las bajas de clientes/talleres existentes; no se alteran esos módulos.
+- El alta de taller exige foto JPG, PNG o WebP de máximo 10 MB (10 000 000 bytes). CP + Enter prellena estado, municipio y colonia sin enviar el formulario. Sin CP se seleccionan estado, municipio y colonia para obtenerlo automáticamente.
 - La recuperación envía un enlace de 15 minutos al correo registrado; el token se almacena como hash y se invalida tras usarlo.
 
 ## Configurar recuperación por Gmail

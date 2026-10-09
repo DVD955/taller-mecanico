@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "84ea98e4-44c5-4f84-9c59-ec71c65c7680",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "C:\\Taller Mecanico\\analisis\\diagramas\\03-alta-taller\\candidate.json",
+  "output": "C:\\Taller Mecanico\\analisis\\diagramas\\03-alta-taller\\alta-taller.html",
+  "specification": {
+    "sha256": "4f078de6b5dc8eb2eaa29fdcbc55025e28ce646e57e84402afb68da7bfcbd84c",
+    "bytes": 3803
+  },
+  "artifact": {
+    "sha256": "fceef052f470d724afb5223c1d1c3d43150bc658453970f57b01879cec5bad5a",
+    "bytes": 760800
+  }
+}

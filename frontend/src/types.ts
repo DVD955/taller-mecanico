@@ -1,5 +1,5 @@
-export type UserRole = 'ADMINISTRADOR' | 'RECEPCIONISTA' | 'MECANICO'
-export type UserStatus = 'ACTIVO' | 'INACTIVO'
+export type UserRole = string
+export type UserStatus = 'ACTIVO' | 'INACTIVO' | 'ELIMINADO'
 
 export interface User {
   id: number
@@ -7,7 +7,9 @@ export interface User {
   full_name: string
   email: string | null
   role: UserRole
+  role_name: string
   status: UserStatus
+  bin_status: number
   active_session: boolean
 }
 

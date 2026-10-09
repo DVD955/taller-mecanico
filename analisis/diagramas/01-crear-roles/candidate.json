@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": { "title": "Proceso 1 · Crear roles", "locale": "es", "quality_profile": "showcase", "output": "analisis/diagramas/01-crear-roles/crear-roles.html", "translations": { "page.title": "{title} · Diagrama", "legend.title": "Leyenda", "legend.workflow.frontend": "Interfaz", "legend.workflow.backend": "Validación", "legend.workflow.security": "Permisos", "legend.workflow.database": "Persistencia", "legend.workflow.external": "Actor", "diagram.description.workflow": "Proceso de creación de roles." } },
+  "lanes": [{"id":"captura","label":"Administrador e interfaz"},{"id":"validacion","label":"Validaciones"},{"id":"datos","label":"Registro y auditoría"},{"id":"errores","label":"Respuestas de excepción","variant":"exception"}],
+  "mainPath": ["autorizar","abrir","normalizar","duplicados","confirmar","guardar","auditar","responder"],
+  "nodes": [
+    {"id":"autorizar","lane":"captura","col":0,"type":"security","label":"Validar sesión","sublabel":"Solo administrador activo","width":175},
+    {"id":"abrir","lane":"captura","col":1,"type":"frontend","label":"Crear rol","sublabel":"Nombre y descripción","width":175},
+    {"id":"normalizar","lane":"validacion","col":1,"type":"backend","label":"Normalizar y validar","sublabel":"Obligatorios y formatos","width":175},
+    {"id":"duplicados","lane":"validacion","col":2,"type":"security","label":"Buscar duplicados","sublabel":"Nombre y código únicos","width":175},
+    {"id":"confirmar","lane":"captura","col":3,"type":"frontend","label":"Guardar captura","sublabel":"Solicitar creación","width":175},
+    {"id":"guardar","lane":"datos","col":3,"type":"database","label":"Persistir rol","sublabel":"bin_status = 1","width":175},
+    {"id":"auditar","lane":"datos","col":4,"type":"database","label":"Guardar auditoría","sublabel":"Actor, rol y hora UTC","width":175},
+    {"id":"responder","lane":"captura","col":5,"type":"frontend","label":"Rol creado","sublabel":"Refrescar catálogo","width":175},
+    {"id":"denegar","lane":"errores","col":0,"type":"security","label":"Acceso denegado","sublabel":"401 o 403","width":175},
+    {"id":"invalido","lane":"errores","col":1,"type":"backend","label":"Corregir datos","sublabel":"422 · no guardar","width":175},
+    {"id":"repetido","lane":"errores","col":2,"type":"backend","label":"Rol ya registrado","sublabel":"409 · no duplicar","width":175}
+  ],
+  "edges": [
+    {"from":"autorizar","to":"abrir","variant":"security"},{"from":"abrir","to":"normalizar"},{"from":"normalizar","to":"duplicados"},{"from":"duplicados","to":"confirmar","label":"Único","variant":"emphasis"},{"from":"confirmar","to":"guardar"},{"from":"guardar","to":"auditar","variant":"emphasis"},{"from":"auditar","to":"responder"},
+    {"from":"autorizar","to":"denegar","label":"Sin permiso","role":"error","variant":"security"},{"from":"normalizar","to":"invalido","label":"Inválido","role":"error"},{"from":"duplicados","to":"repetido","label":"Existe","role":"error"}
+  ],
+  "cards": [{"dot":"cyan","title":"Registro público","items":["Crear cuenta → Registro → Invitado. No existe selector de rol.","El administrador crea roles y asigna las cuentas dentro del sistema."]},{"dot":"emerald","title":"Persistencia","items":["Rol y auditoría se guardan en una transacción.","Los índices únicos impiden duplicados incluso entre solicitudes simultáneas."]}]
+}

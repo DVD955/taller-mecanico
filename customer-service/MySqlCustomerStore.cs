@@ -25,6 +25,31 @@ public sealed partial class MySqlCustomerStore(string connectionString) : ICusto
             await using var migrate = new MySqlCommand("ALTER TABLE customers ADD COLUMN deleted_at DATETIME(6) NULL", connection);
             await migrate.ExecuteNonQueryAsync(ct);
         }
+        if (!columns.Contains("bin_status"))
+        {
+            var inactiveCondition = columns.Contains("status") ? "WHEN status='INACTIVO' THEN 2 " : "";
+            await using var migrate = new MySqlCommand("ALTER TABLE customers ADD COLUMN bin_status INT NOT NULL DEFAULT 1; "
+                + "UPDATE customers SET bin_status=CASE WHEN deleted_at IS NOT NULL THEN 3 " + inactiveCondition + "ELSE 1 END", connection);
+            await migrate.ExecuteNonQueryAsync(ct);
+        }
+        // Si bin_status ya existe, se conserva: es la única fuente del estatus real.
+        await using (var inspect = new MySqlCommand("""
+            SELECT COUNT(*) FROM information_schema.KEY_COLUMN_USAGE
+            WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='customers' AND COLUMN_NAME='bin_status'
+              AND REFERENCED_TABLE_NAME='status' AND REFERENCED_COLUMN_NAME='id'
+            """, connection))
+        {
+            if (Convert.ToInt32(await inspect.ExecuteScalarAsync(ct)) == 0)
+            {
+                await using var migrate = new MySqlCommand("ALTER TABLE customers ADD CONSTRAINT fk_customers_bin_status FOREIGN KEY (bin_status) REFERENCES status(id)", connection);
+                await migrate.ExecuteNonQueryAsync(ct);
+            }
+        }
+        if (columns.Contains("status"))
+        {
+            await using var migrate = new MySqlCommand("ALTER TABLE customers DROP COLUMN status", connection);
+            await migrate.ExecuteNonQueryAsync(ct);
+        }
     }
 
     public static IEnumerable<(string Kind, string Value)> ContactKeys(Contacts contacts)
@@ -39,7 +64,9 @@ public sealed partial class MySqlCustomerStore(string connectionString) : ICusto
         await using var connection = new MySqlConnection(connectionString);
         await connection.OpenAsync(ct);
         await using var command = new MySqlCommand("""
-            SELECT DISTINCT c.* FROM customers c LEFT JOIN customer_contact_keys k ON k.customer_id=c.id
+            SELECT DISTINCT c.*, s.id AS status_id FROM customers c
+            INNER JOIN status s ON s.id=c.bin_status
+            LEFT JOIN customer_contact_keys k ON k.customer_id=c.id
             WHERE c.id<>@id AND (c.identity_fingerprint=@identity
               OR (k.kind='EMAIL' AND k.value=@email)
               OR (k.kind='PHONE' AND (k.value=@mobile OR k.value=@alternative)))
@@ -69,8 +96,8 @@ public sealed partial class MySqlCustomerStore(string connectionString) : ICusto
         try
         {
             await using var insert = new MySqlCommand("""
-                INSERT INTO customers (full_name,street,number,neighborhood,municipality,state,email,mobile,alternative,status,identity_fingerprint,created_at)
-                VALUES (@name,@street,@number,@neighborhood,@municipality,@state,@email,@mobile,@alternative,'ACTIVO',@identity,@now)
+                INSERT INTO customers (full_name,street,number,neighborhood,municipality,state,email,mobile,alternative,bin_status,identity_fingerprint,created_at)
+                VALUES (@name,@street,@number,@neighborhood,@municipality,@state,@email,@mobile,@alternative,1,@identity,@now)
                 """, connection, transaction);
             insert.Parameters.AddWithValue("@name", customer.FullName);
             insert.Parameters.AddWithValue("@street", customer.Address.Street);

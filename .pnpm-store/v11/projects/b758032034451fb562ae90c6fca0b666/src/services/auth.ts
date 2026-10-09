@@ -1,4 +1,4 @@
-import type { LoginResponse, User, UserRole } from '@/types'
+import type { LoginResponse, User } from '@/types'
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
 const TOKEN_KEY = 'taller_access_token'
@@ -9,14 +9,15 @@ export class ApiError extends Error {
   }
 }
 
-async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
+export async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const response = await fetch(`${API_URL}${path}`, {
     ...options,
     headers: { 'Content-Type': 'application/json', ...options.headers },
   })
   if (!response.ok) {
-    const body: { detail?: string } = await response.json().catch(() => ({}))
-    throw new ApiError(response.status, body.detail ?? 'No fue posible completar la operación.')
+    const body: { detail?: string | Array<{ msg: string }> } = await response.json().catch(() => ({}))
+    const detail = typeof body.detail === 'string' ? body.detail : body.detail?.map(item => item.msg).join('. ')
+    throw new ApiError(response.status, detail ?? 'No fue posible completar la operación.')
   }
   return response.status === 204 ? (undefined as T) : response.json() as Promise<T>
 }
@@ -29,9 +30,9 @@ export async function login(username: string, password: string): Promise<LoginRe
   return data
 }
 
-export async function register(username: string, fullName: string, email: string, password: string, role: Exclude<UserRole, 'ADMINISTRADOR'>): Promise<User> {
+export async function register(username: string, fullName: string, email: string, password: string): Promise<User> {
   return request<User>('/api/auth/register', {
-    method: 'POST', headers: { Authorization: `Bearer ${getToken() ?? ''}` }, body: JSON.stringify({ username, full_name: fullName, email, password, role }),
+    method: 'POST', body: JSON.stringify({ username, full_name: fullName, email, password }),
   })
 }
 

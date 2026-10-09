@@ -26,6 +26,10 @@ internal static class SelfTests
 
     public static async Task Run()
     {
+        Check(MySqlCustomerStore.StatusFromCatalog(1) == "ACTIVO"
+            && MySqlCustomerStore.StatusFromCatalog(2) == "INACTIVO"
+            && MySqlCustomerStore.StatusFromCatalog(3) == "INACTIVO",
+            "Contrato HTTP de estatus derivado del catálogo sin texto persistido");
         var store = new MemoryStore();
         var useCase = new RegisterCustomer(store, Normalizer(), new PreviewSigner());
         var input = Input();
@@ -60,9 +64,21 @@ internal static class SelfTests
         var connectionString = DatabaseConfig.ConnectionString();
         var store = new MySqlCustomerStore(connectionString);
         await store.Initialize(default);
+        await store.Initialize(default);
         await using var connection = new MySqlConnection(connectionString);
         await connection.OpenAsync();
-        await using var userCommand = new MySqlCommand("SELECT id,username FROM users WHERE role='ADMINISTRADOR' AND status='ACTIVO' LIMIT 1", connection);
+        await using var normalized = new MySqlCommand("""
+            SELECT COUNT(*) FROM information_schema.COLUMNS
+            WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='customers' AND COLUMN_NAME='status'
+            """, connection);
+        Check(Convert.ToInt32(await normalized.ExecuteScalarAsync()) == 0,
+            "MySQL: arranque repetible conserva solo bin_status en clientes");
+        await using var userCommand = new MySqlCommand("""
+            SELECT u.id,u.username FROM users u
+            INNER JOIN status s ON s.id=u.bin_status
+            INNER JOIN roles r ON r.code=u.role
+            WHERE r.code='ADMINISTRADOR' AND s.id=1 AND r.bin_status=1 LIMIT 1
+            """, connection);
         Actor actor;
         await using (var reader = await userCommand.ExecuteReaderAsync())
         {
@@ -96,6 +112,14 @@ internal static class SelfTests
             rollback.Parameters.AddWithValue("@email", failed.Contacts.Email);
             Check(Convert.ToInt32(await rollback.ExecuteScalarAsync()) == 0, "MySQL: fallo de auditoría revierte también al cliente y contactos");
             var current = (await store.FindMatches(customer, default)).Single();
+            await using var suspend = new MySqlCommand("UPDATE customers SET bin_status=2 WHERE id=@id", connection);
+            suspend.Parameters.AddWithValue("@id", current.Id);
+            await suspend.ExecuteNonQueryAsync();
+            Check((await store.Get(current.Id, default))?.Status == "INACTIVO"
+                && (await store.List(1, 10, marker, default)).Items.Single().Status == "INACTIVO",
+                "MySQL: INNER JOIN obtiene cliente suspendido sin columna textual");
+            suspend.CommandText = "UPDATE customers SET bin_status=1 WHERE id=@id";
+            await suspend.ExecuteNonQueryAsync();
             var changed = current with {FullName = "Prueba Actualizada"};
             var updates = await Task.WhenAll(Enumerable.Range(0, 8).Select(async _ =>
             {
