@@ -1,20 +1,28 @@
 """Pasarela autenticada para registrar, consultar, actualizar y dar de baja clientes."""
-import json
-from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
-from urllib.parse import urlencode
 
-from fastapi import APIRouter, HTTPException, Query
+import json
+import os
+from typing import Annotated
+from urllib.error import HTTPError, URLError
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
+
+from fastapi import APIRouter, Header, HTTPException, Query
 from fastapi.responses import Response
 
 from .dependencies import CurrentUser
-from typing import Annotated
-from fastapi import Header
 
 router = APIRouter(prefix="/api/customers", tags=["Gestión de clientes"])
 
 
-def forward(path: str, data: dict | None, user, authorization: str, method: str = "POST", operation: str = "register") -> Response:
+def forward(
+    path: str,
+    data: dict | None,
+    user,
+    authorization: str,
+    method: str = "POST",
+    operation: str = "register",
+) -> Response:
     permissions = {
         "read": {"ADMINISTRADOR", "RECEPCIONISTA", "SECRETARIA"},
         "register": {"ADMINISTRADOR", "RECEPCIONISTA"},
@@ -24,13 +32,23 @@ def forward(path: str, data: dict | None, user, authorization: str, method: str 
     }
     if user.role not in permissions[operation]:
         raise HTTPException(403, "Tu rol no tiene permiso para realizar esta operación.")
-    request = Request("http://127.0.0.1:8003" + path, data=json.dumps(data).encode() if data is not None else None,
-                      headers={"Content-Type": "application/json", "Authorization": authorization}, method=method)
+
+    base_url = os.getenv("CUSTOMER_SERVICE_URL", "http://127.0.0.1:8003")
+    request = Request(
+        base_url.rstrip("/") + path,
+        data=json.dumps(data).encode() if data is not None else None,
+        headers={"Content-Type": "application/json", "Authorization": authorization},
+        method=method,
+    )
     try:
         with urlopen(request, timeout=15) as result:
-            content_type = result.headers.get('Content-Type', 'application/json')
-            return Response(result.read(), status_code=result.status, media_type=content_type,
-                            headers={'Cache-Control': 'private, no-store', 'X-Content-Type-Options': 'nosniff'})
+            content_type = result.headers.get("Content-Type", "application/json")
+            return Response(
+                result.read(),
+                status_code=result.status,
+                media_type=content_type,
+                headers={"Cache-Control": "private, no-store", "X-Content-Type-Options": "nosniff"},
+            )
     except HTTPError as error:
         return Response(error.read(), status_code=error.code, media_type="application/json")
     except (URLError, TimeoutError, OSError):
@@ -48,9 +66,13 @@ def register(data: dict, user: CurrentUser, authorization: Annotated[str, Header
 
 
 @router.get("")
-def list_customers(user: CurrentUser, authorization: Annotated[str, Header()],
-                   page: int = Query(1, ge=1, le=100_000), page_size: int = Query(10, ge=1, le=100),
-                   search: str = Query("", max_length=120)) -> Response:
+def list_customers(
+    user: CurrentUser,
+    authorization: Annotated[str, Header()],
+    page: int = Query(1, ge=1, le=100_000),
+    page_size: int = Query(10, ge=1, le=100),
+    search: str = Query("", max_length=120),
+) -> Response:
     query = urlencode({"page": page, "pageSize": page_size, "search": search})
     return forward("/customers?" + query, None, user, authorization, "GET", "read")
 
@@ -82,6 +104,6 @@ def list_vehicles(customer_id: int, user: CurrentUser, authorization: Annotated[
 
 @router.post("/{customer_id}/vehicles", status_code=201)
 def register_vehicle(customer_id: int, data: dict, user: CurrentUser, authorization: Annotated[str, Header()]) -> Response:
-    if 'photos' in data:
-        raise HTTPException(422, 'Adjunta fotografías mediante el formulario de vehículos, no como JSON.')
+    if "photos" in data:
+        raise HTTPException(422, "Adjunta fotografías mediante el formulario de vehículos, no como JSON.")
     return forward(f"/customers/{customer_id}/vehicles", data, user, authorization, operation="vehicle")
