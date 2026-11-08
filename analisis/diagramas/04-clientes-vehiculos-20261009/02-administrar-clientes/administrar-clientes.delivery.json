@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "315dc68b-728e-4835-8b55-4f4968c927aa",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "C:\\Taller Mecanico\\analisis\\diagramas\\04-clientes-vehiculos-20261009\\02-administrar-clientes\\candidate.json",
+  "output": "C:\\Taller Mecanico\\analisis\\diagramas\\04-clientes-vehiculos-20261009\\02-administrar-clientes\\administrar-clientes.html",
+  "specification": {
+    "sha256": "ecf55e517314db87ef9133fd6d0e65e97fa681e5f0af46835f3e9e941ef7ad78",
+    "bytes": 6536
+  },
+  "artifact": {
+    "sha256": "bd2f01b35400c24270ff2ea5cc1506aff333eb66252a919c6c55b7e4a911800d",
+    "bytes": 767962
+  }
+}

@@ -8,5 +8,7 @@
   <ItemGroup>
     <PackageReference Include="MySqlConnector" Version="2.6.2" />
     <Content Include="../database/customers.sql" Link="customers.sql" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../frontend/src/validation/vehicle-identifiers.json" Link="vehicle-identifiers.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../tests/vehicle-identifiers.cases.json" Link="vehicle-identifiers.cases.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Never" />
   </ItemGroup>
 </Project>

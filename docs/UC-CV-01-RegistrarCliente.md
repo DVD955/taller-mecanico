@@ -1,5 +1,7 @@
 # TABLA FASE UC-CV-01 RegistrarCliente
 
+**Versión actual:** [fase de registrar cliente](../analisis/fase-registrar-cliente.md). Ahora exige taller activo y conserva esa asociación. Este documento mantiene la descripción técnica original como antecedente.
+
 Esta alta se conserva. La edición, baja lógica, directorio y diagrama que integra los tres casos de uso están documentados en [UC-CV-02/03 Gestión de clientes](UC-CV-02-03-GestionClientes.md).
 
 | Fase | Especificación y comportamiento |

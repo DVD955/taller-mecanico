@@ -1,5 +1,6 @@
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http.Features;
 using MySqlConnector;
 using Taller.Customers;
 
@@ -27,6 +28,10 @@ builder.Services.AddSingleton<PreviewSigner>();
 builder.Services.AddSingleton(new MySqlCustomerStore(DatabaseConfig.ConnectionString()));
 builder.Services.AddSingleton<ICustomerStore>(services => services.GetRequiredService<MySqlCustomerStore>());
 builder.Services.AddSingleton<ICustomerManagementStore>(services => services.GetRequiredService<MySqlCustomerStore>());
+builder.Services.AddSingleton<IVehicleStore>(services => services.GetRequiredService<MySqlCustomerStore>());
+builder.Services.AddSingleton<IVehicleManagementStore>(services => services.GetRequiredService<MySqlCustomerStore>());
+builder.Services.AddTransient<RegisterVehicle>();
+builder.Services.AddTransient<ManageVehicles>();
 builder.Services.AddTransient<CustomerRegistry, RegisterCustomer>();
 builder.Services.AddTransient<CustomerManagement, ManageCustomers>();
 var app = builder.Build();
@@ -34,6 +39,12 @@ await app.Services.GetRequiredService<MySqlCustomerStore>().Initialize(Cancellat
 
 app.Use(async (context, next) =>
 {
+    if ((context.Request.Method == "POST" && context.Request.Path.Value?.EndsWith("/vehicles") == true)
+        || (context.Request.Method == "PUT" && context.Request.Path.StartsWithSegments("/vehicles")))
+    {
+        var limit = context.Features.Get<IHttpMaxRequestBodySizeFeature>();
+        if (limit is {IsReadOnly: false}) limit.MaxRequestBodySize = 201_000_000;
+    }
     try { await next(context); }
     catch (UseCaseException ex) { await Reply(context, ex.Status, ex.Message); }
     catch (BadHttpRequestException) { await Reply(context, 422, "El cuerpo de la solicitud no tiene un formato válido."); }
@@ -49,7 +60,32 @@ app.Use(async (context, next) =>
     }
 });
 
-app.MapGet("/health", () => Results.Ok(new {status = "ok", module = "UC-CV-01/02/03"}));
+app.MapGet("/health", () => Results.Ok(new {status = "ok", module = "UC-CV-01..16"}));
+app.MapGet("/vehicles", async (int? page, int? pageSize, string? search, string? status, HttpContext context,
+    IHttpClientFactory factory, ManageVehicles vehicles, CancellationToken ct) =>
+    Results.Ok(await vehicles.List(await Authenticate(context, factory, ct), page ?? 1, pageSize ?? 10, search ?? "", status ?? "all", ct)));
+app.MapGet("/vehicles/{id:long}", async (long id, HttpContext context, IHttpClientFactory factory, ManageVehicles vehicles, CancellationToken ct) =>
+    Results.Ok(await vehicles.Get(id, await Authenticate(context, factory, ct), ct)));
+app.MapGet("/vehicles/{id:long}/photos/{photoId:long}", async (long id, long photoId, HttpContext context, IHttpClientFactory factory,
+    ManageVehicles vehicles, CancellationToken ct) =>
+{
+    var image = await vehicles.Image(id, photoId, await Authenticate(context, factory, ct), ct);
+    context.Response.Headers.CacheControl = "private, no-store";
+    context.Response.Headers.XContentTypeOptions = "nosniff";
+    return Results.Bytes(image.Content, image.ContentType);
+});
+app.MapPut("/vehicles/{id:long}", async (long id, VehicleUpdateRequest input, HttpContext context, IHttpClientFactory factory,
+    ManageVehicles vehicles, CancellationToken ct) => Results.Ok(await vehicles.Update(id, input, await Authenticate(context, factory, ct), ct)));
+app.MapDelete("/vehicles/{id:long}", async (long id, [FromBody] VehicleDeactivateRequest input, HttpContext context, IHttpClientFactory factory,
+    ManageVehicles vehicles, CancellationToken ct) => Results.Ok(await vehicles.Deactivate(id, input, await Authenticate(context, factory, ct), ct)));
+app.MapPut("/vehicles/{id:long}/owner", async (long id, VehicleChangeOwnerRequest input, HttpContext context, IHttpClientFactory factory,
+    ManageVehicles vehicles, CancellationToken ct) => Results.Ok(await vehicles.ChangeOwner(id, input, await Authenticate(context, factory, ct), ct)));
+app.MapGet("/customers/{id:long}/vehicles", async (long id, HttpContext context, IHttpClientFactory factory,
+    RegisterVehicle vehicles, CancellationToken ct) =>
+    Results.Ok(await vehicles.List(id, await Authenticate(context, factory, ct), ct)));
+app.MapPost("/customers/{id:long}/vehicles", async (long id, VehicleRequest input, HttpContext context, IHttpClientFactory factory,
+    RegisterVehicle vehicles, CancellationToken ct) =>
+    Results.Json(await vehicles.Register(id, input, await Authenticate(context, factory, ct), ct), statusCode: 201));
 app.MapGet("/customers", async (int? page, int? pageSize, string? search, HttpContext context, IHttpClientFactory factory,
     CustomerManagement management, CancellationToken ct) =>
     Results.Ok(await management.List(await Authenticate(context, factory, ct), page ?? 1, pageSize ?? 10, search ?? "", ct)));
@@ -96,7 +132,7 @@ static async Task<Actor> Authenticate(HttpContext context, IHttpClientFactory fa
     var user = await response.Content.ReadFromJsonAsync<AuthUser>(cancellationToken: ct)
         ?? throw new UseCaseException(401, "Sesión no válida.");
     var actor = new Actor(user.Id, user.Username, user.Role, user.Status);
-    actor.Authorize();
+    actor.Authorize(CustomerOperation.Read);
     return actor;
 }
 

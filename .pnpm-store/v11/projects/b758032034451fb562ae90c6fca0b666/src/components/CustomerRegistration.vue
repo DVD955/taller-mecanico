@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { ApiError } from '@/services/auth'
 import { previewCustomer, registerCustomer, previewCustomerUpdate, updateCustomer } from '@/services/customers'
 import type { Customer, CustomerInput, PreviewResult, SavedCustomer } from '@/services/customers'
+import { getWorkshops } from '@/services/workshops'
+import type { Workshop } from '@/services/workshops'
 
 const props = defineProps<{ initialOpen?: boolean; customer?: Customer }>()
 const emit = defineEmits<{ saved: [customer: Customer]; close: [] }>()
@@ -12,10 +14,21 @@ const errorMessage = ref('')
 const review = ref<PreviewResult | null>(null)
 const saved = ref<SavedCustomer | null>(null)
 const form = ref<{ validate: () => Promise<{ valid: boolean }> } | null>(null)
-const empty = (): CustomerInput => ({ fullName: '', address: { street: '', number: '', neighborhood: '', municipality: '', state: '' }, contacts: { email: '', mobile: '', alternative: '' } })
+const workshops = ref<Workshop[]>([])
+const loadingWorkshops = ref(false)
+const empty = (): CustomerInput => ({ workshopId: null, fullName: '', address: { street: '', number: '', neighborhood: '', municipality: '', state: '' }, contacts: { email: '', mobile: '', alternative: '' } })
 const input = reactive<CustomerInput>(props.customer ? {
+  workshopId: props.customer.workshopId,
   fullName: props.customer.fullName, address: { ...props.customer.address }, contacts: { ...props.customer.contacts },
 } : empty())
+async function loadWorkshops(): Promise<void> {
+  if (props.customer) return
+  loadingWorkshops.value = true
+  try { workshops.value = (await getWorkshops()).filter(item => item.bin_status === 1) }
+  catch (error) { errorMessage.value = error instanceof ApiError ? error.message : 'No se pudieron cargar los talleres.' }
+  finally { loadingWorkshops.value = false }
+}
+onMounted(() => { void loadWorkshops() })
 const required = (max: number) => [(v: string) => !!v?.trim() || 'Este campo es obligatorio.', (v: string) => (v?.length ?? 0) <= max || `Máximo ${max} caracteres.`]
 const nameRules = [...required(120), (v: string) => (v?.trim().length ?? 0) >= 3 || 'Mínimo 3 caracteres.', (v: string) => /^[\p{L}\p{M} .'-]+$/u.test(v) || 'Usa letras y espacios.']
 const emailRules = [(v: string | null) => !v?.trim() || (v.trim().length <= 254 && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim())) || 'Correo no válido.']
@@ -29,6 +42,7 @@ const phoneRules = [(v: string | null) => {
 function start(): void {
   Object.assign(input, empty())
   open.value = true; review.value = null; saved.value = null; errorMessage.value = ''
+  void loadWorkshops()
 }
 
 function cancel(): void { open.value = false; review.value = null; emit('close') }
@@ -53,10 +67,10 @@ async function confirm(): Promise<void> {
   if (!preview?.previewToken || preview.matches.length) return
   busy.value = true; errorMessage.value = ''
   try {
-    const { fullName, address, contacts } = preview.customer
+    const { fullName, address, contacts, workshopId } = preview.customer
     saved.value = props.customer
-      ? await updateCustomer(props.customer.id, { fullName, address, contacts }, props.customer.version, preview.previewToken)
-      : await registerCustomer({ fullName, address, contacts }, preview.previewToken)
+      ? await updateCustomer(props.customer.id, { fullName, address, contacts, workshopId }, props.customer.version, preview.previewToken)
+      : await registerCustomer({ fullName, address, contacts, workshopId }, preview.previewToken)
     open.value = false; review.value = null
     emit('saved', saved.value.customer)
   } catch (error) {
@@ -78,6 +92,11 @@ async function confirm(): Promise<void> {
     <v-btn v-if="!open" color="secondary" prepend-icon="mdi-account-plus-outline" @click="start">Registrar cliente</v-btn>
     <v-alert v-if="errorMessage" color="secondary" variant="tonal" class="my-4" role="alert">{{ errorMessage }}</v-alert>
     <v-form v-if="open && !review" ref="form" validate-on="submit" @submit.prevent="prepare">
+      <div v-if="customer" class="customer-workshop-summary mb-5"><v-icon icon="mdi-garage-variant" /><div><span>Taller asociado</span><strong>{{ customer.workshopName || 'Sin taller · registro anterior' }}</strong><small>El taller se conserva y no puede cambiarse.</small></div></div>
+      <template v-else>
+        <v-select v-model="input.workshopId" :items="workshops" item-title="name" item-value="id" label="Taller mecánico" :loading="loadingWorkshops" :disabled="busy || loadingWorkshops" :rules="[(value: number | null) => !!value || 'Selecciona un taller activo.']" variant="outlined" color="secondary" />
+        <v-alert v-if="!loadingWorkshops && !workshops.length" color="secondary" variant="tonal" class="mb-4">Registra un taller activo antes de dar de alta un cliente.</v-alert>
+      </template>
       <v-text-field v-model="input.fullName" label="Nombre completo" autocomplete="name" :rules="nameRules" variant="outlined" color="secondary" />
       <h3 class="mb-3">Dirección</h3>
       <v-row>
@@ -98,6 +117,7 @@ async function confirm(): Promise<void> {
     <div v-if="open && review">
       <h3 class="mb-3">Revisión del cliente</h3>
       <p><strong>{{ review.customer.fullName }}</strong></p>
+      <p class="my-3"><v-icon icon="mdi-garage-variant" size="18" /> Taller: {{ review.customer.workshopName || 'Sin taller · registro anterior' }}</p>
       <p>{{ review.customer.address.street }} {{ review.customer.address.number }}, {{ review.customer.address.neighborhood }}, {{ review.customer.address.municipality }}, {{ review.customer.address.state }}</p>
       <p class="mt-2">Correo: {{ review.customer.contacts.email || 'Sin correo' }}</p>
       <p>Celular: {{ review.customer.contacts.mobile || 'Sin celular' }}</p>

@@ -50,6 +50,33 @@ public sealed partial class MySqlCustomerStore(string connectionString) : ICusto
             await using var migrate = new MySqlCommand("ALTER TABLE customers DROP COLUMN status", connection);
             await migrate.ExecuteNonQueryAsync(ct);
         }
+        if (!columns.Contains("workshop_id"))
+        {
+            // Las altas antiguas no se asignan arbitrariamente a un taller.
+            await using var migrate = new MySqlCommand("ALTER TABLE customers ADD COLUMN workshop_id INT NULL", connection);
+            await migrate.ExecuteNonQueryAsync(ct);
+        }
+        await using var workshopKey = new MySqlCommand("""
+            SELECT COUNT(*) FROM information_schema.KEY_COLUMN_USAGE
+            WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='customers' AND COLUMN_NAME='workshop_id'
+              AND REFERENCED_TABLE_NAME='workshops'
+            """, connection);
+        if (Convert.ToInt32(await workshopKey.ExecuteScalarAsync(ct)) == 0)
+        {
+            await using var migrate = new MySqlCommand("ALTER TABLE customers ADD CONSTRAINT fk_customers_workshop FOREIGN KEY (workshop_id) REFERENCES workshops(id)", connection);
+            await migrate.ExecuteNonQueryAsync(ct);
+        }
+        await InitializeVehicleManagement(connection, ct);
+    }
+
+    public async Task<WorkshopInfo?> GetWorkshop(int id, CancellationToken ct)
+    {
+        await using var connection = new MySqlConnection(connectionString);
+        await connection.OpenAsync(ct);
+        await using var command = new MySqlCommand("SELECT id,name,bin_status FROM workshops WHERE id=@id", connection);
+        command.Parameters.AddWithValue("@id", id);
+        await using var reader = await command.ExecuteReaderAsync(ct);
+        return await reader.ReadAsync(ct) ? new(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2) == 1) : null;
     }
 
     public static IEnumerable<(string Kind, string Value)> ContactKeys(Contacts contacts)
@@ -64,8 +91,9 @@ public sealed partial class MySqlCustomerStore(string connectionString) : ICusto
         await using var connection = new MySqlConnection(connectionString);
         await connection.OpenAsync(ct);
         await using var command = new MySqlCommand("""
-            SELECT DISTINCT c.*, s.id AS status_id FROM customers c
+            SELECT DISTINCT c.*, s.id AS status_id, w.name AS workshop_name FROM customers c
             INNER JOIN status s ON s.id=c.bin_status
+            LEFT JOIN workshops w ON w.id=c.workshop_id
             LEFT JOIN customer_contact_keys k ON k.customer_id=c.id
             WHERE c.id<>@id AND (c.identity_fingerprint=@identity
               OR (k.kind='EMAIL' AND k.value=@email)
@@ -95,9 +123,14 @@ public sealed partial class MySqlCustomerStore(string connectionString) : ICusto
         var now = DateTimeOffset.UtcNow;
         try
         {
+            await using var workshop = new MySqlCommand("SELECT bin_status FROM workshops WHERE id=@id FOR UPDATE", connection, transaction);
+            workshop.Parameters.AddWithValue("@id", customer.WorkshopId);
+            var workshopStatus = await workshop.ExecuteScalarAsync(ct);
+            if (customer.WorkshopId is null || workshopStatus is null || Convert.ToInt32(workshopStatus) != 1)
+                throw new UseCaseException(422, "Selecciona un taller activo antes de registrar al cliente.");
             await using var insert = new MySqlCommand("""
-                INSERT INTO customers (full_name,street,number,neighborhood,municipality,state,email,mobile,alternative,bin_status,identity_fingerprint,created_at)
-                VALUES (@name,@street,@number,@neighborhood,@municipality,@state,@email,@mobile,@alternative,1,@identity,@now)
+                INSERT INTO customers (full_name,street,number,neighborhood,municipality,state,email,mobile,alternative,bin_status,identity_fingerprint,created_at,workshop_id)
+                VALUES (@name,@street,@number,@neighborhood,@municipality,@state,@email,@mobile,@alternative,1,@identity,@now,@workshop)
                 """, connection, transaction);
             insert.Parameters.AddWithValue("@name", customer.FullName);
             insert.Parameters.AddWithValue("@street", customer.Address.Street);
@@ -110,6 +143,7 @@ public sealed partial class MySqlCustomerStore(string connectionString) : ICusto
             insert.Parameters.AddWithValue("@alternative", customer.Contacts.Alternative);
             insert.Parameters.AddWithValue("@identity", customer.Fingerprint);
             insert.Parameters.AddWithValue("@now", now.UtcDateTime);
+            insert.Parameters.AddWithValue("@workshop", customer.WorkshopId);
             await insert.ExecuteNonQueryAsync(ct);
             var id = insert.LastInsertedId;
             foreach (var (kind, value) in ContactKeys(customer.Contacts))

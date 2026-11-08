@@ -17,7 +17,7 @@ from sqlalchemy import select, text
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "backend"))
 
 from app.database import SessionLocal, engine
-from app.models import User, UserRole, UserSession
+from app.models import User, UserRole, UserSession, Workshop
 from app.security import create_access_token, hash_password
 
 
@@ -47,12 +47,16 @@ def run():
         print("OK:", message)
 
     customer = {
+        "workshopId": None,
         "fullName": "  Cliente   Integracion  ",
         "address": {"street": "Test " + marker, "number": "1", "neighborhood": "Centro", "municipality": "Puebla", "state": "Puebla"},
         "contacts": {"email": marker + "@example.com", "mobile": None, "alternative": None},
     }
     try:
         with SessionLocal() as db:
+            workshop = db.scalar(select(Workshop).where(Workshop.bin_status == 1).limit(1))
+            assert workshop is not None, 'Se requiere un taller activo.'
+            customer['workshopId'] = workshop.id
             for role in UserRole:
                 user = User(username="uc_test_" + role.value[:3] + marker[:8], full_name="Prueba UC", role=role,
                             bin_status=1, password_hash=hash_password(secrets.token_urlsafe(32)))
@@ -107,6 +111,19 @@ def run():
             check(normalized.bin_status == 1 and normalized.valor == "activo",
                   "MySQL: cliente guarda solo bin_status y obtiene su estatus del catálogo con INNER JOIN")
         path = f"/api/customers/{customer_id}"
+        check(saved['customer']['workshopId'] == customer['workshopId'] and saved['customer']['workshopName'],
+              "HTTP: alta asociada a taller y nombre obtenido por JOIN")
+        check(call('/api/customers/preview', {**customer, 'workshopId': None}, admin_token)[0] == 422,
+              "HTTP: taller obligatorio")
+        check(call('/api/customers/preview', {**customer, 'workshopId': 2147483647}, admin_token)[0] == 422,
+              "HTTP: taller inexistente bloqueado")
+        check(call(path + '/preview', {'customer': {**customer, 'workshopId': 2147483647}, 'version': 1}, admin_token)[0] == 422,
+              "HTTP: no se puede cambiar taller al actualizar")
+        if role_states['RECEPCIONISTA'] == 1:
+            check(call(path + '/preview', {'customer': customer, 'version': 1}, receptionist_token)[0] == 403,
+                  "HTTP: recepcionista no edita clientes")
+            check(call(path, {'confirmed': True, 'version': 1}, receptionist_token, 'DELETE')[0] == 403,
+                  "HTTP: recepcionista no desactiva clientes")
         mechanic_token = users["MECANICO"][1]
         check(call("/api/customers", token=mechanic_token, method="GET")[0] == 403, "HTTP: mecánico no consulta el directorio")
         check(call(path, {}, mechanic_token, "PUT")[0] == 403, "HTTP: mecánico no actualiza clientes")
@@ -121,16 +138,16 @@ def run():
         check(call(path + "/preview", {"customer": customer, "version": 1}, admin_token)[1]["matches"] == [],
               "HTTP: editar no considera al mismo cliente como duplicado")
         edited = {**customer, "fullName": "Cliente Actualizado"}
-        status, edit_preview = call(path + "/preview", {"customer": edited, "version": 1}, receptionist_token)
-        check(status == 200 and edit_preview["previewToken"] is not None, f"HTTP: {operator_name} revisa una edición")
+        status, edit_preview = call(path + "/preview", {"customer": edited, "version": 1}, admin_token)
+        check(status == 200 and edit_preview["previewToken"] is not None, "HTTP: administrador revisa una edición")
         edit_request = {"customer": edited, "version": 1, "previewToken": edit_preview["previewToken"], "confirmed": False}
-        check(call(path, edit_request, receptionist_token, "PUT")[0] == 422, "HTTP: edición exige confirmación")
-        check(call(path, {**edit_request, "confirmed": True, "customer": customer}, receptionist_token, "PUT")[0] == 422,
+        check(call(path, edit_request, admin_token, "PUT")[0] == 422, "HTTP: edición exige confirmación")
+        check(call(path, {**edit_request, "confirmed": True, "customer": customer}, admin_token, "PUT")[0] == 422,
               "HTTP: edición rechaza datos distintos a la revisión")
-        status, updated = call(path, {**edit_request, "confirmed": True}, receptionist_token, "PUT")
+        status, updated = call(path, {**edit_request, "confirmed": True}, admin_token, "PUT")
         check(status == 200 and updated["customer"]["version"] == 2 and updated["customer"]["fullName"] == "Cliente Actualizado"
-              and updated["auditEntry"]["actorId"] == receptionist_id, f"HTTP: {operator_name} actualiza y queda auditado")
-        check(call(path, {**edit_request, "confirmed": True}, receptionist_token, "PUT")[0] == 409,
+              and updated["auditEntry"]["actorId"] == admin_id, "HTTP: administrador actualiza y queda auditado")
+        check(call(path, {**edit_request, "confirmed": True}, admin_token, "PUT")[0] == 409,
               "HTTP: edición con versión antigua no sobrescribe cambios")
         second = {**customer, "fullName": "Segundo Cliente", "address": {**customer["address"], "number": "2"},
                   "contacts": {"email": marker + "second@example.com", "mobile": None, "alternative": None}}
@@ -145,13 +162,49 @@ def run():
         status, admin_updated = call(path, {"customer": admin_edit, "version": 2, "previewToken": admin_review["previewToken"], "confirmed": True}, admin_token, "PUT")
         check(status == 200 and admin_updated["auditEntry"]["actorId"] == admin_id and admin_updated["customer"]["version"] == 3,
               "HTTP: administrador actualiza y queda auditado")
-        check(call(path, {"version": 3, "confirmed": False}, receptionist_token, "DELETE")[0] == 422,
+        seed = int(marker[:8], 16)
+        serial = seed % 999997 + 1
+        plate_number = seed % 9997 + 1
+        plate_alphabet = 'ABCDEFGHJKLMNPRSTUVWXYZ'
+        plate_prefix = ''.join(plate_alphabet[int(character, 16)] for character in marker[:3])
+        vehicle = {'vin': f'WVWZZZ1JZXW{serial:06d}', 'plate': f'{plate_prefix}-{plate_number:04d}',
+                   'make': 'Volkswagen', 'model': 'Golf', 'year': 1999, 'version': 'Base', 'color': 'Gris', 'mileage': None}
+        vehicle_path = path + '/vehicles'
+        check(call(vehicle_path, {'vehicle': vehicle, 'confirmed': True}, mechanic_token)[0] == 403,
+              'HTTP: mecánico no registra vehículos')
+        check(call(vehicle_path, {'vehicle': {**vehicle, 'vin': 'VININVALIDO'}, 'confirmed': True}, admin_token)[0] == 422,
+              'HTTP: VIN inválido bloqueado')
+        check(call(vehicle_path, {'vehicle': {**vehicle, 'plate': '??'}, 'confirmed': True}, admin_token)[0] == 422,
+              'HTTP: placa inválida bloqueada')
+        for bad_vin in ('1HGCM82643A004352', 'WVWZZZ1JZXW00000A', '11111111111111111', '1HGCM82633A00435I'):
+            check(call(vehicle_path, {'vehicle': {**vehicle, 'vin': bad_vin}, 'confirmed': True}, admin_token)[0] == 422,
+                  'HTTP: VIN con verificador, serie o caracteres incorrectos bloqueado')
+        for bad_plate in ('ABCDEFG', '1234567', 'AB12CDE', 'AB-123-CD', 'ABC--123-D', 'ABC-000-D', 'IAB-123-C', 'AB-1234-C'):
+            check(call(vehicle_path, {'vehicle': {**vehicle, 'plate': bad_plate}, 'confirmed': True}, admin_token)[0] == 422,
+                  'HTTP: placa fuera de los formatos mexicanos de automóvil bloqueada')
+        check(call(vehicle_path, {'vehicle': {**vehicle, 'mileage': -1}, 'confirmed': True}, admin_token)[0] == 422,
+              'HTTP: kilometraje negativo bloqueado')
+        check(call(vehicle_path, {'vehicle': vehicle, 'confirmed': False}, admin_token)[0] == 422,
+              'HTTP: confirmar vehículo es obligatorio')
+        status, vehicle_saved = call(vehicle_path, {'vehicle': vehicle, 'confirmed': True}, receptionist_token)
+        check(status == 201 and vehicle_saved['vehicle']['customerId'] == customer_id
+              and vehicle_saved['vehicle']['status'] == 'ACTIVO' and '-' not in vehicle_saved['vehicle']['plate'],
+              'HTTP: vehículo activo asociado al cliente; placa normalizada')
+        check(call(vehicle_path, {'vehicle': vehicle, 'confirmed': True}, admin_token)[0] == 409,
+              'HTTP: no se duplica vehículo por VIN')
+        check(call(vehicle_path, {'vehicle': {**vehicle, 'vin': f'WVWZZZ1JZXW{serial + 1:06d}'}, 'confirmed': True}, admin_token)[0] == 409,
+              'HTTP: no se duplica vehículo por placa')
+        status, registered_vehicles = call(vehicle_path, token=admin_token, method='GET')
+        check(status == 200 and len(registered_vehicles) == 1, 'HTTP: detalle consulta vehículos del cliente')
+        check(call(path, {"version": 3, "confirmed": False}, admin_token, "DELETE")[0] == 422,
               "HTTP: eliminación exige confirmación")
-        check(call(path, {"version": 2, "confirmed": True}, receptionist_token, "DELETE")[0] == 409,
+        check(call(path, {"version": 2, "confirmed": True}, admin_token, "DELETE")[0] == 409,
               "HTTP: eliminación rechaza versión desactualizada")
-        status, deleted = call(path, {"version": 3, "confirmed": True}, receptionist_token, "DELETE")
-        check(status == 200 and deleted["customer"]["status"] == "INACTIVO" and deleted["auditEntry"]["actorId"] == receptionist_id,
-              f"HTTP: {operator_name} elimina y queda auditado")
+        status, deleted = call(path, {"version": 3, "confirmed": True}, admin_token, "DELETE")
+        check(status == 200 and deleted["customer"]["status"] == "INACTIVO" and deleted["auditEntry"]["actorId"] == admin_id,
+              "HTTP: administrador desactiva y queda auditado")
+        check(call(vehicle_path, {'vehicle': {**vehicle, 'vin': f'WVWZZZ1JZXW{serial + 2:06d}', 'plate': f'{plate_prefix}{plate_number + 1:04d}'}, 'confirmed': True}, admin_token)[0] == 404,
+              'HTTP: cliente dado de baja no recibe vehículos nuevos')
         check(call(path, token=admin_token, method="GET")[0] == 404, "HTTP: cliente eliminado no se abre en el directorio")
         check(call(path, {"version": 4, "confirmed": True}, admin_token, "DELETE")[0] == 404,
               "HTTP: eliminar dos veces no crea otra auditoría")
@@ -163,8 +216,11 @@ def run():
         with engine.connect() as connection:
             row = connection.execute(text("SELECT c.bin_status,s.valor,c.deleted_at,c.version FROM customers c INNER JOIN status s ON s.id=c.bin_status WHERE c.id=:id"), {"id": customer_id}).one()
             audits = connection.execute(text("SELECT action,actor_id FROM audit_entries WHERE customer_id=:id ORDER BY id"), {"id": customer_id}).all()
-            check(row.bin_status == 3 and row.valor == "eliminado" and row.deleted_at is not None and row.version == 4 and len(audits) == 4
-                  and audits[-1].action == "UC-CV-03 EliminarCliente", "MySQL: baja lógica conserva datos e historial completo")
+            check(row.bin_status == 2 and row.valor == "suspendido" and row.deleted_at is not None and row.version == 4 and len(audits) == 4
+                  and audits[-1].action == "UC-CV-04 DesactivarCliente", "MySQL: baja lógica conserva datos e historial completo")
+            vehicle_count = connection.execute(text('SELECT count(*) FROM vehicles WHERE customer_id=:id'), {'id': customer_id}).scalar_one()
+            audit_count = connection.execute(text('SELECT count(*) FROM vehicle_audit_entries WHERE customer_id=:id'), {'id': customer_id}).scalar_one()
+            check(vehicle_count == audit_count == 1, 'MySQL: baja conserva vehículo y auditoría')
         status, archived_duplicate = call("/api/customers/preview", customer, admin_token)
         check(status == 200 and archived_duplicate["previewToken"] is None,
               "HTTP: clientes dados de baja siguen protegidos contra duplicados")
@@ -179,6 +235,8 @@ def run():
     finally:
         with engine.begin() as connection:
             test_emails = {"email": customer["contacts"]["email"], "second": marker + "second@example.com"}
+            connection.execute(text("DELETE a FROM vehicle_audit_entries a JOIN customers c ON c.id=a.customer_id WHERE c.email IN (:email,:second)"), test_emails)
+            connection.execute(text("DELETE v FROM vehicles v JOIN customers c ON c.id=v.customer_id WHERE c.email IN (:email,:second)"), test_emails)
             connection.execute(text("DELETE a FROM audit_entries a JOIN customers c ON c.id=a.customer_id WHERE c.email IN (:email,:second)"), test_emails)
             connection.execute(text("DELETE FROM customers WHERE email IN (:email,:second)"), test_emails)
         with SessionLocal() as db:

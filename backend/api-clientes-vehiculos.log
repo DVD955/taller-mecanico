@@ -1,0 +1,266 @@
+INFO:     127.0.0.1:63697 - "POST /api/customers/preview HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:63698 - "POST /api/customers/preview HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63699 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63704 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63706 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63709 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63711 - "POST /api/customers HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63713 - "POST /api/customers HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63715 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63717 - "POST /api/customers HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63719 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63721 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63723 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63725 - "POST /api/customers/55/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63727 - "POST /api/customers/55/preview HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:63728 - "DELETE /api/customers/55 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:63729 - "GET /api/customers HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:63730 - "PUT /api/customers/55 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:63731 - "DELETE /api/customers/55 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63733 - "GET /api/customers?search=da30ba83e02c4ac7b33c5f6dc3bb1ab0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63735 - "GET /api/customers/55 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63737 - "POST /api/customers/55/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63739 - "POST /api/customers/55/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63741 - "PUT /api/customers/55 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63743 - "PUT /api/customers/55 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63745 - "PUT /api/customers/55 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63747 - "PUT /api/customers/55 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63749 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63751 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63753 - "POST /api/customers/55/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63755 - "POST /api/customers/55/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63757 - "PUT /api/customers/55 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63759 - "POST /api/customers/55/vehicles HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63760 - "POST /api/customers/55/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63762 - "POST /api/customers/55/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63764 - "POST /api/customers/55/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63766 - "POST /api/customers/55/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63768 - "POST /api/customers/55/vehicles HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63770 - "POST /api/customers/55/vehicles HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63772 - "POST /api/customers/55/vehicles HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63774 - "GET /api/customers/55/vehicles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63776 - "DELETE /api/customers/55 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63778 - "DELETE /api/customers/55 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63780 - "DELETE /api/customers/55 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63782 - "POST /api/customers/55/vehicles HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63784 - "GET /api/customers/55 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63786 - "DELETE /api/customers/55 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63788 - "DELETE /api/customers/56 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63790 - "GET /api/customers?search=da30ba83e02c4ac7b33c5f6dc3bb1ab0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63792 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63794 - "POST /api/customers/preview HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:58628 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55777 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55777 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55777 - "OPTIONS /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62929 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55777 - "GET /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57438 - "OPTIONS /api/workshops HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57438 - "GET /api/workshops HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57438 - "OPTIONS /api/workshops/19/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57438 - "GET /api/workshops/19/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57438 - "OPTIONS /api/admin/roles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57438 - "GET /api/admin/roles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57438 - "GET /api/workshops HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57438 - "GET /api/workshops/19/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57438 - "GET /api/admin/roles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57438 - "OPTIONS /api/admin/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59999 - "OPTIONS /api/admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61131 - "GET /api/admin/roles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57438 - "GET /api/admin/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59999 - "GET /api/admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61134 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59999 - "GET /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59999 - "GET /api/workshops HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63591 - "OPTIONS /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63593 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63591 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49294 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49292 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51099 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51097 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51097 - "OPTIONS /api/customers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51099 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51097 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:51099 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51097 - "GET /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57778 - "OPTIONS /api/customers/57 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57780 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57778 - "GET /api/customers/57 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57778 - "OPTIONS /api/customers/57/vehicles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57780 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57778 - "GET /api/customers/57/vehicles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49851 - "POST /api/customers/preview HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:49852 - "POST /api/customers/preview HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49853 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49856 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49858 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49860 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49862 - "POST /api/customers HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49864 - "POST /api/customers HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49866 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49868 - "POST /api/customers HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49870 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49872 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49874 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49876 - "POST /api/customers/67/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49878 - "POST /api/customers/67/preview HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:49879 - "DELETE /api/customers/67 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:49880 - "GET /api/customers HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:49881 - "PUT /api/customers/67 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:49882 - "DELETE /api/customers/67 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49884 - "GET /api/customers?search=1dcb9eaf759b4c3781b64f5e8c3dc234 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49886 - "GET /api/customers/67 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49888 - "POST /api/customers/67/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49890 - "POST /api/customers/67/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49892 - "PUT /api/customers/67 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49894 - "PUT /api/customers/67 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49896 - "PUT /api/customers/67 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49898 - "PUT /api/customers/67 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49900 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49902 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49904 - "POST /api/customers/67/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49906 - "POST /api/customers/67/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49908 - "PUT /api/customers/67 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49910 - "POST /api/customers/67/vehicles HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49911 - "POST /api/customers/67/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49913 - "POST /api/customers/67/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49915 - "POST /api/customers/67/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49917 - "POST /api/customers/67/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49919 - "POST /api/customers/67/vehicles HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49921 - "POST /api/customers/67/vehicles HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49923 - "POST /api/customers/67/vehicles HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49925 - "GET /api/customers/67/vehicles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49927 - "DELETE /api/customers/67 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49929 - "DELETE /api/customers/67 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49931 - "DELETE /api/customers/67 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49933 - "POST /api/customers/67/vehicles HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49935 - "GET /api/customers/67 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49937 - "DELETE /api/customers/67 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49939 - "DELETE /api/customers/68 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49941 - "GET /api/customers?search=1dcb9eaf759b4c3781b64f5e8c3dc234 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49855 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49943 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49945 - "POST /api/customers/preview HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:65063 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63713 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63713 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:63713 - "POST /api/auth/login HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:57690 - "OPTIONS /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57690 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57690 - "OPTIONS /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57690 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49804 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57690 - "GET /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50804 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50802 - "GET /api/customers/57 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50802 - "OPTIONS /api/workshops HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50802 - "GET /api/workshops HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50802 - "OPTIONS /api/workshops/19/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50802 - "GET /api/workshops/19/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50802 - "OPTIONS /api/postal/states HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50802 - "GET /api/postal/states HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64800 - "OPTIONS /api/postal/settlements?postal_code=54693 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55457 - "GET /api/postal/states HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64800 - "GET /api/postal/settlements?postal_code=54693 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57712 - "OPTIONS /api/admin/roles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60743 - "OPTIONS /api/admin/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63846 - "OPTIONS /api/admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57712 - "GET /api/admin/roles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61274 - "GET /api/admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60743 - "GET /api/admin/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52410 - "OPTIONS /api/auth/logout HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52410 - "POST /api/auth/logout HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:61858 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61858 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61858 - "OPTIONS /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52546 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61858 - "GET /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52543 - "OPTIONS /api/customers/57 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65436 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52543 - "GET /api/customers/57 HTTP/1.1" 200 OK

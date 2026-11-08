@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "f59baa7d-2af1-442e-8451-54b5c273c9bc",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "C:\\Taller Mecanico\\analisis\\diagramas\\04-clientes-vehiculos-20261009\\01-registrar-cliente\\candidate.json",
+  "output": "C:\\Taller Mecanico\\analisis\\diagramas\\04-clientes-vehiculos-20261009\\01-registrar-cliente\\registrar-cliente.html",
+  "specification": {
+    "sha256": "0a726f0f661d00d0a80c552fc9ab5209fc0c74916aaceb13f72571d59e410609",
+    "bytes": 5604
+  },
+  "artifact": {
+    "sha256": "866a9e479ac600183f6a5dc393fc98d18db50669c49b6cc0b0e6a1753650ff82",
+    "bytes": 762902
+  }
+}

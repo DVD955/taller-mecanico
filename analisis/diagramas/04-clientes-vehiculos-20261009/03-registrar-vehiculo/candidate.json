@@ -1,0 +1,269 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "UC-CV-06 · Registrar vehículo asociado",
+    "locale": "es",
+    "quality_profile": "showcase",
+    "output": "analisis/diagramas/04-clientes-vehiculos-20261009/03-registrar-vehiculo/registrar-vehiculo.html",
+    "translations": {
+      "page.title": "{title} · Diagrama",
+      "legend.title": "Leyenda",
+      "legend.workflow.frontend": "Interfaz",
+      "legend.workflow.backend": "Validación",
+      "legend.workflow.security": "Permisos",
+      "legend.workflow.database": "Persistencia",
+      "legend.workflow.external": "Actor"
+    }
+  },
+  "lanes": [
+    {
+      "id": "interfaz",
+      "label": "Administrador o recepcionista"
+    },
+    {
+      "id": "validacion",
+      "label": "Reglas del vehículo"
+    },
+    {
+      "id": "datos",
+      "label": "Transacción MySQL"
+    },
+    {
+      "id": "errores",
+      "label": "Operaciones rechazadas",
+      "variant": "exception"
+    }
+  ],
+  "mainPath": [
+    "autorizar",
+    "cliente",
+    "capturar",
+    "normalizar",
+    "confirmar",
+    "buscar",
+    "guardar",
+    "auditar",
+    "responder"
+  ],
+  "nodes": [
+    {
+      "id": "autorizar",
+      "lane": "interfaz",
+      "col": 0,
+      "type": "security",
+      "label": "Validar sesión y rol",
+      "sublabel": "Admin o recepción activos",
+      "width": 174
+    },
+    {
+      "id": "cliente",
+      "lane": "interfaz",
+      "col": 1,
+      "type": "security",
+      "label": "Validar cliente activo",
+      "sublabel": "Seleccionado desde la tabla",
+      "width": 174
+    },
+    {
+      "id": "capturar",
+      "lane": "interfaz",
+      "col": 2,
+      "type": "frontend",
+      "label": "Asociar vehículo",
+      "sublabel": "Cliente fijo en modal",
+      "width": 174
+    },
+    {
+      "id": "normalizar",
+      "lane": "validacion",
+      "col": 2,
+      "type": "backend",
+      "label": "Normalizar y validar",
+      "sublabel": "VIN, placa y datos",
+      "width": 174
+    },
+    {
+      "id": "confirmar",
+      "lane": "interfaz",
+      "col": 3,
+      "type": "frontend",
+      "label": "Revisar y confirmar",
+      "sublabel": "Kilometraje opcional",
+      "width": 174
+    },
+    {
+      "id": "buscar",
+      "lane": "datos",
+      "col": 3,
+      "type": "database",
+      "label": "Buscar duplicados",
+      "sublabel": "VIN o placa antes del alta",
+      "width": 174
+    },
+    {
+      "id": "guardar",
+      "lane": "datos",
+      "col": 4,
+      "type": "database",
+      "label": "Guardar vehículo",
+      "sublabel": "FK cliente · estado activo",
+      "width": 174
+    },
+    {
+      "id": "auditar",
+      "lane": "datos",
+      "col": 5,
+      "type": "database",
+      "label": "Auditar asociación",
+      "sublabel": "Actor, cliente, auto y UTC",
+      "width": 174
+    },
+    {
+      "id": "responder",
+      "lane": "interfaz",
+      "col": 5,
+      "type": "frontend",
+      "label": "Vehículo asociado",
+      "sublabel": "Activo · consultar detalle",
+      "width": 174
+    },
+    {
+      "id": "denegar",
+      "lane": "errores",
+      "col": 0,
+      "type": "security",
+      "label": "Sin autorización",
+      "sublabel": "401 / 403",
+      "width": 174
+    },
+    {
+      "id": "inactivo",
+      "lane": "errores",
+      "col": 1,
+      "type": "backend",
+      "label": "Cliente no disponible",
+      "sublabel": "404 / 409 · no asociar",
+      "width": 174
+    },
+    {
+      "id": "invalido",
+      "lane": "errores",
+      "col": 2,
+      "type": "backend",
+      "label": "Corregir datos",
+      "sublabel": "422 · formato o campos",
+      "width": 174
+    },
+    {
+      "id": "duplicado",
+      "lane": "errores",
+      "col": 3,
+      "type": "backend",
+      "label": "Vehículo duplicado",
+      "sublabel": "409 · VIN o placa únicos",
+      "width": 174
+    }
+  ],
+  "edges": [
+    {
+      "id": "autorizar-cliente",
+      "from": "autorizar",
+      "to": "cliente"
+    },
+    {
+      "id": "cliente-capturar",
+      "from": "cliente",
+      "to": "capturar"
+    },
+    {
+      "id": "capturar-normalizar",
+      "from": "capturar",
+      "to": "normalizar"
+    },
+    {
+      "id": "normalizar-confirmar",
+      "from": "normalizar",
+      "to": "confirmar"
+    },
+    {
+      "id": "confirmar-buscar",
+      "from": "confirmar",
+      "to": "buscar"
+    },
+    {
+      "id": "buscar-guardar",
+      "from": "buscar",
+      "to": "guardar"
+    },
+    {
+      "id": "guardar-auditar",
+      "from": "guardar",
+      "to": "auditar"
+    },
+    {
+      "id": "auditar-responder",
+      "from": "auditar",
+      "to": "responder"
+    },
+    {
+      "id": "autorizar-denegar",
+      "from": "autorizar",
+      "to": "denegar",
+      "label": "Sin permiso",
+      "role": "error",
+      "variant": "security"
+    },
+    {
+      "id": "cliente-inactivo",
+      "from": "cliente",
+      "to": "inactivo",
+      "label": "Inactivo",
+      "role": "error",
+      "variant": "security"
+    },
+    {
+      "id": "normalizar-invalido",
+      "from": "normalizar",
+      "to": "invalido",
+      "label": "Inválido",
+      "role": "error",
+      "variant": "security"
+    },
+    {
+      "id": "buscar-duplicado",
+      "from": "buscar",
+      "to": "duplicado",
+      "label": "Ya existe",
+      "role": "error",
+      "variant": "security"
+    },
+    {
+      "id": "guardar-duplicado",
+      "from": "guardar",
+      "to": "duplicado",
+      "label": "Concurrente",
+      "role": "error",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Datos y formatos",
+      "items": [
+        "VIN de 17 caracteres sin I/O/Q; placa normalizada, ambos únicos.",
+        "Marca, modelo, año, versión y color obligatorios; kilometraje opcional."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Relación y alcance",
+      "items": [
+        "Cliente activo bloqueado; búsqueda previa y UNIQUE ante concurrencia.",
+        "Vehículo, relación y auditoría atómicos; ID interno automático.",
+        "Sin asignación de técnico. La baja del cliente conserva el vehículo."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:65101 - "GET /api/vehicles HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 413 Request Entity Too Large
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles/22 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles/22/photos/5 HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles/22/photos/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles/22/photos/9223372036854775807 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles?search=92395b1c77bf4809adf28915dd6b2869 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles?page=0 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65101 - "GET /api/vehicles?page_size=101 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65101 - "GET /api/vehicles?status=otro HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/22 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/22 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/22 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/22 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/22 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles/22 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/22 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles/22 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/22 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/22 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/22/owner HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/22/owner HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/customers/84/vehicles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/customers/85/vehicles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles/22 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "DELETE /api/vehicles/22 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "DELETE /api/vehicles/22 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "DELETE /api/vehicles/22 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "DELETE /api/vehicles/22 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles/22 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles/22/photos/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles?status=inactive&search=92395b1c77bf4809adf28915dd6b2869 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles?status=active&search=92395b1c77bf4809adf28915dd6b2869 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "DELETE /api/vehicles/22 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/22 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles/24 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/24 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "GET /api/vehicles/24 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "POST /api/vehicles/customer/84 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/23 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65147 - "PUT /api/vehicles/23 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "DELETE /api/customers/85 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65101 - "PUT /api/vehicles/23/owner HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65164 - "POST /api/customers/preview HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:65165 - "POST /api/customers/preview HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65166 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65168 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65171 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65173 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65175 - "POST /api/customers HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65177 - "POST /api/customers HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65179 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65181 - "POST /api/customers HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65183 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65185 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65187 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65189 - "POST /api/customers/95/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65191 - "POST /api/customers/95/preview HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65192 - "DELETE /api/customers/95 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65193 - "GET /api/customers HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65194 - "PUT /api/customers/95 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65195 - "DELETE /api/customers/95 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65197 - "GET /api/customers?search=6cf2f668c5294eb9b3871a9f0c96a0de HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65199 - "GET /api/customers/95 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65201 - "POST /api/customers/95/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65203 - "POST /api/customers/95/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65205 - "PUT /api/customers/95 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65207 - "PUT /api/customers/95 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65209 - "PUT /api/customers/95 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65211 - "PUT /api/customers/95 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65213 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65215 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65217 - "POST /api/customers/95/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65219 - "POST /api/customers/95/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65221 - "PUT /api/customers/95 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65223 - "POST /api/customers/95/vehicles HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65224 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65226 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65228 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65230 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65232 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65234 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65236 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65238 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65240 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65242 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65244 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65246 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65248 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65250 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65252 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65254 - "POST /api/customers/95/vehicles HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65256 - "POST /api/customers/95/vehicles HTTP/1.1" 201 Created
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65258 - "POST /api/customers/95/vehicles HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65260 - "POST /api/customers/95/vehicles HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65262 - "GET /api/customers/95/vehicles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65264 - "DELETE /api/customers/95 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65266 - "DELETE /api/customers/95 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65268 - "DELETE /api/customers/95 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65270 - "POST /api/customers/95/vehicles HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65272 - "GET /api/customers/95 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65274 - "DELETE /api/customers/95 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65276 - "DELETE /api/customers/96 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65278 - "GET /api/customers?search=6cf2f668c5294eb9b3871a9f0c96a0de HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65103 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65280 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65282 - "POST /api/customers/preview HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:52001 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50998 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64839 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64839 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64839 - "OPTIONS /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59343 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64839 - "GET /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64839 - "OPTIONS /api/vehicles?page=1&page_size=10&search=&status=all HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59343 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64839 - "GET /api/vehicles?page=1&page_size=10&search=&status=all HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59343 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64839 - "GET /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "OPTIONS /api/customers?page=1&page_size=10&search=5512152114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55096 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/customers?page=1&page_size=10&search=5512152114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54017 - "OPTIONS /api/customers?page=1&page_size=10&search=pepe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54019 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54017 - "GET /api/customers?page=1&page_size=10&search=pepe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55345 - "OPTIONS /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55345 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55345 - "OPTIONS /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64128 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55345 - "GET /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62518 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62520 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62518 - "GET /api/customers?page=1&page_size=10&search= HTTP/1.1" 200 OK

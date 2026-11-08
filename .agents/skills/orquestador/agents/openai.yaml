@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orquestador de Taller Mecánico"
+  short_description: "Coordina tareas y verifica referencias del proyecto"
+  default_prompt: "$orquestador revisa el catálogo Markdown del proyecto."

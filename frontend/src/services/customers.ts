@@ -1,17 +1,23 @@
 import { ApiError, getToken } from '@/services/auth'
 
 export interface CustomerInput {
+  workshopId: number | null
   fullName: string
   address: { street: string; number: string; neighborhood: string; municipality: string; state: string }
   contacts: { email: string | null; mobile: string | null; alternative: string | null }
 }
-export interface Customer extends CustomerInput { id: number; status: string; version: number }
+export interface Customer extends CustomerInput { id: number; status: string; version: number; workshopName: string | null }
 export interface CustomerPage { items: Customer[]; total: number; page: number; pageSize: number }
 export interface PreviewResult { customer: Customer; matches: Customer[]; previewToken: string | null }
 export interface SavedCustomer {
   customer: Customer
   auditEntry: { id: number; actorId: number; actorUsername: string; customerId: number; occurredAt: string }
 }
+export interface VehicleInput {
+  vin: string; plate: string; make: string; model: string; year: number; version: string; color: string; mileage: number | null
+}
+export interface Vehicle extends VehicleInput { id: number; customerId: number; status: string; recordVersion: number }
+export interface SavedVehicle { vehicle: Vehicle; auditEntry: { actorUsername: string; occurredAt: string } }
 
 async function request<T>(path: string, method: string, body?: unknown): Promise<T> {
   let response: Response
@@ -41,3 +47,6 @@ export const updateCustomer = (id: number, customer: CustomerInput, version: num
   request(`/${id}`, 'PUT', { customer, version, previewToken, confirmed: true })
 export const deleteCustomer = (id: number, version: number): Promise<SavedCustomer> =>
   request(`/${id}`, 'DELETE', { version, confirmed: true })
+export const listVehicles = (customerId: number): Promise<Vehicle[]> => request(`/${customerId}/vehicles`, 'GET')
+export const registerVehicle = (customerId: number, vehicle: VehicleInput): Promise<SavedVehicle> =>
+  request(`/${customerId}/vehicles`, 'POST', { vehicle, confirmed: true })

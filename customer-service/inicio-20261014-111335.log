@@ -1,0 +1,72 @@
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://127.0.0.1:8003
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Taller Mecanico\customer-service
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/health - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /health'
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type '<>f__AnonymousType0`2' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /health'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/health - 200 - application/json;+charset=utf-8 595.0214ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search= - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 154.5352ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 171.6276ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'CustomerPage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search= - 200 - application/json;+charset=utf-8 372.9165ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers/57 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 21.3006ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 21.7037ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'Customer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers/57 - 200 - application/json;+charset=utf-8 43.0012ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/health - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /health'
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type '<>f__AnonymousType0`2' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /health'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/health - 200 - application/json;+charset=utf-8 0.3616ms

@@ -1,0 +1,246 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "UC-CV-01 · Cliente asociado a un taller",
+    "locale": "es",
+    "quality_profile": "showcase",
+    "output": "analisis/diagramas/04-clientes-vehiculos-20261009/01-registrar-cliente/registrar-cliente.html",
+    "translations": {
+      "page.title": "{title} · Diagrama",
+      "legend.title": "Leyenda",
+      "legend.workflow.frontend": "Interfaz",
+      "legend.workflow.backend": "Validación",
+      "legend.workflow.security": "Permisos",
+      "legend.workflow.database": "Persistencia",
+      "legend.workflow.external": "Actor"
+    }
+  },
+  "lanes": [
+    {
+      "id": "interfaz",
+      "label": "Administrador o recepcionista"
+    },
+    {
+      "id": "validacion",
+      "label": "Revisión y normalización"
+    },
+    {
+      "id": "datos",
+      "label": "Transacción y auditoría"
+    },
+    {
+      "id": "errores",
+      "label": "Excepciones",
+      "variant": "exception"
+    }
+  ],
+  "mainPath": [
+    "autorizar",
+    "capturar",
+    "normalizar",
+    "duplicados",
+    "confirmar",
+    "guardar",
+    "auditar",
+    "responder"
+  ],
+  "nodes": [
+    {
+      "id": "autorizar",
+      "lane": "interfaz",
+      "col": 0,
+      "type": "security",
+      "label": "Validar sesión y rol",
+      "sublabel": "Admin o recepcionista activo",
+      "width": 185
+    },
+    {
+      "id": "capturar",
+      "lane": "interfaz",
+      "col": 1,
+      "type": "frontend",
+      "label": "Registrar cliente",
+      "sublabel": "Seleccionar taller activo",
+      "width": 185
+    },
+    {
+      "id": "normalizar",
+      "lane": "validacion",
+      "col": 1,
+      "type": "backend",
+      "label": "Normalizar y validar",
+      "sublabel": "Nombre, dirección y contacto",
+      "width": 185
+    },
+    {
+      "id": "duplicados",
+      "lane": "validacion",
+      "col": 2,
+      "type": "security",
+      "label": "Detectar duplicados",
+      "sublabel": "UC-CV-05 · incluye bajas",
+      "width": 185
+    },
+    {
+      "id": "confirmar",
+      "lane": "interfaz",
+      "col": 3,
+      "type": "frontend",
+      "label": "Revisar y confirmar",
+      "sublabel": "Token ligado a datos y actor",
+      "width": 185
+    },
+    {
+      "id": "guardar",
+      "lane": "datos",
+      "col": 3,
+      "type": "database",
+      "label": "Guardar relación",
+      "sublabel": "Bloquear taller · activo",
+      "width": 185
+    },
+    {
+      "id": "auditar",
+      "lane": "datos",
+      "col": 4,
+      "type": "database",
+      "label": "Registrar auditoría",
+      "sublabel": "Actor, cliente y hora UTC",
+      "width": 185
+    },
+    {
+      "id": "responder",
+      "lane": "interfaz",
+      "col": 5,
+      "type": "frontend",
+      "label": "Cliente registrado",
+      "sublabel": "Activo y asociado al taller",
+      "width": 185
+    },
+    {
+      "id": "denegar",
+      "lane": "errores",
+      "col": 0,
+      "type": "security",
+      "label": "Acceso denegado",
+      "sublabel": "401 / 403",
+      "width": 185
+    },
+    {
+      "id": "invalido",
+      "lane": "errores",
+      "col": 1,
+      "type": "backend",
+      "label": "Corregir captura",
+      "sublabel": "422 · taller o datos",
+      "width": 185
+    },
+    {
+      "id": "repetido",
+      "lane": "errores",
+      "col": 2,
+      "type": "backend",
+      "label": "Cliente coincidente",
+      "sublabel": "Bloquear confirmación",
+      "width": 185
+    },
+    {
+      "id": "conflicto",
+      "lane": "errores",
+      "col": 3,
+      "type": "backend",
+      "label": "Rechazar inserción",
+      "sublabel": "409 · unicidad concurrente",
+      "width": 185
+    }
+  ],
+  "edges": [
+    {
+      "id": "autorizar-capturar",
+      "from": "autorizar",
+      "to": "capturar"
+    },
+    {
+      "id": "capturar-normalizar",
+      "from": "capturar",
+      "to": "normalizar"
+    },
+    {
+      "id": "normalizar-duplicados",
+      "from": "normalizar",
+      "to": "duplicados"
+    },
+    {
+      "id": "duplicados-confirmar",
+      "from": "duplicados",
+      "to": "confirmar",
+      "label": "Único"
+    },
+    {
+      "id": "confirmar-guardar",
+      "from": "confirmar",
+      "to": "guardar"
+    },
+    {
+      "id": "guardar-auditar",
+      "from": "guardar",
+      "to": "auditar"
+    },
+    {
+      "id": "auditar-responder",
+      "from": "auditar",
+      "to": "responder"
+    },
+    {
+      "id": "autorizar-denegar",
+      "from": "autorizar",
+      "to": "denegar",
+      "label": "Sin permiso",
+      "role": "error",
+      "variant": "security"
+    },
+    {
+      "id": "normalizar-invalido",
+      "from": "normalizar",
+      "to": "invalido",
+      "label": "Inválido",
+      "role": "error",
+      "variant": "security"
+    },
+    {
+      "id": "duplicados-repetido",
+      "from": "duplicados",
+      "to": "repetido",
+      "label": "Coincide",
+      "role": "error",
+      "variant": "security"
+    },
+    {
+      "id": "guardar-conflicto",
+      "from": "guardar",
+      "to": "conflicto",
+      "label": "Duplicado",
+      "role": "error",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Integridad",
+      "items": [
+        "Cliente, contactos y auditoría comparten una transacción.",
+        "Taller activo obligatorio en nuevas altas; su relación es inmutable."
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Patrones y duplicados",
+      "items": [
+        "Builder construye; Strategy normaliza contactos; Bridge desacopla MySQL.",
+        "Correo, teléfonos e identidad únicos; se conservan los datos históricos."
+      ]
+    }
+  ]
+}

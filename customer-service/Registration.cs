@@ -7,6 +7,7 @@ namespace Taller.Customers;
 // Bridge implementor: persistencia reemplazable, sin SQL en el caso de uso.
 public interface ICustomerStore
 {
+    Task<WorkshopInfo?> GetWorkshop(int id, CancellationToken ct);
     Task<IReadOnlyList<Customer>> FindMatches(Customer candidate, CancellationToken ct);
     Task<SavedCustomer> SaveAtomically(Customer customer, Actor actor, CancellationToken ct);
 }
@@ -58,16 +59,21 @@ public sealed class PreviewSigner
 public sealed class RegisterCustomer(ICustomerStore storage, ContactNormalizer normalizer, PreviewSigner signer)
     : CustomerRegistry(storage)
 {
-    private Customer Build(CustomerInput? input)
+    private async Task<Customer> Build(CustomerInput? input, CancellationToken ct)
     {
         if (input is null) throw new UseCaseException(422, "Los datos del cliente son obligatorios.");
-        return new CustomerBuilder(normalizer).WithName(input.FullName).WithAddress(input.Address).WithContacts(input.Contacts).Build();
+        var customer = new CustomerBuilder(normalizer).WithName(input.FullName).WithAddress(input.Address)
+            .WithContacts(input.Contacts).WithWorkshop(input.WorkshopId).Build();
+        var workshop = await Storage.GetWorkshop(customer.WorkshopId!.Value, ct);
+        if (workshop is null || !workshop.Active)
+            throw new UseCaseException(422, "El taller seleccionado no existe o no está activo.");
+        return customer with {WorkshopName = workshop.Name};
     }
 
     public override async Task<PreviewResult> Preview(CustomerInput input, Actor actor, CancellationToken ct)
     {
         actor.Authorize();
-        var customer = Build(input);
+        var customer = await Build(input, ct);
         var matches = await Storage.FindMatches(customer, ct);
         return new PreviewResult(customer, matches, matches.Count == 0 ? signer.Issue(customer, actor) : null);
     }
@@ -76,7 +82,7 @@ public sealed class RegisterCustomer(ICustomerStore storage, ContactNormalizer n
     {
         actor.Authorize();
         if (!input.Confirmed) throw new UseCaseException(422, "Confirma los datos antes de registrar al cliente.");
-        var customer = Build(input.Customer);
+        var customer = await Build(input.Customer, ct);
         signer.Validate(input.PreviewToken, customer, actor);
         if ((await Storage.FindMatches(customer, ct)).Count > 0)
             throw new UseCaseException(409, "Ya existe un cliente con ese contacto o con el mismo nombre y dirección. No se creó otro registro.");

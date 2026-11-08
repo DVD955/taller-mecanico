@@ -6,15 +6,21 @@ import CustomerManagement from '@/components/CustomerManagement.vue'
 import RoleManagement from '@/components/RoleManagement.vue'
 import RoleCreation from '@/components/RoleCreation.vue'
 import WorkshopManagement from '@/components/WorkshopManagement.vue'
+import VehicleManagement from '@/components/VehicleManagement.vue'
 
 const props = defineProps<{ user: User }>()
 const emit = defineEmits<{ logout: []; updated: [user: User] }>()
 const canManage = computed(() => ['ADMINISTRADOR', 'RECEPCIONISTA'].includes(props.user.role))
-type WorkspaceView = 'customers' | 'workshops' | 'create-role' | 'roles' | 'profile'
-const view = ref<WorkspaceView>(canManage.value ? 'customers' : 'profile')
+const canSeeCustomers = computed(() => ['ADMINISTRADOR', 'RECEPCIONISTA', 'SECRETARIA'].includes(props.user.role))
+type WorkspaceView = 'customers' | 'vehicles' | 'workshops' | 'create-role' | 'roles' | 'profile'
+const view = ref<WorkspaceView>(canSeeCustomers.value ? 'customers' : 'profile')
+const vehicleFocus = ref<number | undefined>()
+function openVehicle(id: number): void { vehicleFocus.value = id; view.value = 'vehicles' }
 const modules = computed(() => {
   const items: { value: WorkspaceView; title: string; icon: string }[] = []
-  if (canManage.value) items.push({ value: 'customers', title: 'Administración de clientes', icon: 'mdi-account-group-outline' }, { value: 'workshops', title: 'Administración de talleres', icon: 'mdi-garage-variant' })
+  if (canSeeCustomers.value) items.push({ value: 'customers', title: 'Administración de clientes', icon: 'mdi-account-group-outline' })
+  if (canSeeCustomers.value) items.push({ value: 'vehicles', title: 'Administración de vehículos', icon: 'mdi-car-multiple' })
+  if (canManage.value) items.push({ value: 'workshops', title: 'Administración de talleres', icon: 'mdi-garage-variant' })
   if (props.user.role === 'ADMINISTRADOR') items.push({ value: 'create-role', title: 'Crear rol', icon: 'mdi-shield-plus-outline' }, { value: 'roles', title: 'Administrar roles', icon: 'mdi-shield-account-outline' })
   items.push({ value: 'profile', title: 'Mi cuenta', icon: 'mdi-account-circle-outline' })
   return items
@@ -63,7 +69,8 @@ async function saveEmail(): Promise<void> {
       <v-alert v-if="user.role === 'INVITADO'" color="secondary" variant="tonal" class="mt-6">Tu cuenta es Invitado. El administrador puede asignarte un rol de personal.</v-alert>
       <nav class="workspace-navigation" aria-label="Módulos del sistema"><div class="dashboard-tabs" role="tablist" aria-label="Seleccionar módulo"><v-btn v-for="item in modules" :id="`module-${item.value}`" :key="item.value" role="tab" class="workspace-tab" :class="{ 'workspace-tab-selected': view === item.value }" :aria-selected="view === item.value" aria-controls="workspace-content" :tabindex="view === item.value ? 0 : -1" variant="text" @click="view = item.value" @keydown="navigate"><v-icon :icon="item.icon" start /><span>{{ item.title }}</span></v-btn></div></nav>
       <div id="workspace-content" role="tabpanel" :aria-labelledby="`module-${view}`">
-      <CustomerManagement v-if="canManage && view === 'customers'" />
+      <CustomerManagement v-if="canSeeCustomers && view === 'customers'" :role="user.role" @vehicle="openVehicle" />
+      <VehicleManagement v-if="canSeeCustomers && view === 'vehicles'" :role="user.role" :initial-vehicle-id="vehicleFocus" />
       <WorkshopManagement v-if="canManage && view === 'workshops'" />
       <RoleCreation v-if="user.role === 'ADMINISTRADOR' && view === 'create-role'" @manage="view = 'roles'" />
       <RoleManagement v-if="user.role === 'ADMINISTRADOR' && view === 'roles'" />

@@ -1,5 +1,7 @@
 # Análisis: cuentas, roles y talleres
 
+La entrega actual de clientes y vehículos está en [CLIENTES-VEHICULOS.md](CLIENTES-VEHICULOS.md), con permisos por operación, asociación inmutable a talleres y baja lógica. La ampliación del video del 22 de octubre está en [Administración de vehículos UC-CV-07..16](fase-administrar-vehiculos.md): consulta, edición, baja lógica, fotografías de hasta 15 MB y cambio de propietario auditado. Las revisiones históricas debajo no representan los permisos nuevos.
+
 Se limita a los cambios solicitados: registro público como Invitado, administración de roles y asignación exclusiva del administrador, catálogo de estatus y bajas lógicas, alta/administración de talleres, dirección postal en ambos sentidos y conservación del módulo de clientes.
 
 Estado revisado el 9 de octubre: [cuadro de procesos realizados y revisión de diagramas](CUADRO-PROCESOS.md). Incluye pendientes de verificación del correo y el estado actual de los servicios; no modifica los informes históricos de ejecución.

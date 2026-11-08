@@ -1,0 +1,24 @@
+[1.2–8.2] debes de poder consultar el vehículo entonces tienes que poder consultar el vehículo y así como
+[8.2–15.1] tienes una pantalla de administración de clientes pudiera hacer que tengas una pantalla de administración
+[15.1–25.2] de vehículo de igual forma puedes desactivar o eliminar un vehículo pero recuerda que el
+[25.2–33.6] eliminado no es un eliminado físico, ¿vale? Debes de poder identificar si el vehículo está
+[33.6–41.3] duplicado y en el proceso del registro del vehículo debes de poder subir la foto o las
+[41.3–51.9] fotos del vehículo, pueden ser varias, ¿vale? Y finalmente el vehículo y el cliente deben de
+[51.9–58.7] estar asociados. ¿Quién, quién procede o quién captura o quién asocia al cliente
+[58.7–64.9] con el vehículo, la recepcionista y el administrador? ¿Dudas hasta aquí?
+[64.9–71.9] ¿Podría repetirlo de la foto profe? Sí, para el vehículo puede subir una foto
+[71.9–76.8] del vehículo dentro del registro, cuando tú registres el vehículo puede
+[76.8–85.5] subir una foto o o varias fotos del vehículo sale con un peso máximo de 15 megabytes cada
+[85.5–100.2] foto cuando esté registrando el vehículo por favor listo gracias profe vale muy bien entonces
+[100.2–109.0] vamos a cerrar esta parte eso es lo que voy a recibir y voy a revisar la próxima la próxima
+[109.0–118.9] clase sale lo primero que voy a pedir es este avance si no lo tienes pues entonces pues ya
+[118.9–124.8] prácticamente estarás debiendo en la segunda unidad y el día de hoy quien tuvo falta fue
+[124.8–129.8] y el por haberse haberse conectado y haberse salido no haber permanecido en toda la clase
+[129.8–137.4] los demás nos vemos el día que día es jefe el día jueves porque comenta que el día
+[137.4–143.4] miércoles no iba a poder estar con nosotros. Sí, porque me voy a una conferencia, ¿verdad?
+[143.4–150.9] Sí, profe. Tienen hasta el día jueves para terminar todos los solicitados. Vale.
+[150.9–157.9] Gracias, profe. Profe, igual el lunes en la semana podemos consultarlo por alguna duda,
+[157.9–175.9] ¿verdad? Sale, pues nos vemos en la siguiente clase. Cuídense. Gracias, profe.
+[175.9–177.9] ¡Adiós!
+[177.9–179.9] ¡Adiós!
+[179.9–186.1] ¡Adiós!

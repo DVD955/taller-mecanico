@@ -1,0 +1,2704 @@
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://127.0.0.1:8003
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Taller Mecanico\customer-service
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/health - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /health'
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type '<>f__AnonymousType0`2' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /health'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/health - 200 - application/json;+charset=utf-8 225.2925ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 321
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 79.2593ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 90.6771ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 422 - application/json;+charset=utf-8 170.1213ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 319
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 13.8309ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 13.9652ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 200 - application/json;+charset=utf-8 63.3510ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers - application/json 545
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.9139ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.0826ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers - 201 - application/json;+charset=utf-8 49.3042ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 319
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.0142ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.0725ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 200 - application/json;+charset=utf-8 9.5225ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers - application/json 545
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.4529ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.5739ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers - 201 - application/json;+charset=utf-8 12.5363ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 319
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 15.1776ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 15.3682ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 200 - application/json;+charset=utf-8 24.0440ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers - application/json 545
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.3899ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.4577ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers - 201 - application/json;+charset=utf-8 13.8927ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 319
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.755ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.8194ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 200 - application/json;+charset=utf-8 8.4836ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers - application/json 545
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.1333ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.1871ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers - 201 - application/json;+charset=utf-8 12.6991ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/82/vehicles - application/json 1266
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.2494ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.397ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/82/vehicles - 201 - application/json;+charset=utf-8 69.8781ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.9599ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.0456ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehicleDetails' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19 - 200 - application/json;+charset=utf-8 23.5549ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19/photos/1 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}/photos/{photoId:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 11.2799ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 11.4169ms - 200
+info: Microsoft.AspNetCore.Http.Result.FileContentResult[5]
+      Sending file with download name ''.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}/photos/{photoId:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19/photos/1 - 200 76 image/png 31.9454ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19/photos/9223372036854775807 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}/photos/{photoId:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.4164ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.4992ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}/photos/{photoId:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19/photos/9223372036854775807 - 404 - application/json;+charset=utf-8 10.6248ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=6b403087b42345778afc5b1aab041c69&status=all - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 9.329ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 9.4623ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehiclePage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=6b403087b42345778afc5b1aab041c69&status=all - 200 - application/json;+charset=utf-8 31.3581ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/82/vehicles - application/json 229
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.2242ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.2832ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/82/vehicles - 409 - application/json;+charset=utf-8 13.0465ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/82/vehicles - application/json 229
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.8891ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.954ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/82/vehicles - 409 - application/json;+charset=utf-8 9.2578ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19 - application/json 240
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.986ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.1325ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19 - 422 - application/json;+charset=utf-8 12.1643ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19 - application/json 365
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.0712ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.1292ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19 - 200 - application/json;+charset=utf-8 25.5913ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.2597ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.3202ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehicleDetails' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19 - 200 - application/json;+charset=utf-8 8.7819ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19 - application/json 249
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 9.5746ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 9.6241ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19 - 409 - application/json;+charset=utf-8 14.7929ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/82/vehicles - application/json 229
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.7307ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.7841ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/82/vehicles - 201 - application/json;+charset=utf-8 11.8271ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19 - application/json 249
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.0452ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.1197ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19 - 409 - application/json;+charset=utf-8 12.7242ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19/owner - application/json 58
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}/owner'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.3974ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.482ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}/owner'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19/owner - 422 - application/json;+charset=utf-8 9.9831ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19/owner - application/json 57
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}/owner'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.6479ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.6902ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}/owner'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19/owner - 200 - application/json;+charset=utf-8 21.5531ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers/82/vehicles - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.3491ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.4197ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'List`1' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers/82/vehicles - 200 - application/json;+charset=utf-8 16.7640ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers/83/vehicles - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.008ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.0713ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'List`1' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers/83/vehicles - 200 - application/json;+charset=utf-8 8.9096ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.3894ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.4613ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehicleDetails' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19 - 200 - application/json;+charset=utf-8 10.3481ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/19 - application/json 40
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.5098ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.6051ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/19 - 422 - application/json;+charset=utf-8 13.7363ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/19 - application/json 39
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 10.6911ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 10.7701ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/19 - 409 - application/json;+charset=utf-8 15.8499ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/19 - application/json 39
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.6252ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.7274ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/19 - 200 - application/json;+charset=utf-8 15.9908ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.6181ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.6886ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehicleDetails' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19 - 200 - application/json;+charset=utf-8 11.3779ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19/photos/1 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}/photos/{photoId:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.0664ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.1182ms - 200
+info: Microsoft.AspNetCore.Http.Result.FileContentResult[5]
+      Sending file with download name ''.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}/photos/{photoId:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/19/photos/1 - 200 76 image/png 8.7325ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=6b403087b42345778afc5b1aab041c69&status=inactive - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.4254ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.4898ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehiclePage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=6b403087b42345778afc5b1aab041c69&status=inactive - 200 - application/json;+charset=utf-8 11.5897ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=6b403087b42345778afc5b1aab041c69&status=active - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.4286ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.5135ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehiclePage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=6b403087b42345778afc5b1aab041c69&status=active - 200 - application/json;+charset=utf-8 10.9849ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/19 - application/json 39
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.38ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.4482ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/19 - 409 - application/json;+charset=utf-8 10.9914ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19 - application/json 249
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.8297ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.8936ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/19 - 409 - application/json;+charset=utf-8 16.1263ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/82/vehicles - application/json 229
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.3422ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.4003ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/82/vehicles - 409 - application/json;+charset=utf-8 11.3134ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/82/vehicles - application/json 20000272
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.7345ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 9.1404ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/82/vehicles - 201 - application/json;+charset=utf-8 973.4804ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/21 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.1772ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.227ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehicleDetails' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/21 - 200 - application/json;+charset=utf-8 10.8098ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/20 - application/json 251
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/20 - application/json 249
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 60.3554ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 60.4645ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 65.41ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 65.4591ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/20 - 200 - application/json;+charset=utf-8 67.6497ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/20 - 409 - application/json;+charset=utf-8 68.7191ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/customers/83 - application/json 33
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 4.5359ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 4.5937ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/customers/83 - 200 - application/json;+charset=utf-8 13.2444ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/20/owner - application/json 57
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}/owner'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 4.4888ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 4.5263ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}/owner'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/20/owner - 409 - application/json;+charset=utf-8 7.6130ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 319
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 65.4209ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 65.8268ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 200 - application/json;+charset=utf-8 73.8555ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers - application/json 545
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.4654ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.5658ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers - 201 - application/json;+charset=utf-8 13.6432ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 319
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.9725ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.0299ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 200 - application/json;+charset=utf-8 9.3874ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers - application/json 545
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.507ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.5672ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers - 201 - application/json;+charset=utf-8 14.5637ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/84/vehicles - application/json 1266
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.6545ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.708ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/84/vehicles - 201 - application/json;+charset=utf-8 13.7133ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.311ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.3616ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehicleDetails' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22 - 200 - application/json;+charset=utf-8 10.4372ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22/photos/5 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}/photos/{photoId:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.1917ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.2432ms - 200
+info: Microsoft.AspNetCore.Http.Result.FileContentResult[5]
+      Sending file with download name ''.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}/photos/{photoId:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22/photos/5 - 200 76 image/png 8.3882ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22/photos/9223372036854775807 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}/photos/{photoId:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 12.3875ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 12.4636ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}/photos/{photoId:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22/photos/9223372036854775807 - 404 - application/json;+charset=utf-8 14.5664ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=92395b1c77bf4809adf28915dd6b2869&status=all - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 13.4259ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 13.577ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehiclePage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=92395b1c77bf4809adf28915dd6b2869&status=all - 200 - application/json;+charset=utf-8 17.7499ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/84/vehicles - application/json 229
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.0776ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.1296ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/84/vehicles - 409 - application/json;+charset=utf-8 8.7434ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/84/vehicles - application/json 229
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.7454ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.808ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/84/vehicles - 409 - application/json;+charset=utf-8 11.6280ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22 - application/json 240
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 11.396ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 11.5151ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22 - 422 - application/json;+charset=utf-8 12.4813ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22 - application/json 365
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.4304ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.4816ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22 - 200 - application/json;+charset=utf-8 11.7319ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.3416ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.3839ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehicleDetails' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22 - 200 - application/json;+charset=utf-8 6.9237ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22 - application/json 1438
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.87ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.9257ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22 - 422 - application/json;+charset=utf-8 12.2290ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.2385ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.2809ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehicleDetails' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22 - 200 - application/json;+charset=utf-8 7.9338ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22 - application/json 249
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.8937ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.9379ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22 - 409 - application/json;+charset=utf-8 9.6604ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/84/vehicles - application/json 229
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 10.678ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 10.7199ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/84/vehicles - 201 - application/json;+charset=utf-8 16.2733ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22 - application/json 249
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 4.0646ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 4.1144ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22 - 409 - application/json;+charset=utf-8 6.7018ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22/owner - application/json 58
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}/owner'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.3235ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.3654ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}/owner'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22/owner - 422 - application/json;+charset=utf-8 6.8287ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22/owner - application/json 57
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}/owner'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 14.3397ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 14.4319ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}/owner'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22/owner - 200 - application/json;+charset=utf-8 21.3494ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers/84/vehicles - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.8027ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.8498ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'List`1' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers/84/vehicles - 200 - application/json;+charset=utf-8 8.6298ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers/85/vehicles - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.8334ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.8714ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'List`1' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers/85/vehicles - 200 - application/json;+charset=utf-8 8.5232ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.6004ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.6507ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehicleDetails' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22 - 200 - application/json;+charset=utf-8 8.9743ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/22 - application/json 40
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.6725ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.7048ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/22 - 422 - application/json;+charset=utf-8 6.0392ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/22 - application/json 39
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 4.0849ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 4.1548ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/22 - 409 - application/json;+charset=utf-8 6.4343ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/22 - application/json 39
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.1327ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.1734ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/22 - 200 - application/json;+charset=utf-8 9.7592ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.14ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.1785ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehicleDetails' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22 - 200 - application/json;+charset=utf-8 7.7965ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22/photos/5 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}/photos/{photoId:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.4262ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.4845ms - 200
+info: Microsoft.AspNetCore.Http.Result.FileContentResult[5]
+      Sending file with download name ''.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}/photos/{photoId:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/22/photos/5 - 200 76 image/png 7.6985ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=92395b1c77bf4809adf28915dd6b2869&status=inactive - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.8939ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.9383ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehiclePage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=92395b1c77bf4809adf28915dd6b2869&status=inactive - 200 - application/json;+charset=utf-8 9.3844ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=92395b1c77bf4809adf28915dd6b2869&status=active - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.2304ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.2974ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehiclePage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=92395b1c77bf4809adf28915dd6b2869&status=active - 200 - application/json;+charset=utf-8 8.0295ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/22 - application/json 39
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.6648ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.702ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/vehicles/22 - 409 - application/json;+charset=utf-8 9.8655ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22 - application/json 249
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.1855ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.212ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/22 - 409 - application/json;+charset=utf-8 11.0407ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/84/vehicles - application/json 229
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.167ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.2044ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/84/vehicles - 409 - application/json;+charset=utf-8 9.2557ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/84/vehicles - application/json 20000272
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 9.6153ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 9.6765ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/84/vehicles - 201 - application/json;+charset=utf-8 853.3839ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/24 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.5116ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.5546ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehicleDetails' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/24 - 200 - application/json;+charset=utf-8 10.3719ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/24 - application/json 1588
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.9153ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.9421ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/24 - 200 - application/json;+charset=utf-8 17.4830ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles/24 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.959ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.0138ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehicleDetails' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles/24 - 200 - application/json;+charset=utf-8 10.8208ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/23 - application/json 251
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 28.1831ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 28.2329ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/23 - 200 - application/json;+charset=utf-8 35.7936ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/23 - application/json 249
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.0501ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.0882ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/23 - 409 - application/json;+charset=utf-8 10.9662ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/customers/85 - application/json 33
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.3958ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.4359ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/customers/85 - 200 - application/json;+charset=utf-8 13.2562ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/23/owner - application/json 57
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /vehicles/{id:long}/owner'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.4188ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.5376ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /vehicles/{id:long}/owner'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/vehicles/23/owner - 409 - application/json;+charset=utf-8 10.6630ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 282
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.7797ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.8084ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 422 - application/json;+charset=utf-8 6.3793ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 275
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.9298ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.9574ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 422 - application/json;+charset=utf-8 8.4231ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 317
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.4549ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.4834ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 200 - application/json;+charset=utf-8 7.4825ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 317
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.0753ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.1063ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 200 - application/json;+charset=utf-8 6.8924ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers - application/json 544
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 4.8614ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 4.8925ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers - 422 - application/json;+charset=utf-8 5.6843ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers - application/json 535
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.3317ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.3612ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers - 422 - application/json;+charset=utf-8 6.6426ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers - application/json 543
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.4387ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.4773ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers - 201 - application/json;+charset=utf-8 11.4317ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers - application/json 543
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.3312ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.3695ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers - 409 - application/json;+charset=utf-8 9.0918ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 303
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.1356ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.168ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 200 - application/json;+charset=utf-8 7.7836ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 319
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.9284ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.9728ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 422 - application/json;+charset=utf-8 7.8161ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 325
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.6239ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.649ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 422 - application/json;+charset=utf-8 7.7431ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/preview - application/json 353
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 50.6341ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 50.6776ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/preview - 422 - application/json;+charset=utf-8 57.9319ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers/95 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 4.7707ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 4.7988ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers/95 - 403 - application/json;+charset=utf-8 5.6723ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search=6cf2f668c5294eb9b3871a9f0c96a0de - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.1737ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.2397ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'CustomerPage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search=6cf2f668c5294eb9b3871a9f0c96a0de - 200 - application/json;+charset=utf-8 14.1304ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers/95 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.2174ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.2476ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'Customer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers/95 - 200 - application/json;+charset=utf-8 6.1232ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/preview - application/json 345
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.7926ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.8231ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/preview - 200 - application/json;+charset=utf-8 7.7602ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/preview - application/json 339
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.4016ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.4386ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/preview - 200 - application/json;+charset=utf-8 8.6393ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/customers/95 - application/json 552
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 4.4781ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 4.5333ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/customers/95 - 422 - application/json;+charset=utf-8 8.2365ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/customers/95 - application/json 557
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.8055ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.8529ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/customers/95 - 422 - application/json;+charset=utf-8 10.6955ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/customers/95 - application/json 551
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.2546ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.2812ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/customers/95 - 200 - application/json;+charset=utf-8 17.9567ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/customers/95 - application/json 551
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 4.4755ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 4.4998ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/customers/95 - 409 - application/json;+charset=utf-8 5.3265ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 313
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.4538ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.4782ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 200 - application/json;+charset=utf-8 6.9592ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers - application/json 539
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.6203ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.6557ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers - 201 - application/json;+charset=utf-8 12.3615ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/preview - application/json 345
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.0982ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.1279ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/preview - 200 - application/json;+charset=utf-8 6.9857ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/preview - application/json 339
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.0177ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.0563ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/preview - 200 - application/json;+charset=utf-8 6.8807ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 PUT http://127.0.0.1:8003/customers/95 - application/json 551
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: PUT /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.3078ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.3374ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: PUT /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 PUT http://127.0.0.1:8003/customers/95 - 200 - application/json;+charset=utf-8 11.8504ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 181
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.2425ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.2867ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 8.4918ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 181
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.5969ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.6313ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 7.8197ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 187
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.855ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.8896ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 10.5602ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 187
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.3094ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.3369ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 6.2468ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 187
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.4973ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.536ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 6.6388ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 187
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.5132ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.5477ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 10.2531ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 186
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 12.7579ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 12.8179ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 15.1982ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 186
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 10.2109ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 10.289ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 12.1148ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 186
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 10.1281ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 10.1807ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 11.4192ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 188
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 12.5977ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 12.6267ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 14.3738ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 189
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 9.7031ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 9.7683ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 11.5255ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 188
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.669ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.7612ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 10.7741ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 188
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 12.2705ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 12.3001ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 14.0254ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 188
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.5134ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.5401ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 6.5469ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 185
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 4.2786ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 4.3044ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 5.2909ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 188
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 9.7561ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 9.8101ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 422 - application/json;+charset=utf-8 10.2724ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 187
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 14.3027ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 14.3585ms - 200
+info: Microsoft.AspNetCore.Http.Result.JsonResult[1]
+      Setting HTTP status code 201.
+info: Microsoft.AspNetCore.Http.Result.JsonResult[3]
+      Writing value of type 'SavedVehicle' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 201 - application/json;+charset=utf-8 20.8810ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 187
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 11.9527ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 11.9961ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 409 - application/json;+charset=utf-8 16.1608ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 187
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.2628ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.2896ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 409 - application/json;+charset=utf-8 7.9542ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers/95/vehicles - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 12.0728ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 12.1109ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'List`1' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers/95/vehicles - 200 - application/json;+charset=utf-8 14.5515ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/customers/95 - application/json 34
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 9.3129ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 9.3449ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/customers/95 - 422 - application/json;+charset=utf-8 9.6793ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/customers/95 - application/json 33
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 14.2368ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 14.2921ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/customers/95 - 409 - application/json;+charset=utf-8 16.2895ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/customers/95 - application/json 33
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 13.0905ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 13.1259ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/customers/95 - 200 - application/json;+charset=utf-8 17.9165ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - application/json 186
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 5.0979ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 5.1272ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/{id:long}/vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/95/vehicles - 404 - application/json;+charset=utf-8 5.9022ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers/95 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 4.3309ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 4.3559ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers/95 - 404 - application/json;+charset=utf-8 5.3330ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/customers/95 - application/json 33
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 4.8815ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 4.9326ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/customers/95 - 404 - application/json;+charset=utf-8 6.4425ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 DELETE http://127.0.0.1:8003/customers/96 - application/json 33
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: DELETE /customers/{id:long}'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 6.3538ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 6.3758ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'SavedCustomer' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: DELETE /customers/{id:long}'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 DELETE http://127.0.0.1:8003/customers/96 - 200 - application/json;+charset=utf-8 9.5017ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search=6cf2f668c5294eb9b3871a9f0c96a0de - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 10.9167ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 10.9594ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'CustomerPage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search=6cf2f668c5294eb9b3871a9f0c96a0de - 200 - application/json;+charset=utf-8 14.0031ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - application/json 317
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: POST /customers/preview'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 15.5508ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 15.6251ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'PreviewResult' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: POST /customers/preview'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 POST http://127.0.0.1:8003/customers/preview - 200 - application/json;+charset=utf-8 18.7608ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/health - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /health'
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type '<>f__AnonymousType0`2' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /health'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/health - 200 - application/json;+charset=utf-8 0.5003ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search= - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 65.7822ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 67.577ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'CustomerPage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search= - 200 - application/json;+charset=utf-8 367.6624ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=&status=all - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /vehicles'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 7.4108ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 7.4741ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'VehiclePage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /vehicles'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/vehicles?page=1&pageSize=10&search=&status=all - 200 - application/json;+charset=utf-8 23.1944ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search= - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 8.1709ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 8.213ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'CustomerPage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search= - 200 - application/json;+charset=utf-8 12.6481ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search=5512152114 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 10.2493ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 10.7312ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'CustomerPage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search=5512152114 - 200 - application/json;+charset=utf-8 18.2788ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search=pepe - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 13.257ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 13.336ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'CustomerPage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search=pepe - 200 - application/json;+charset=utf-8 17.0363ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search= - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 46.3565ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 46.9103ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'CustomerPage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search= - 200 - application/json;+charset=utf-8 213.8862ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search= - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'HTTP: GET /customers'
+info: System.Net.Http.HttpClient.auth.LogicalHandler[100]
+      Start processing HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[100]
+      Sending HTTP request GET http://127.0.0.1:8002/api/auth/me
+info: System.Net.Http.HttpClient.auth.ClientHandler[101]
+      Received HTTP response headers after 52.5709ms - 200
+info: System.Net.Http.HttpClient.auth.LogicalHandler[101]
+      End processing HTTP request after 52.8292ms - 200
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+      Setting HTTP status code 200.
+info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+      Writing value of type 'CustomerPage' as Json.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'HTTP: GET /customers'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://127.0.0.1:8003/customers?page=1&pageSize=10&search= - 200 - application/json;+charset=utf-8 97.9954ms

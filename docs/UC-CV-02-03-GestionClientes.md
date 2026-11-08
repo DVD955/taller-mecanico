@@ -1,5 +1,7 @@
 # Gestión de clientes: UC-CV-02 y UC-CV-03
 
+**Antecedente histórico.** Para la numeración, permisos, baja lógica y API vigentes consulta [administrar clientes](../analisis/fase-administrar-clientes.md) y [registrar vehículo](../analisis/fase-registrar-vehiculo.md). La entrega actual usa UC-CV-02 consultar, UC-CV-03 actualizar y UC-CV-04 desactivar; los permisos del texto histórico siguiente no sustituyen esa matriz.
+
 Extensión de UC-CV-01 RegistrarCliente. Solo ADMINISTRADOR y RECEPCIONISTA, activos y con sesión vigente, pueden consultar, registrar, actualizar y eliminar clientes. La SPA, FastAPI y CustomerService aplican esta restricción; el servidor no acepta roles ni operadores enviados por el formulario. Un cliente u otro rol fuera de la lista permitida recibe 403. No se modifica el catálogo de roles de autenticación existente.
 
 ## TABLA FASE UC-CV-02 ActualizarCliente

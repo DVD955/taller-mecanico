@@ -13,7 +13,9 @@ public sealed partial class MySqlCustomerStore
         new Contacts(reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString("email"),
             reader.IsDBNull(reader.GetOrdinal("mobile")) ? null : reader.GetString("mobile"),
             reader.IsDBNull(reader.GetOrdinal("alternative")) ? null : reader.GetString("alternative")),
-        StatusFromCatalog(reader.GetInt32("status_id")), reader.GetString("identity_fingerprint"), reader.GetInt32("version"));
+        StatusFromCatalog(reader.GetInt32("status_id")), reader.GetString("identity_fingerprint"), reader.GetInt32("version"),
+        reader.IsDBNull(reader.GetOrdinal("workshop_id")) ? null : reader.GetInt32("workshop_id"),
+        reader.IsDBNull(reader.GetOrdinal("workshop_name")) ? null : reader.GetString("workshop_name"));
 
     public async Task<CustomerPage> List(int page, int pageSize, string search, CancellationToken ct)
     {
@@ -22,17 +24,17 @@ public sealed partial class MySqlCustomerStore
         // Count y página comparten una instantánea para que la paginación sea coherente.
         await using var transaction = await connection.BeginTransactionAsync(System.Data.IsolationLevel.RepeatableRead, ct);
         const string filter = """
-            WHERE c.bin_status<>3 AND (@empty=1 OR c.full_name LIKE @search ESCAPE '!'
+            WHERE c.bin_status<>3 AND c.deleted_at IS NULL AND (@empty=1 OR c.full_name LIKE @search ESCAPE '!'
             OR c.email LIKE @search ESCAPE '!' OR c.mobile LIKE @search ESCAPE '!'
             OR c.alternative LIKE @search ESCAPE '!' OR c.municipality LIKE @search ESCAPE '!')
             """;
         var pattern = "%" + search.Replace("!", "!!").Replace("%", "!%").Replace("_", "!_") + "%";
-        const string source = " FROM customers c INNER JOIN status s ON s.id=c.bin_status ";
+        const string source = " FROM customers c INNER JOIN status s ON s.id=c.bin_status LEFT JOIN workshops w ON w.id=c.workshop_id ";
         await using var countCommand = new MySqlCommand("SELECT COUNT(*)" + source + filter, connection, transaction);
         countCommand.Parameters.AddWithValue("@empty", search.Length == 0);
         countCommand.Parameters.AddWithValue("@search", pattern);
         var total = Convert.ToInt64(await countCommand.ExecuteScalarAsync(ct));
-        await using var command = new MySqlCommand("SELECT c.*, s.id AS status_id" + source + filter + " ORDER BY c.id DESC LIMIT @limit OFFSET @offset", connection, transaction);
+        await using var command = new MySqlCommand("SELECT c.*, s.id AS status_id, w.name AS workshop_name" + source + filter + " ORDER BY c.id DESC LIMIT @limit OFFSET @offset", connection, transaction);
         command.Parameters.AddWithValue("@empty", search.Length == 0);
         command.Parameters.AddWithValue("@search", pattern);
         command.Parameters.AddWithValue("@limit", pageSize);
@@ -48,7 +50,7 @@ public sealed partial class MySqlCustomerStore
     {
         await using var connection = new MySqlConnection(connectionString);
         await connection.OpenAsync(ct);
-        await using var command = new MySqlCommand("SELECT c.*, s.id AS status_id FROM customers c INNER JOIN status s ON s.id=c.bin_status WHERE c.id=@id AND c.bin_status<>3", connection);
+        await using var command = new MySqlCommand("SELECT c.*, s.id AS status_id, w.name AS workshop_name FROM customers c INNER JOIN status s ON s.id=c.bin_status LEFT JOIN workshops w ON w.id=c.workshop_id WHERE c.id=@id AND c.bin_status<>3 AND c.deleted_at IS NULL", connection);
         command.Parameters.AddWithValue("@id", id);
         await using var reader = await command.ExecuteReaderAsync(ct);
         return await reader.ReadAsync(ct) ? ReadCustomer(reader) : null;
@@ -56,7 +58,7 @@ public sealed partial class MySqlCustomerStore
 
     private static async Task<Customer> LockCurrent(MySqlConnection connection, MySqlTransaction transaction, long id, int version, CancellationToken ct)
     {
-        await using var command = new MySqlCommand("SELECT c.*, s.id AS status_id FROM customers c INNER JOIN status s ON s.id=c.bin_status WHERE c.id=@id AND c.bin_status<>3 FOR UPDATE", connection, transaction);
+        await using var command = new MySqlCommand("SELECT c.*, s.id AS status_id, w.name AS workshop_name FROM customers c INNER JOIN status s ON s.id=c.bin_status LEFT JOIN workshops w ON w.id=c.workshop_id WHERE c.id=@id AND c.bin_status<>3 AND c.deleted_at IS NULL FOR UPDATE", connection, transaction);
         command.Parameters.AddWithValue("@id", id);
         await using var reader = await command.ExecuteReaderAsync(ct);
         if (!await reader.ReadAsync(ct)) throw new UseCaseException(404, "El cliente no existe o ya fue eliminado del listado.");
@@ -79,13 +81,15 @@ public sealed partial class MySqlCustomerStore
 
     public async Task<SavedCustomer> UpdateAtomically(Customer customer, Actor actor, CancellationToken ct)
     {
-        actor.Authorize();
+        actor.Authorize(CustomerOperation.Update);
         await using var connection = new MySqlConnection(connectionString);
         await connection.OpenAsync(ct);
         await using var transaction = await connection.BeginTransactionAsync(ct);
         try
         {
-            await LockCurrent(connection, transaction, customer.Id, customer.Version, ct);
+            var current = await LockCurrent(connection, transaction, customer.Id, customer.Version, ct);
+            if (customer.WorkshopId != current.WorkshopId)
+                throw new UseCaseException(422, "No se puede cambiar el taller asociado al cliente.");
             await using var command = new MySqlCommand("""
                 UPDATE customers SET full_name=@name,street=@street,number=@number,neighborhood=@neighborhood,
                 municipality=@municipality,state=@state,email=@email,mobile=@mobile,alternative=@alternative,
@@ -114,7 +118,7 @@ public sealed partial class MySqlCustomerStore
                 contact.Parameters.AddWithValue("@id", customer.Id);
                 await contact.ExecuteNonQueryAsync(ct);
             }
-            var audit = await WriteAudit(connection, transaction, actor, customer.Id, "UC-CV-02 ActualizarCliente", DateTimeOffset.UtcNow, ct);
+            var audit = await WriteAudit(connection, transaction, actor, customer.Id, "UC-CV-03 ActualizarCliente", DateTimeOffset.UtcNow, ct);
             await transaction.CommitAsync(ct);
             return new SavedCustomer(customer with {Version = customer.Version + 1}, audit);
         }
@@ -132,7 +136,7 @@ public sealed partial class MySqlCustomerStore
 
     public async Task<SavedCustomer> DeleteAtomically(long id, int version, Actor actor, CancellationToken ct)
     {
-        actor.Authorize();
+        actor.Authorize(CustomerOperation.Deactivate);
         await using var connection = new MySqlConnection(connectionString);
         await connection.OpenAsync(ct);
         await using var transaction = await connection.BeginTransactionAsync(ct);
@@ -140,11 +144,11 @@ public sealed partial class MySqlCustomerStore
         {
             var current = await LockCurrent(connection, transaction, id, version, ct);
             var now = DateTimeOffset.UtcNow;
-            await using var command = new MySqlCommand("UPDATE customers SET bin_status=3,deleted_at=@now,version=version+1 WHERE id=@id", connection, transaction);
+            await using var command = new MySqlCommand("UPDATE customers SET bin_status=2,deleted_at=@now,version=version+1 WHERE id=@id", connection, transaction);
             command.Parameters.AddWithValue("@id", id);
             command.Parameters.AddWithValue("@now", now.UtcDateTime);
             await command.ExecuteNonQueryAsync(ct);
-            var audit = await WriteAudit(connection, transaction, actor, id, "UC-CV-03 EliminarCliente", now, ct);
+            var audit = await WriteAudit(connection, transaction, actor, id, "UC-CV-04 DesactivarCliente", now, ct);
             await transaction.CommitAsync(ct);
             // No se borran el cliente, sus contactos únicos ni las auditorías históricas.
             return new SavedCustomer(current with {Status = "INACTIVO", Version = version + 1}, audit);

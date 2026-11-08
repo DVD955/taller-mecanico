@@ -29,7 +29,7 @@ public sealed class ManageCustomers(ICustomerManagementStore storage, ContactNor
 {
     public override Task<CustomerPage> List(Actor actor, int page, int pageSize, string search, CancellationToken ct)
     {
-        actor.Authorize();
+        actor.Authorize(CustomerOperation.Read);
         if (page < 1 || page > 100_000 || pageSize < 1 || pageSize > 100 || search.Length > 120 || search.Any(char.IsControl))
             throw new UseCaseException(422, "La búsqueda o la paginación no son válidas.");
         return Storage.List(page, pageSize, search.Trim(), ct);
@@ -37,7 +37,7 @@ public sealed class ManageCustomers(ICustomerManagementStore storage, ContactNor
 
     public override async Task<Customer> Get(long id, Actor actor, CancellationToken ct)
     {
-        actor.Authorize();
+        actor.Authorize(CustomerOperation.Read);
         return await Storage.Get(id, ct) ?? throw new UseCaseException(404, "El cliente no existe o fue eliminado del listado.");
     }
 
@@ -47,13 +47,15 @@ public sealed class ManageCustomers(ICustomerManagementStore storage, ContactNor
         if (version < 1) throw new UseCaseException(422, "La versión del cliente es obligatoria.");
         if (version != current.Version) throw new UseCaseException(409, "Otro usuario modificó este cliente. Actualiza el listado y revisa nuevamente.");
         if (input is null) throw new UseCaseException(422, "Los datos del cliente son obligatorios.");
+        if (input.WorkshopId != current.WorkshopId)
+            throw new UseCaseException(422, "No se puede cambiar el taller asociado al cliente.");
         return new CustomerBuilder(normalizer).WithName(input.FullName).WithAddress(input.Address).WithContacts(input.Contacts).Build()
-            with {Id = id, Version = version, Status = current.Status};
+            with {Id = id, Version = version, Status = current.Status, WorkshopId = current.WorkshopId, WorkshopName = current.WorkshopName};
     }
 
     public override async Task<PreviewResult> PreviewUpdate(long id, UpdateDraft input, Actor actor, CancellationToken ct)
     {
-        actor.Authorize();
+        actor.Authorize(CustomerOperation.Update);
         var candidate = await BuildUpdate(id, input.Customer, input.Version, actor, ct);
         var matches = await Storage.FindMatches(candidate, ct);
         return new PreviewResult(candidate, matches, matches.Count == 0 ? signer.Issue(candidate, actor) : null);
@@ -61,7 +63,7 @@ public sealed class ManageCustomers(ICustomerManagementStore storage, ContactNor
 
     public override async Task<SavedCustomer> Update(long id, UpdateRequest input, Actor actor, CancellationToken ct)
     {
-        actor.Authorize();
+        actor.Authorize(CustomerOperation.Update);
         if (!input.Confirmed) throw new UseCaseException(422, "Confirma los cambios antes de actualizar.");
         var candidate = await BuildUpdate(id, input.Customer, input.Version, actor, ct);
         signer.Validate(input.PreviewToken, candidate, actor);
@@ -72,7 +74,7 @@ public sealed class ManageCustomers(ICustomerManagementStore storage, ContactNor
 
     public override async Task<SavedCustomer> Delete(long id, DeleteRequest input, Actor actor, CancellationToken ct)
     {
-        actor.Authorize();
+        actor.Authorize(CustomerOperation.Deactivate);
         if (!input.Confirmed || input.Version < 1)
             throw new UseCaseException(422, "Confirma la eliminación del cliente e indica su versión vigente.");
         return await Storage.DeleteAtomically(id, input.Version, actor, ct);

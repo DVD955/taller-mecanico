@@ -11,19 +11,30 @@ public sealed class UseCaseException(int status, string message) : Exception(mes
     public int Status { get; } = status;
 }
 
+public enum CustomerOperation { Read, Register, Update, Deactivate, RegisterVehicle }
+
 public sealed record Actor(int Id, string Username, string Role, string Status)
 {
-    public void Authorize()
+    public void Authorize(CustomerOperation operation = CustomerOperation.Register)
     {
-        if (Status != "ACTIVO" || Role is not ("ADMINISTRADOR" or "RECEPCIONISTA"))
-            throw new UseCaseException(403, "Solo administradores y recepcionistas activos pueden gestionar clientes.");
+        var allowed = Role == "ADMINISTRADOR" || (operation switch
+        {
+            CustomerOperation.Read => Role is "RECEPCIONISTA" or "SECRETARIA",
+            CustomerOperation.Update => Role == "SECRETARIA",
+            CustomerOperation.Register or CustomerOperation.RegisterVehicle => Role == "RECEPCIONISTA",
+            _ => false
+        });
+        if (Status != "ACTIVO" || !allowed)
+            throw new UseCaseException(403, "Tu rol no tiene permiso para realizar esta operación.");
     }
 }
 
 public sealed record Address(string Street, string Number, string Neighborhood, string Municipality, string State);
 public sealed record Contacts(string? Email, string? Mobile, string? Alternative);
-public sealed record CustomerInput(string FullName, Address Address, Contacts Contacts);
-public sealed record Customer(long Id, string FullName, Address Address, Contacts Contacts, string Status, string Fingerprint, int Version = 1);
+public sealed record WorkshopInfo(int Id, string Name, bool Active);
+public sealed record CustomerInput(string FullName, Address Address, Contacts Contacts, int? WorkshopId = null);
+public sealed record Customer(long Id, string FullName, Address Address, Contacts Contacts, string Status, string Fingerprint,
+    int Version = 1, int? WorkshopId = null, string? WorkshopName = null);
 public sealed record AuditEntry(long Id, int ActorId, string ActorUsername, long CustomerId, DateTimeOffset OccurredAt, string Action = "UC-CV-01 RegistrarCliente");
 public sealed record SavedCustomer(Customer Customer, AuditEntry AuditEntry);
 
@@ -101,6 +112,14 @@ public sealed class CustomerBuilder(ContactNormalizer normalizer)
     private string? name;
     private Address? address;
     private Contacts? contacts;
+    private int? workshopId;
+
+    public CustomerBuilder WithWorkshop(int? value)
+    {
+        if (value is null or < 1) throw new UseCaseException(422, "Selecciona un taller mecánico.");
+        workshopId = value;
+        return this;
+    }
 
     public CustomerBuilder WithName(string? value)
     {
@@ -132,6 +151,6 @@ public sealed class CustomerBuilder(ContactNormalizer normalizer)
         var key = System.Text.Json.JsonSerializer.Serialize(new[] {name, address.Street, address.Number,
             address.Neighborhood, address.Municipality, address.State}.Select(TextRules.Identity));
         var fingerprint = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(key))).ToLowerInvariant();
-        return new Customer(0, name, address, contacts, "ACTIVO", fingerprint);
+        return new Customer(0, name, address, contacts, "ACTIVO", fingerprint, WorkshopId: workshopId);
     }
 }

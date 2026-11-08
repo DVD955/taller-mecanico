@@ -1,0 +1,288 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "UC-CV-02/03/04 · Administrar clientes",
+    "locale": "es",
+    "quality_profile": "showcase",
+    "output": "analisis/diagramas/04-clientes-vehiculos-20261009/02-administrar-clientes/administrar-clientes.html",
+    "translations": {
+      "page.title": "{title} · Diagrama",
+      "legend.title": "Leyenda",
+      "legend.workflow.frontend": "Interfaz",
+      "legend.workflow.backend": "Validación",
+      "legend.workflow.security": "Permisos",
+      "legend.workflow.database": "Persistencia",
+      "legend.workflow.external": "Actor"
+    }
+  },
+  "lanes": [
+    {
+      "id": "consulta",
+      "label": "Directorio y consulta"
+    },
+    {
+      "id": "edicion",
+      "label": "Actualizar · administrador o secretaria"
+    },
+    {
+      "id": "errores",
+      "label": "Operaciones rechazadas",
+      "variant": "exception"
+    },
+    {
+      "id": "baja",
+      "label": "Desactivar · solo administrador"
+    },
+    {
+      "id": "vehiculo",
+      "label": "Vehículo · administrador o recepcionista"
+    }
+  ],
+  "mainPath": [
+    "autorizar",
+    "tabla",
+    "modal",
+    "validar",
+    "actualizar",
+    "respuesta"
+  ],
+  "nodes": [
+    {
+      "id": "autorizar",
+      "lane": "consulta",
+      "col": 0,
+      "type": "security",
+      "label": "Autorizar consulta",
+      "sublabel": "Admin, recepción, secretaria",
+      "width": 185
+    },
+    {
+      "id": "tabla",
+      "lane": "consulta",
+      "col": 1,
+      "type": "frontend",
+      "label": "Tabla de clientes",
+      "sublabel": "Búsqueda y selección",
+      "width": 185
+    },
+    {
+      "id": "consultar",
+      "lane": "consulta",
+      "col": 2,
+      "type": "frontend",
+      "label": "Ver datos",
+      "sublabel": "Seleccionar detalle",
+      "width": 185
+    },
+    {
+      "id": "detalle",
+      "lane": "consulta",
+      "col": 3,
+      "type": "backend",
+      "label": "Expediente del cliente",
+      "sublabel": "Taller, contactos, vehículos",
+      "width": 185
+    },
+    {
+      "id": "respuesta",
+      "lane": "consulta",
+      "col": 5,
+      "type": "frontend",
+      "label": "Actualizar directorio",
+      "sublabel": "Mostrar resultado",
+      "width": 185
+    },
+    {
+      "id": "modal",
+      "lane": "edicion",
+      "col": 2,
+      "type": "security",
+      "label": "Abrir modal de edición",
+      "sublabel": "Solo admin o secretaria",
+      "width": 185
+    },
+    {
+      "id": "validar",
+      "lane": "edicion",
+      "col": 3,
+      "type": "backend",
+      "label": "Validar y revisar",
+      "sublabel": "Taller fijo · no duplicados",
+      "width": 185
+    },
+    {
+      "id": "actualizar",
+      "lane": "edicion",
+      "col": 4,
+      "type": "database",
+      "label": "Actualizar y auditar",
+      "sublabel": "Confirmación y versión",
+      "width": 185
+    },
+    {
+      "id": "autorizarBaja",
+      "lane": "baja",
+      "col": 2,
+      "type": "security",
+      "label": "Solicitar baja",
+      "sublabel": "Solo administrador",
+      "width": 185
+    },
+    {
+      "id": "confirmarBaja",
+      "lane": "baja",
+      "col": 3,
+      "type": "frontend",
+      "label": "Confirmar desactivación",
+      "sublabel": "Conservar datos e historial",
+      "width": 185
+    },
+    {
+      "id": "desactivar",
+      "lane": "baja",
+      "col": 4,
+      "type": "database",
+      "label": "Baja lógica y auditoría",
+      "sublabel": "bin_status = 2 · fecha UTC",
+      "width": 185
+    },
+    {
+      "id": "asociar",
+      "lane": "vehiculo",
+      "col": 2,
+      "type": "security",
+      "label": "Asociar vehículo",
+      "sublabel": "Admin o recepción · activo",
+      "width": 185
+    },
+    {
+      "id": "registrarVehiculo",
+      "lane": "vehiculo",
+      "col": 3,
+      "type": "external",
+      "label": "Abrir UC-CV-06",
+      "sublabel": "Cliente seleccionado fijo",
+      "width": 185
+    },
+    {
+      "id": "denegar",
+      "lane": "errores",
+      "col": 0,
+      "type": "security",
+      "label": "Rechazar acceso",
+      "sublabel": "401 / 403",
+      "width": 185
+    },
+    {
+      "id": "invalidos",
+      "lane": "errores",
+      "col": 3,
+      "type": "backend",
+      "label": "No actualizar",
+      "sublabel": "422 / 409 · revisar datos",
+      "width": 185
+    }
+  ],
+  "edges": [
+    {
+      "id": "autorizar-tabla",
+      "from": "autorizar",
+      "to": "tabla"
+    },
+    {
+      "id": "tabla-consultar",
+      "from": "tabla",
+      "to": "consultar"
+    },
+    {
+      "id": "consultar-detalle",
+      "from": "consultar",
+      "to": "detalle"
+    },
+    {
+      "id": "tabla-modal",
+      "from": "tabla",
+      "to": "modal"
+    },
+    {
+      "id": "modal-validar",
+      "from": "modal",
+      "to": "validar"
+    },
+    {
+      "id": "validar-actualizar",
+      "from": "validar",
+      "to": "actualizar"
+    },
+    {
+      "id": "actualizar-respuesta",
+      "from": "actualizar",
+      "to": "respuesta"
+    },
+    {
+      "id": "tabla-autorizarBaja",
+      "from": "tabla",
+      "to": "autorizarBaja"
+    },
+    {
+      "id": "autorizarBaja-confirmarBaja",
+      "from": "autorizarBaja",
+      "to": "confirmarBaja"
+    },
+    {
+      "id": "confirmarBaja-desactivar",
+      "from": "confirmarBaja",
+      "to": "desactivar"
+    },
+    {
+      "id": "desactivar-respuesta",
+      "from": "desactivar",
+      "to": "respuesta"
+    },
+    {
+      "id": "tabla-asociar",
+      "from": "tabla",
+      "to": "asociar"
+    },
+    {
+      "id": "asociar-registrarVehiculo",
+      "from": "asociar",
+      "to": "registrarVehiculo"
+    },
+    {
+      "id": "autorizar-denegar",
+      "from": "autorizar",
+      "to": "denegar",
+      "label": "Sin permiso",
+      "role": "error",
+      "variant": "security"
+    },
+    {
+      "id": "validar-invalidos",
+      "from": "validar",
+      "to": "invalidos",
+      "label": "Conflicto",
+      "role": "error",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Permisos por operación",
+      "items": [
+        "Edición: administrador/secretaria según el texto; el audio indica recepción.",
+        "El rol debe estar activo. Secretaria no administra talleres ni registra vehículos."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Conservar relaciones",
+      "items": [
+        "Cambiar taller se rechaza en interfaz y servidores.",
+        "La baja no borra cliente, contactos, vehículos ni auditorías; impide nuevas asociaciones."
+      ]
+    }
+  ]
+}

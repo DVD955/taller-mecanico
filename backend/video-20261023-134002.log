@@ -1,0 +1,106 @@
+INFO:     127.0.0.1:51547 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51553 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51551 - "POST /api/customers/preview HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:57997 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57995 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57997 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57995 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:57997 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57995 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57997 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57995 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:57995 - "GET /api/vehicles HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:57995 - "POST /api/vehicles/customer/80 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:57995 - "POST /api/vehicles/customer/80 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "POST /api/customers/preview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "POST /api/customers HTTP/1.1" 201 Created
+INFO:     127.0.0.1:54308 - "GET /api/vehicles HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 413 Request Entity Too Large
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles/19 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles/19/photos/1 HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles/19/photos/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles/19/photos/9223372036854775807 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles?search=6b403087b42345778afc5b1aab041c69 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles?page=0 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54308 - "GET /api/vehicles?page_size=101 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54308 - "GET /api/vehicles?status=otro HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:54308 - "PUT /api/vehicles/19 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:54308 - "PUT /api/vehicles/19 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:54308 - "PUT /api/vehicles/19 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "PUT /api/vehicles/19 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "PUT /api/vehicles/19 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles/19 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "PUT /api/vehicles/19 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "PUT /api/vehicles/19 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "PUT /api/vehicles/19/owner HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "PUT /api/vehicles/19/owner HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/customers/82/vehicles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/customers/83/vehicles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles/19 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "DELETE /api/vehicles/19 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "DELETE /api/vehicles/19 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "DELETE /api/vehicles/19 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "DELETE /api/vehicles/19 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles/19 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles/19/photos/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles?status=inactive&search=6b403087b42345778afc5b1aab041c69 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles?status=active&search=6b403087b42345778afc5b1aab041c69 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "DELETE /api/vehicles/19 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "PUT /api/vehicles/19 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "POST /api/vehicles/customer/82 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "GET /api/vehicles/21 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54348 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "PUT /api/vehicles/20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54345 - "PUT /api/vehicles/20 HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:54348 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "DELETE /api/customers/83 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54348 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54308 - "PUT /api/vehicles/20/owner HTTP/1.1" 409 Conflict

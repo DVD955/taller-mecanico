@@ -24,6 +24,7 @@ from .customers import router as customers_router
 from .administration import router as administration_router
 from .postal import router as postal_router
 from .workshops import router as workshops_router
+from .vehicles import router as vehicles_router
 
 settings = get_settings()
 app = FastAPI(title="Taller Mecánico API", version="1.0.0")
@@ -39,6 +40,7 @@ app.include_router(customers_router)
 app.include_router(administration_router)
 app.include_router(postal_router)
 app.include_router(workshops_router)
+app.include_router(vehicles_router)
 
 
 @app.on_event("startup")
