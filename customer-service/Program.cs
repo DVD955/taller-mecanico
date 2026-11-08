@@ -16,7 +16,8 @@ if (args.Contains("--integration-test"))
 }
 
 var builder = WebApplication.CreateBuilder(args);
-builder.WebHost.UseUrls("http://127.0.0.1:8003");
+builder.WebHost.UseUrls(
+    Environment.GetEnvironmentVariable("ASPNETCORE_URLS") ?? "http://127.0.0.1:8003");
 builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 16_384);
 builder.Services.AddHttpClient("auth", client =>
 {
