@@ -3,8 +3,10 @@ from sqlalchemy import select
 
 from .dependencies import CurrentUser, DbSession
 from .models import PostalMunicipality, PostalSettlement, PostalState, UserRole
+from .openapi_contracts import AUTH_ERRORS, PostalSettlementDetails, errors, result
 
 router = APIRouter(prefix='/api/postal', tags=['Direcciones del taller'])
+POSTAL_ACCESS = "Administrador o recepción."
 
 
 def authorize(user) -> None:
@@ -12,7 +14,8 @@ def authorize(user) -> None:
         raise HTTPException(403, 'Solo administradores y recepcionistas pueden gestionar talleres.')
 
 
-@router.get('/states')
+@router.get('/states', summary="Listar estados del catálogo postal", description=POSTAL_ACCESS,
+            responses=errors(*AUTH_ERRORS, 503))
 def states(user: CurrentUser, db: DbSession) -> list[str]:
     authorize(user)
     values = list(db.scalars(select(PostalState.name).order_by(PostalState.name)))
@@ -21,14 +24,17 @@ def states(user: CurrentUser, db: DbSession) -> list[str]:
     return values
 
 
-@router.get('/municipalities')
+@router.get('/municipalities', summary="Listar municipios por estado", description=POSTAL_ACCESS,
+            responses=errors(*AUTH_ERRORS, 422))
 def municipalities(user: CurrentUser, db: DbSession, state: str = Query(min_length=1, max_length=100)) -> list[str]:
     authorize(user)
     return list(db.scalars(select(PostalMunicipality.name).join(PostalMunicipality.state_record)
                            .where(PostalState.name == state).order_by(PostalMunicipality.name)))
 
 
-@router.get('/settlements')
+@router.get('/settlements', summary="Buscar colonias y códigos postales",
+            description=f"{POSTAL_ACCESS} Envía postal_code o la combinación de state y municipality.",
+            responses=result(list[PostalSettlementDetails], *AUTH_ERRORS, 404, 422))
 def settlements(user: CurrentUser, db: DbSession,
                 postal_code: str | None = Query(None, pattern=r'^\d{5}$'),
                 state: str | None = Query(None, max_length=100),

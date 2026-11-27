@@ -10,6 +10,7 @@ from sqlalchemy.orm import contains_eager
 
 from .dependencies import CurrentUser, DbSession
 from .models import AdministrationAudit, Role, Status, User, UserRole
+from .openapi_contracts import AUTH_ERRORS, CatalogStatus, Message, RoleDetails, StaffDetails, StatusMessage, errors, result
 from .schemas import RegisterRequest, UserResponse
 from .security import hash_password
 
@@ -87,20 +88,24 @@ def check_change(db, role: Role, version: int, next_status: int) -> None:
         # mientras el rol esté suspendido, incluso con una sesión ya abierta.
 
 
-@router.get('/status')
+@router.get('/status', summary="Consultar el catálogo de estados", description="Solo administrador.",
+            responses=result(list[CatalogStatus], *AUTH_ERRORS))
 def list_status(user: CurrentUser, db: DbSession) -> list[dict]:
     authorize_admin(user)
     return [dict(id=s.id, value=s.value, description=s.description) for s in db.scalars(select(Status).order_by(Status.id))]
 
 
-@router.get('/roles')
+@router.get('/roles', summary="Listar roles activos y suspendidos", description="Solo administrador.",
+            responses=result(list[RoleDetails], *AUTH_ERRORS))
 def list_roles(user: CurrentUser, db: DbSession) -> list[dict]:
     authorize_admin(user)
     query = select(Role).join(Role.state).options(contains_eager(Role.state)).where(Role.bin_status.in_((1, 2))).order_by(Role.name)
     return [role_response(role) for role in db.scalars(query)]
 
 
-@router.post('/roles', status_code=201)
+@router.post('/roles', status_code=201, summary="Crear un rol",
+             description="Solo administrador. Genera un código único a partir del nombre.",
+             responses=result(RoleDetails, *AUTH_ERRORS, 409, 422, status=201))
 def create_role(data: RoleInput, user: CurrentUser, db: DbSession) -> dict:
     authorize_admin(user)
     ascii_name = ''.join(c for c in unicodedata.normalize('NFKD', data.name) if not unicodedata.combining(c))
@@ -119,7 +124,9 @@ def create_role(data: RoleInput, user: CurrentUser, db: DbSession) -> dict:
     return role_response(role)
 
 
-@router.put('/roles/{role_id}')
+@router.put('/roles/{role_id}', summary="Actualizar o cambiar el estado de un rol",
+            description="Solo administrador. Incluye la versión vigente e indica 1 para activo o 2 para suspendido.",
+            responses=result(RoleDetails, *AUTH_ERRORS, 404, 409, 422))
 def update_role(role_id: int, data: RoleUpdate, user: CurrentUser, db: DbSession) -> dict:
     authorize_admin(user)
     role = locked_role(db, role_id)
@@ -131,7 +138,9 @@ def update_role(role_id: int, data: RoleUpdate, user: CurrentUser, db: DbSession
     return role_response(role)
 
 
-@router.delete('/roles/{role_id}')
+@router.delete('/roles/{role_id}', summary="Suspender un rol",
+               description="Solo administrador. Envía la versión vigente. Los roles indispensables permanecen activos.",
+               responses=result(StatusMessage, *AUTH_ERRORS, 404, 409, 422))
 def delete_role(role_id: int, data: VersionRequest, user: CurrentUser, db: DbSession) -> dict:
     authorize_admin(user)
     role = locked_role(db, role_id)
@@ -145,7 +154,8 @@ def delete_role(role_id: int, data: VersionRequest, user: CurrentUser, db: DbSes
     return {'message': 'Rol suspendido. Su registro se conserva.', 'bin_status': 2}
 
 
-@router.get('/users')
+@router.get('/users', summary="Listar cuentas y roles asignados", description="Solo administrador.",
+            responses=result(list[StaffDetails], *AUTH_ERRORS))
 def list_users(user: CurrentUser, db: DbSession) -> list[dict]:
     authorize_admin(user)
     query = select(User).join(User.state).options(contains_eager(User.state)).where(User.bin_status != 3).order_by(User.username)
@@ -154,7 +164,8 @@ def list_users(user: CurrentUser, db: DbSession) -> list[dict]:
             for u in db.scalars(query)]
 
 
-@router.put('/users/{user_id}/role')
+@router.put('/users/{user_id}/role', summary="Asignar un rol activo a una cuenta", description="Solo administrador.",
+            responses=result(Message, *AUTH_ERRORS, 404, 409, 422))
 def assign_role(user_id: int, data: AssignRole, user: CurrentUser, db: DbSession) -> dict:
     authorize_admin(user)
     role = locked_role(db, data.role_id)
@@ -171,7 +182,9 @@ def assign_role(user_id: int, data: AssignRole, user: CurrentUser, db: DbSession
     return {'message': f'Rol {role.name} asignado a {target.username}.'}
 
 
-@router.post('/users', response_model=UserResponse, status_code=201)
+@router.post('/users', response_model=UserResponse, status_code=201,
+             summary="Crear cuenta de personal", description="Solo administrador. Indica el ID de un rol activo.",
+             responses=errors(*AUTH_ERRORS, 404, 409, 422))
 def create_staff(data: StaffAccount, user: CurrentUser, db: DbSession) -> UserResponse:
     authorize_admin(user)
     role = locked_role(db, data.role_id)

@@ -1,12 +1,17 @@
 from functools import lru_cache
 from pathlib import Path
+from typing import Literal
 
+from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
     database_url: str
     secret_key: str
+    app_env: Literal["development", "production"] = "production"
+    swagger_username: str = ""
+    swagger_password: SecretStr = SecretStr("")
     access_token_expire_minutes: int = 60
     cors_origins: str = "http://localhost:5173"
     frontend_url: str = "http://127.0.0.1:5174"

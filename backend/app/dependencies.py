@@ -2,21 +2,30 @@ from typing import Annotated
 
 import jwt
 from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
 from .database import get_db
 from .models import User, UserSession
 from .security import decode_access_token
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth/login")
+session_bearer = HTTPBearer(
+    scheme_name="SessionBearer",
+    bearerFormat="JWT",
+    description="Inicia sesión en POST /api/auth/login y pega solo el access_token.",
+    auto_error=False,
+)
 DbSession = Annotated[Session, Depends(get_db)]
 
 
-def get_current_user(token: Annotated[str, Depends(oauth2_scheme)], db: DbSession) -> User:
+def get_current_user(
+    credentials: Annotated[HTTPAuthorizationCredentials | None, Depends(session_bearer)], db: DbSession,
+) -> User:
+    if credentials is None:
+        raise HTTPException(401, "Not authenticated", headers={"WWW-Authenticate": "Bearer"})
     credentials_error = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Sesión no válida o expirada.")
     try:
-        payload = decode_access_token(token)
+        payload = decode_access_token(credentials.credentials)
         user_id, session_id = int(payload["sub"]), str(payload["sid"])
     except (jwt.PyJWTError, KeyError, TypeError, ValueError):
         raise credentials_error

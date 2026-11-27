@@ -17,11 +17,17 @@ from sqlalchemy.exc import IntegrityError
 from .administration import VersionRequest, audit, save
 from .dependencies import CurrentUser, DbSession
 from .models import PostalSettlement, Workshop
-from .postal import authorize
+from .openapi_contracts import AUTH_ERRORS, StatusMessage, WorkshopDetails, image_result, result
+from .postal import POSTAL_ACCESS, authorize
 
 router = APIRouter(prefix='/api/workshops', tags=['Administración de talleres'])
 MAX_IMAGE_BYTES = 10_000_000
 RFC_PATTERN = r'^[A-ZÑ&]{3,4}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[A-Z0-9]{3}$'
+WORKSHOP_EXAMPLE = {
+    "name": "Taller de ejemplo", "rfc": "ABC900101AB1", "email": "taller@example.com",
+    "street": "Av. Central", "number": "10", "postal_code": "06000",
+    "neighborhood": "Centro", "municipality": "Cuauhtémoc", "state": "Ciudad de México",
+}
 
 
 class WorkshopInput(BaseModel):
@@ -126,15 +132,20 @@ def get_workshop(db, workshop_id: int, lock: bool = False) -> Workshop:
     return workshop
 
 
-@router.get('')
+@router.get('', summary="Listar talleres", description=POSTAL_ACCESS,
+            responses=result(list[WorkshopDetails], *AUTH_ERRORS))
 def list_workshops(user: CurrentUser, db: DbSession) -> list[dict]:
     authorize(user)
     return [workshop_response(row) for row in db.scalars(select(Workshop).where(Workshop.bin_status != 3).order_by(Workshop.name))]
 
 
-@router.post('', status_code=201)
+@router.post('', status_code=201, summary="Registrar un taller",
+             description=f"{POSTAL_ACCESS} Envía una dirección del catálogo postal y una imagen obligatoria.",
+             responses=result(WorkshopDetails, *AUTH_ERRORS, 409, 413, 422, status=201))
 async def register_workshop(user: CurrentUser, db: DbSession,
-                            payload: Annotated[str, Form()], image: Annotated[UploadFile | None, File()] = None) -> dict:
+                            payload: Annotated[str, Form(description="Texto JSON con los datos del taller.",
+                                                         examples=[json.dumps(WORKSHOP_EXAMPLE, ensure_ascii=False)])],
+                            image: Annotated[UploadFile | None, File(description="Imagen JPG, PNG o WebP de hasta 10 MB.")] = None) -> dict:
     authorize(user)
     data = parse_payload(payload)
     if data.version is not None:
@@ -156,9 +167,13 @@ async def register_workshop(user: CurrentUser, db: DbSession,
     return workshop_response(workshop)
 
 
-@router.put('/{workshop_id}')
+@router.put('/{workshop_id}', summary="Actualizar un taller",
+            description=f"{POSTAL_ACCESS} Incluye la versión vigente en el JSON. Si omites la imagen, se conserva la actual.",
+            responses=result(WorkshopDetails, *AUTH_ERRORS, 404, 409, 413, 422))
 async def update_workshop(workshop_id: int, user: CurrentUser, db: DbSession,
-                          payload: Annotated[str, Form()], image: Annotated[UploadFile | None, File()] = None) -> dict:
+                          payload: Annotated[str, Form(description="Texto JSON con los datos y la versión vigente.",
+                                                       examples=[json.dumps({**WORKSHOP_EXAMPLE, "version": 1}, ensure_ascii=False)])],
+                          image: Annotated[UploadFile | None, File(description="Imagen nueva JPG, PNG o WebP de hasta 10 MB.")] = None) -> dict:
     authorize(user)
     data = parse_payload(payload)
     workshop = get_workshop(db, workshop_id, True)
@@ -177,7 +192,9 @@ async def update_workshop(workshop_id: int, user: CurrentUser, db: DbSession,
     return workshop_response(workshop)
 
 
-@router.delete('/{workshop_id}')
+@router.delete('/{workshop_id}', summary="Dar de baja un taller",
+               description=f"{POSTAL_ACCESS} Envía la versión vigente. Aplica baja lógica.",
+               responses=result(StatusMessage, *AUTH_ERRORS, 404, 409, 422))
 def delete_workshop(workshop_id: int, data: VersionRequest, user: CurrentUser, db: DbSession) -> dict:
     authorize(user)
     workshop = get_workshop(db, workshop_id, True)
@@ -190,7 +207,8 @@ def delete_workshop(workshop_id: int, data: VersionRequest, user: CurrentUser, d
     return {'message': 'Taller dado de baja. Sus datos se conservan.', 'bin_status': 3}
 
 
-@router.get('/{workshop_id}/image')
+@router.get('/{workshop_id}/image', summary="Obtener la imagen privada del taller",
+            description=POSTAL_ACCESS, response_class=Response, responses=image_result(*AUTH_ERRORS, 404, 422))
 def workshop_image(workshop_id: int, user: CurrentUser, db: DbSession) -> Response:
     authorize(user)
     workshop = get_workshop(db, workshop_id)

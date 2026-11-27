@@ -72,6 +72,61 @@ Si esta instalación ya existe, conserva los archivos `.env` y el administrador 
 
 10. Abre `http://127.0.0.1:5176/`. Si un puerto ya está ocupado por este proyecto, reutiliza el servicio; no inicies otra copia. Con `--strictPort` no se cambia silenciosamente el puerto.
 
+## Swagger UI y OpenAPI
+
+El OpenAPI 3.1 de FastAPI describe las 40 operaciones públicas del proyecto por módulo. Incluye parámetros, permisos, ejemplos, respuestas y formularios para cargar fotos. Los endpoints de clientes y vehículos se prueban a través de FastAPI, que reenvía las solicitudes al servicio .NET. El servicio interno tiene su propia comprobación en `http://127.0.0.1:8003/health` cuando se ejecuta localmente.
+
+| Ambiente | Swagger UI | OpenAPI JSON |
+| --- | --- | --- |
+| Desarrollo | [localhost:8002/docs](http://localhost:8002/docs) | [localhost:8002/openapi.json](http://localhost:8002/openapi.json) |
+| Railway, después del despliegue autorizado | [Swagger UI](https://taller-mecanico-production-5c08.up.railway.app/docs) | [OpenAPI JSON](https://taller-mecanico-production-5c08.up.railway.app/openapi.json) |
+
+### Iniciar en Windows
+
+Si MySQL está detenido, ejecuta `Start-Service MySQL80` desde PowerShell como administrador. Usa los archivos `backend/.env` y `frontend/.env` de la instalación existente. Para Vue, el valor local de `VITE_API_URL` es `http://127.0.0.1:8002`.
+
+Terminal 1, FastAPI y Swagger:
+
+```powershell
+Set-Location 'C:\Taller Mecanico\backend'
+$env:APP_ENV = 'development'
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8002
+```
+
+Terminal 2, clientes y vehículos:
+
+```powershell
+Set-Location 'C:\Taller Mecanico\customer-service'
+dotnet run
+```
+
+Terminal 3, interfaz en [127.0.0.1:5176](http://127.0.0.1:5176/):
+
+```powershell
+Set-Location 'C:\Taller Mecanico\frontend'
+npm.cmd run dev -- --host 127.0.0.1 --port 5176 --strictPort
+```
+
+### Configurar Railway
+
+Agrega las variables en el servicio **taller-mecanico** de FastAPI cuando se autorice el despliegue. Conserva los valores actuales de MySQL, JWT, CORS, frontend y SMTP. [Variables de Railway](https://docs.railway.com/variables)
+
+| Variable | Desarrollo | Railway |
+| --- | --- | --- |
+| `APP_ENV` | `development`, documentación disponible desde el mismo equipo | `production`, documentación protegida |
+| `SWAGGER_USERNAME` | Vacío | Usuario exclusivo de documentación, en caracteres ASCII y sin dos puntos |
+| `SWAGGER_PASSWORD` | Vacío | Contraseña aleatoria exclusiva de al menos 32 caracteres ASCII, guardada como secreto |
+| `CUSTOMER_SERVICE_URL` | `http://127.0.0.1:8003` por defecto | Conserva el valor privado del servicio .NET que ya funciona en Railway, incluido el puerto `8003` |
+
+En producción, el navegador solicita las credenciales de documentación mediante HTTP Basic sobre HTTPS. La protección aplica a `/docs` y a `/openapi.json`, incluso si alguien intenta abrir el JSON directamente. Si las credenciales faltan o la contraseña no cumple el mínimo, ambas rutas devuelven 404. ReDoc está disponible en `/redoc` solo en desarrollo. Railway aplica el modo protegido también si detecta `RAILWAY_ENVIRONMENT_ID`. La interfaz de Swagger descarga JavaScript y CSS de una versión fija con verificación de integridad. [Swagger UI](https://github.com/swagger-api/swagger-ui) · [HTTP Basic en FastAPI](https://fastapi.tiangolo.com/advanced/security/http-basic-auth/)
+
+### Probar una operación
+
+1. Abre Swagger y ejecuta `GET /api/health` con **Try it out → Execute**. Debe devolver 200.
+2. Ejecuta `POST /api/auth/login` con una cuenta de prueba. En **Authorize**, pega solo el valor de `access_token`. Swagger agrega `Bearer` al encabezado. Si la cuenta ya tiene una sesión abierta, ciérrala primero.
+3. Prueba `GET /api/auth/me` y después `GET /api/customers` o `GET /api/vehicles` con un rol autorizado. En las cargas multipart, pega el JSON en el campo `payload` y selecciona los archivos en `image` o `photos`, según la ruta.
+4. Ejecuta `POST /api/auth/logout` y borra el token con **Authorize → Logout**. Las operaciones de escritura actúan sobre los datos del ambiente seleccionado y la recuperación puede enviar correos reales. Haz esas pruebas en local con datos de prueba.
+
 ## Comportamiento de seguridad
 
 - Las contraseñas se hashean con Argon2 y nunca se devuelven al cliente.
